@@ -1,123 +1,114 @@
 # dreampia-dev-kit
 
-Codex, Claude Code, AI 코딩 에이전트와 함께 사용하는 개발 문서 자동화 스킬/플러그인 키트입니다.
+Codex, Claude Code, AI 코딩 에이전트와 함께 쓰는 documentation-first 개발 문서 스킬팩입니다.
 
-## 목표
+아이디어가 코드로 바로 흘러가기 전에 PRD, TRD, IA, API Spec, ERD, QA 문서를 먼저 정리하고 서로 연결되게 만드는 것이 목표입니다.
 
-AI가 코드를 빠르게 작성하더라도 개발팀에는 여전히 다음 문서가 필요합니다.
+## 한눈에 보기
 
-- PRD
-- TRD
-- IA
-- User Flow
-- API 명세서
-- ERD
-- QA 체크리스트
-- 테스트 케이스
-- 릴리즈노트
-- Runbook
+| 필요할 때 | 사용 문서 |
+|---|---|
+| 제품 범위와 요구사항 정리 | `skills/prd/SKILL.md`, `templates/prd.md` |
+| 기술 구현 방향 정리 | `skills/trd/SKILL.md`, `templates/trd.md` |
+| 화면, 라우트, 사용자 흐름 정리 | `skills/ia/SKILL.md`, `skills/user-flow/SKILL.md` |
+| API와 데이터 모델 정리 | `skills/api-spec/SKILL.md`, `skills/erd/SKILL.md` |
+| QA와 릴리즈 검증 정리 | `skills/qa-checklist/SKILL.md` |
+| 문서 누락과 불일치 점검 | `skills/doc-audit/SKILL.md` |
 
-`dreampia-dev-kit`은 이 문서들을 AI 개발 플로우 안에서 생성, 검토, 동기화하기 위한 오픈소스 프로젝트입니다.
+## 60초 시작
 
-## v0.1 목표
-
-처음 버전은 복잡한 CLI보다 Markdown-first 스킬팩에 집중합니다.
-
-포함 항목:
-
-- `AGENTS.md`
-- 핵심 `skills/*/SKILL.md`
-- `templates/*.md`
-- `examples/small-service/` 예제 문서 세트
-- Codex 개발용 부트스트랩 프롬프트
-- Codex와 Claude Code 설치 경로
-- 향후 CLI로 확장 가능한 구조
-
-## 먼저 Codex에게 시킬 일
-
-Codex에서 저장소를 열고 아래처럼 요청하세요.
-
-```text
-AGENTS.md와 CODEX_BOOTSTRAP_PROMPT.md를 읽고, v0.1 Markdown-first skill pack을 구현해줘.
+```bash
+git clone https://github.com/eonofpixel/dreampia-dev-kit.git
+cd dreampia-dev-kit
+node scripts/validate-skill-pack.js
 ```
 
-## v0.1 사용 방법
-
-v0.1은 CLI 설치 없이 Markdown 파일만으로 사용할 수 있습니다.
-
-1. 만들 문서에 맞는 `skills/<skill-name>/SKILL.md`를 고릅니다.
-2. Codex에게 해당 skill과 관련 template을 사용하라고 요청합니다.
-3. `templates/`의 문서를 프로젝트의 `docs/` 구조에 복사해 작성합니다.
-4. `DOC_SYSTEM.md`의 frontmatter와 문서 ID 규칙을 유지합니다.
-5. 구현 전이나 릴리즈 전에 `doc-audit`으로 문서 누락과 불일치를 점검합니다.
-
-예시:
+에이전트에게 이렇게 요청합니다.
 
 ```text
 skills/prd/SKILL.md와 templates/prd.md를 사용해서 워크스페이스 초대 기능 PRD를 작성해줘.
 ```
 
-## 예제 보기
-
-[examples/small-service](examples/small-service)는 매직 링크 로그인 기능을 PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit report까지 연결한 예제입니다.
-
 ## Codex / Claude Code 설치
 
-자세한 설치법은 [docs/INSTALLATION.ko.md](docs/INSTALLATION.ko.md)를 참고하세요.
+| 에이전트 | 빠른 설치 | plugin 설치 |
+|---|---|---|
+| Codex | `bash scripts/install-codex.sh` | `codex plugin marketplace add .` 후 `codex plugin add dreampia-dev-kit@dreampia-dev-kit` |
+| Claude Code | `bash scripts/install-claude-code.sh` | `claude plugin marketplace add .` 후 `claude plugin install dreampia-dev-kit@dreampia-dev-kit` |
 
-개인 skills로 빠르게 설치:
-
-```bash
-bash scripts/install-codex.sh
-bash scripts/install-claude-code.sh
-```
-
-로컬 plugin marketplace로 설치:
-
-```bash
-codex plugin marketplace add .
-codex plugin add dreampia-dev-kit@dreampia-dev-kit
-
-claude plugin marketplace add .
-claude plugin install dreampia-dev-kit@dreampia-dev-kit
-```
-
-plugin 설치 후에는 namespaced skill을 호출합니다.
+plugin 설치 후 새 세션에서 namespaced skill을 호출합니다.
 
 ```text
 /dreampia-dev-kit:prd 워크스페이스 초대 기능 PRD를 작성해줘.
 /dreampia-dev-kit:doc-audit docs/의 문서 누락과 drift를 점검해줘.
 ```
 
-## 검증
+자세한 설치법은 [Codex와 Claude Code 설치 가이드](docs/INSTALLATION.ko.md)를 참고하세요.
 
-변경 후에는 아래 명령으로 스킬팩 구조를 검증합니다.
+## 예제 보기
+
+[small-service 예제](examples/small-service)는 작은 팀 노트 서비스의 매직 링크 로그인 기능을 문서화한 샘플입니다.
+
+포함 문서:
+
+- [Project brief](examples/small-service/project-brief.md)
+- [PRD](examples/small-service/prd.md)
+- [TRD](examples/small-service/trd.md)
+- [IA](examples/small-service/ia.md)
+- [User flow](examples/small-service/user-flow.md)
+- [API spec](examples/small-service/api-spec.md)
+- [ERD](examples/small-service/erd.md)
+- [QA checklist](examples/small-service/qa-checklist.md)
+- [Doc audit report](examples/small-service/doc-audit-report.md)
+
+## 핵심 스킬
+
+| 스킬 | 사용 시점 |
+|---|---|
+| `prd` | 제품 요구사항, MVP 범위, user story, acceptance criteria |
+| `trd` | 기술 요구사항, 아키텍처 제약, 보안, 성능 |
+| `ia` | 사이트맵, 페이지 계층, 라우트, 접근 권한 |
+| `user-flow` | happy path, alternative path, error path, 상태 전이 |
+| `api-spec` | endpoint, request/response schema, auth, error code |
+| `erd` | entity, table, relationship, index, constraint |
+| `qa-checklist` | QA check, regression check, UAT, release verification |
+| `doc-audit` | 문서 drift, 깨진 참조, 모호한 요구사항 |
+
+## 저장소 구조
+
+```text
+skills/                 핵심 agent skill
+templates/              재사용 가능한 Markdown 템플릿
+examples/small-service/ 전체 문서 예제
+plugins/dreampia-dev-kit/
+  .codex-plugin/        Codex plugin manifest
+  .claude-plugin/       Claude Code plugin manifest
+  skills/               패키징용 skill 복사본
+docs/INSTALLATION.ko.md 설치 가이드
+scripts/                설치, 동기화, 검증 스크립트
+```
+
+루트 `skills/`가 원본입니다. skill을 수정한 뒤에는 아래 명령을 실행합니다.
+
+```bash
+bash scripts/sync-plugin-skills.sh
+node scripts/validate-skill-pack.js
+```
+
+## 검증
 
 ```bash
 node scripts/validate-skill-pack.js
 ```
 
-## 핵심 스킬
+이 명령은 core skill, template frontmatter, 예제 문서, plugin manifest, plugin skill 복사본 동기화를 확인합니다.
 
-| 스킬 | 설명 |
-|---|---|
-| `prd` | 제품 요구사항 정의서 작성 |
-| `trd` | 기술 요구사항 정의서 작성 |
-| `ia` | 정보구조도 작성 |
-| `user-flow` | 사용자 흐름 작성 |
-| `api-spec` | API 명세서 작성 |
-| `erd` | DB/ERD 문서 작성 |
-| `qa-checklist` | QA 체크리스트 작성 |
-| `doc-audit` | 문서 간 누락/모순/불일치 검사 |
+## 현재 상태
 
-## 핵심 방향
+현재 릴리즈: [v0.1.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.0)
 
-```text
-빠르게 개발하되, 문서가 무너지지 않게 한다.
-```
+v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 
-## 이후 확장
+## 라이선스
 
-- v0.2: marketplace 배포 정리와 TypeScript CLI 검증
-- v0.3: TypeScript CLI와 `validate-skills`
-- v0.4: 문서 간 drift를 찾는 audit engine
+[MIT](LICENSE)
