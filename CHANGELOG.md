@@ -2,6 +2,16 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.4 - 2026-07-02
+
+### Added
+
+- Added `scripts/score-generated-docs.js` for scoring real agent-generated PRD, TRD, API spec, ERD, and QA checklist documents.
+
+### Changed
+
+- Hardened TRD, API spec, ERD, and QA checklist skill and shortcut output rules after live Claude Code mock-data chain testing.
+
 ## 0.1.3 - 2026-07-02
 
 ### Added

@@ -150,11 +150,19 @@ node scripts/validate-skill-pack.js
 
 이 명령은 core skill, template frontmatter, 예제 문서, shortcut, plugin manifest, plugin skill 복사본 동기화를 확인합니다.
 
+실제 agent가 생성한 문서는 아래처럼 점수화할 수 있습니다.
+
+```bash
+node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/api-spec.md docs/erd.md docs/qa-checklist.md
+```
+
+이 스크립트는 표준 frontmatter, 예상 `##` 섹션, 문서 owner, ID, `REQ-###`, HTTP method, primary key, `QA-###` 같은 문서별 신호를 확인합니다.
+
 GitHub Actions도 `main`, pull request, manual dispatch에서 validation, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
 
 ## 현재 상태
 
-현재 릴리즈: [v0.1.3](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.3)
+현재 릴리즈: [v0.1.4](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.4)
 
 v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 

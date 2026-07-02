@@ -27,6 +27,11 @@ jobs:
       - name: Validate skill pack structure
         run: node scripts/validate-skill-pack.js
 
+      - name: Check Node helper syntax
+        run: |
+          node --check scripts/validate-skill-pack.js
+          node --check scripts/score-generated-docs.js
+
       - name: Check shell script syntax
         run: |
           bash -n install.sh

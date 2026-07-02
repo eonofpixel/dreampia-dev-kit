@@ -20,18 +20,21 @@ Use this skill to create a practical QA checklist from PRD, user flows, API spec
 
 ## Output Format
 
-1. Scope
-2. Preconditions
-3. Test environment
-4. Functional checklist
-5. Permission checklist
-6. Edge cases
-7. Error cases
-8. Regression checklist
-9. Pass/fail criteria
-10. Related requirements
-11. Assumptions
-12. Open questions
+Use these exact `##` section headings for a full QA checklist:
+
+1. `## 1. Scope`
+2. `## 2. Preconditions`
+3. `## 3. Test Environment`
+4. `## 4. Functional Checklist`
+5. `## 5. Permission Checklist`
+6. `## 6. Edge Cases`
+7. `## 7. Error Cases`
+8. `## 8. Regression Checklist`
+9. `## 9. Pass/Fail Criteria`
+10. `## 10. Related Requirements`
+11. `## 11. Assumptions`
+12. `## 12. Open Questions`
+13. `## 13. Related Documents`
 
 ## Quality Rules
 
@@ -43,9 +46,27 @@ Use this skill to create a practical QA checklist from PRD, user flows, API spec
 
 ## Document Output Requirements
 
-- Start generated QA checklists with standard frontmatter from `DOC_SYSTEM.md` when creating a file.
+- Start generated QA checklists with this exact frontmatter shape when creating a file:
+
+```yaml
+---
+doc_id: QA-FEATURE-001
+doc_type: qa-checklist
+feature_id: FEATURE-001
+status: draft
+owner: qa
+related_docs: []
+related_code: []
+last_reviewed: YYYY-MM-DD
+version: 0.1.0
+---
+```
+
+- Replace `FEATURE-001` with a concise feature ID when the feature is clear.
 - Use `doc_id` prefix `QA`, `doc_type: qa-checklist`, `owner: qa`, and `version: 0.1.0`.
 - Link related PRD, user-flow, API, ERD, and release-note documents by ID when known.
+- Do not substitute ad hoc fields such as `title`, `product`, `date`, `created`, or `updated` for the standard fields.
+- Use `QA-###` IDs for checks, preserve related `REQ-###` references, and use `Pass`, `Fail`, `Blocked`, and `Not Run` statuses.
 
 ## Safety Rules
 

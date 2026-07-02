@@ -21,21 +21,21 @@ Use this skill to design API contracts for frontend/backend collaboration.
 
 ## Output Format
 
-1. Overview
-2. Authentication
-3. Common headers
-4. Endpoint list
-5. Endpoint details
-6. Request body schema
-7. Response body schema
-8. Error codes
-9. Pagination/filtering/sorting
-10. Idempotency
-11. Rate limits
-12. Examples
-13. Related requirements
-14. Assumptions
-15. Open questions
+Use these exact `##` section headings for a full API spec:
+
+1. `## 1. Overview`
+2. `## 2. Authentication`
+3. `## 3. Common Headers`
+4. `## 4. Endpoint List`
+5. `## 5. Endpoint Details`
+6. `## 6. Pagination`
+7. `## 7. Filtering and Sorting`
+8. `## 8. Idempotency`
+9. `## 9. Rate Limits`
+10. `## 10. Examples`
+11. `## 11. Assumptions`
+12. `## 12. Open Questions`
+13. `## 13. Related Documents`
 
 ## Quality Rules
 
@@ -48,9 +48,27 @@ Use this skill to design API contracts for frontend/backend collaboration.
 
 ## Document Output Requirements
 
-- Start generated API specs with standard frontmatter from `DOC_SYSTEM.md` when creating a file.
+- Start generated API specs with this exact frontmatter shape when creating a file:
+
+```yaml
+---
+doc_id: API-FEATURE-001
+doc_type: api-spec
+feature_id: FEATURE-001
+status: draft
+owner: backend
+related_docs: []
+related_code: []
+last_reviewed: YYYY-MM-DD
+version: 0.1.0
+---
+```
+
+- Replace `FEATURE-001` with a concise feature ID when the feature is clear.
 - Use `doc_id` prefix `API`, `doc_type: api-spec`, `owner: backend`, and `version: 0.1.0`.
 - Link related PRD, TRD, ERD, user-flow, and QA documents by ID when known.
+- Do not substitute ad hoc fields such as `title`, `product`, `date`, `created`, or `updated` for the standard fields.
+- Include explicit HTTP methods and paths, status codes, and related `REQ-###` references.
 
 ## Safety Rules
 

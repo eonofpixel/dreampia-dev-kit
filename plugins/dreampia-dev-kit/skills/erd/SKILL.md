@@ -21,19 +21,21 @@ Use this skill to design a database model for a feature or service.
 
 ## Output Format
 
-1. Overview
-2. Entities
-3. Tables
-4. Columns
-5. Relationships
-6. Constraints
-7. Indexes
-8. Soft delete policy
-9. Audit fields
-10. Migration notes
-11. Data risks
-12. Assumptions
-13. Open questions
+Use these exact `##` section headings for a full ERD:
+
+1. `## 1. Overview`
+2. `## 2. Entities`
+3. `## 3. Tables`
+4. `## 4. Relationships`
+5. `## 5. Indexes`
+6. `## 6. Constraints`
+7. `## 7. Soft Delete Policy`
+8. `## 8. Audit Fields`
+9. `## 9. Migration Notes`
+10. `## 10. Data Risks`
+11. `## 11. Assumptions`
+12. `## 12. Open Questions`
+13. `## 13. Related Documents`
 
 ## Quality Rules
 
@@ -46,9 +48,27 @@ Use this skill to design a database model for a feature or service.
 
 ## Document Output Requirements
 
-- Start generated ERD documents with standard frontmatter from `DOC_SYSTEM.md` when creating a file.
+- Start generated ERD documents with this exact frontmatter shape when creating a file:
+
+```yaml
+---
+doc_id: ERD-FEATURE-001
+doc_type: erd
+feature_id: FEATURE-001
+status: draft
+owner: backend
+related_docs: []
+related_code: []
+last_reviewed: YYYY-MM-DD
+version: 0.1.0
+---
+```
+
+- Replace `FEATURE-001` with a concise feature ID when the feature is clear.
 - Use `doc_id` prefix `ERD`, `doc_type: erd`, `owner: backend`, and `version: 0.1.0`.
 - Link related PRD, TRD, API, data dictionary, and QA documents by ID when known.
+- Do not substitute ad hoc fields such as `title`, `product`, `date`, `created`, or `updated` for the standard fields.
+- Include primary keys, foreign keys, relationships, constraints, and indexes explicitly.
 
 ## Safety Rules
 

@@ -23,23 +23,26 @@ Use this skill to create a Technical Requirements Document from product requirem
 
 ## Output Format
 
-1. Overview
-2. Related product requirements
-3. Technical goals
-4. Non-goals
-5. System context
-6. Architecture overview
-7. Components
-8. API requirements
-9. Data requirements
-10. Security requirements
-11. Performance requirements
-12. Observability requirements
-13. Infrastructure requirements
-14. Migration requirements
-15. Risks and trade-offs
-16. Assumptions
-17. Open questions
+Use these exact `##` section headings for a full TRD:
+
+1. `## 1. Overview`
+2. `## 2. Related Product Requirements`
+3. `## 3. Technical Goals`
+4. `## 4. Non-goals`
+5. `## 5. System Context`
+6. `## 6. Architecture Overview`
+7. `## 7. Components`
+8. `## 8. API Requirements`
+9. `## 9. Data Requirements`
+10. `## 10. Security Requirements`
+11. `## 11. Performance Requirements`
+12. `## 12. Observability Requirements`
+13. `## 13. Infrastructure Requirements`
+14. `## 14. Migration Requirements`
+15. `## 15. Risks and Trade-offs`
+16. `## 16. Assumptions`
+17. `## 17. Open Questions`
+18. `## 18. Related Documents`
 
 ## Quality Rules
 
@@ -50,9 +53,27 @@ Use this skill to create a Technical Requirements Document from product requirem
 
 ## Document Output Requirements
 
-- Start generated TRDs with standard frontmatter from `DOC_SYSTEM.md` when creating a file.
+- Start generated TRDs with this exact frontmatter shape when creating a file:
+
+```yaml
+---
+doc_id: TRD-FEATURE-001
+doc_type: trd
+feature_id: FEATURE-001
+status: draft
+owner: engineering
+related_docs: []
+related_code: []
+last_reviewed: YYYY-MM-DD
+version: 0.1.0
+---
+```
+
+- Replace `FEATURE-001` with a concise feature ID when the feature is clear.
 - Use `doc_id` prefix `TRD`, `doc_type: trd`, `owner: engineering`, and `version: 0.1.0`.
 - Link related PRD, API, ERD, QA, and runbook documents by ID when known.
+- Do not substitute ad hoc fields such as `title`, `product`, `date`, `created`, or `updated` for the standard fields.
+- Preserve related `REQ-###` references from PRDs when available.
 
 ## Safety Rules
 
