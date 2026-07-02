@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2"><img alt="Release v0.1.2" src="https://img.shields.io/badge/release-v0.1.2-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.3"><img alt="Release v0.1.3" src="https://img.shields.io/badge/release-v0.1.3-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -211,7 +211,7 @@ GitHub Actions also runs this validation, shell syntax checks, and installer smo
 
 ## Status
 
-Current release: [v0.1.2](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2)
+Current release: [v0.1.3](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.3)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 

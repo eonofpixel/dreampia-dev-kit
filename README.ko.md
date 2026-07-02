@@ -154,7 +154,7 @@ GitHub Actions도 `main`, pull request, manual dispatch에서 validation, shell 
 
 ## 현재 상태
 
-현재 릴리즈: [v0.1.2](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2)
+현재 릴리즈: [v0.1.3](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.3)
 
 v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 

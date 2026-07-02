@@ -2,13 +2,17 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
-## Unreleased
+## 0.1.3 - 2026-07-02
 
 ### Added
 
 - Added GitHub Actions validation for skill-pack structure, shell syntax, and installer smoke tests.
 - Added release process and marketplace verification runbooks.
 - Added an ecommerce guest checkout example document set.
+
+### Changed
+
+- Hardened PRD skill and shortcut output rules after live Codex and Claude Code mock-data testing.
 
 ## 0.1.2 - 2026-07-02
 
