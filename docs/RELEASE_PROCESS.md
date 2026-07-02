@@ -22,9 +22,9 @@ Use this runbook when preparing a public `dreampia-dev-kit` release.
 
 ## Scope
 
-This process covers Markdown skill pack releases, plugin scaffold releases, and installer updates.
+This process covers Markdown skill pack releases, plugin scaffold releases, validation CLI gates, and installer updates.
 
-It does not cover npm package publishing. Add a separate package release runbook when the TypeScript CLI exists.
+It does not cover npm package publishing. GitHub `npx` usage is supported through the repository package metadata; npm registry publishing should get a separate release runbook.
 
 ## Preconditions
 
@@ -38,7 +38,11 @@ It does not cover npm package publishing. Add a separate package release runbook
 Run these commands before tagging:
 
 ```bash
-node scripts/validate-skill-pack.js
+node bin/dreampia-dev-kit.js validate-skill-pack
+node bin/dreampia-dev-kit.js validate examples/small-service
+node bin/dreampia-dev-kit.js validate examples/ecommerce
+npm exec -- dreampia-dev-kit version
+npm pack --dry-run
 bash -n install.sh scripts/install-codex.sh scripts/install-claude-code.sh scripts/sync-plugin-skills.sh
 ```
 
@@ -74,30 +78,13 @@ The GitHub Actions workflow in `.github/workflows/validate.yml` runs on:
 - pull requests;
 - manual `workflow_dispatch`.
 
-The workflow validates skill-pack structure, helper script syntax, curated example content-risk audits, shell syntax, installer smoke tests, and optional Claude plugin validation when the CLI is available.
+The workflow validates skill-pack structure through the public CLI, helper script syntax, curated example document gates, shell syntax, installer smoke tests, and optional Claude plugin validation when the CLI is available.
 
-Before release, confirm the latest `main` workflow run passed. For a local content-risk check, run:
+Before release, confirm the latest `main` workflow run passed. For local generated-doc gates, run:
 
 ```bash
-node scripts/audit-generated-doc-content.js \
-  examples/small-service/prd.md \
-  examples/small-service/trd.md \
-  examples/small-service/ia.md \
-  examples/small-service/user-flow.md \
-  examples/small-service/api-spec.md \
-  examples/small-service/erd.md \
-  examples/small-service/qa-checklist.md \
-  examples/small-service/doc-audit-report.md
-
-node scripts/audit-generated-doc-content.js \
-  examples/ecommerce/prd.md \
-  examples/ecommerce/trd.md \
-  examples/ecommerce/ia.md \
-  examples/ecommerce/user-flow.md \
-  examples/ecommerce/api-spec.md \
-  examples/ecommerce/erd.md \
-  examples/ecommerce/qa-checklist.md \
-  examples/ecommerce/doc-audit-report.md
+node bin/dreampia-dev-kit.js validate examples/small-service
+node bin/dreampia-dev-kit.js validate examples/ecommerce
 ```
 
 ## Tag and Release
@@ -129,6 +116,13 @@ Release notes should include:
 
 - Open the GitHub release page and confirm the tag exists.
 - Confirm README release links resolve.
+- Confirm GitHub `npx` resolves the release tag:
+
+```bash
+npx --yes github:eonofpixel/dreampia-dev-kit#vX.Y.Z version
+npx --yes github:eonofpixel/dreampia-dev-kit#vX.Y.Z validate examples/ecommerce
+```
+
 - Run the remote installer from the released tag:
 
 ```bash
