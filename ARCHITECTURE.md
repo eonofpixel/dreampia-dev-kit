@@ -16,9 +16,22 @@ Codex and Claude Code plugin package
 
 No CLI is required for v0.1.
 
+## v0.2 CLI Gate
+
+v0.2 keeps the runtime intentionally thin: one dependency-free Node CLI wraps the existing validation scripts so local users and CI can run the same checks.
+
+```text
+bin/dreampia-dev-kit.js
+  ├── scripts/validate-skill-pack.js
+  ├── scripts/score-generated-docs.js
+  └── scripts/audit-generated-doc-content.js
+```
+
+The CLI accepts file or directory inputs. Directory inputs are scanned for generated Markdown documents with supported `doc_type` values.
+
 ## Future Runtime Architecture
 
-When a CLI is added, use this structure:
+If the CLI grows beyond wrappers and gates, use this structure:
 
 ```text
 packages/
@@ -40,13 +53,15 @@ packages/
     └── index.ts
 ```
 
-## CLI Commands Later
+## CLI Commands
 
 | Command | Purpose | Version |
 |---|---|---|
-| `dreampia-dev-kit init` | Create docs directory structure and templates. | v0.2 |
-| `dreampia-dev-kit validate-skills` | Validate `skills/*/SKILL.md`. | v0.2 |
-| `dreampia-dev-kit validate-docs` | Validate document frontmatter and links. | v0.2 |
+| `dreampia-dev-kit score` | Score generated document structure. | v0.2 |
+| `dreampia-dev-kit audit` | Audit generated documents for content risks. | v0.2 |
+| `dreampia-dev-kit validate` | Run score and audit as one CI gate. | v0.2 |
+| `dreampia-dev-kit validate-skill-pack` | Validate repository skills, templates, plugins, and shortcuts. | v0.2 |
+| `dreampia-dev-kit init` | Create docs directory structure and templates. | Later |
 | `dreampia-dev-kit audit-docs` | Report document gaps and drift. | v0.3 |
 | `dreampia-dev-kit scaffold-codex-plugin` | Create Codex plugin package structure. | v0.3 |
 
@@ -95,7 +110,7 @@ Root `skills/` is the source of truth. Run `scripts/sync-plugin-skills.sh` after
 
 ## Design Constraints
 
-- Keep Markdown skills usable without the CLI.
+- Keep Markdown skills usable without requiring the CLI.
 - Do not require network access.
 - Do not assume a specific product domain.
 - Avoid destructive operations.

@@ -1,0 +1,66 @@
+{
+  "name": "dreampia-dev-kit",
+  "version": "0.2.0",
+  "description": "Documentation-first workflow skills and validation gates for AI coding agents.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "dreampia-dev-kit": "bin/dreampia-dev-kit.js"
+  },
+  "scripts": {
+    "validate": "node bin/dreampia-dev-kit.js validate-skill-pack",
+    "score:examples": "node bin/dreampia-dev-kit.js score examples/small-service examples/ecommerce",
+    "audit:examples": "node bin/dreampia-dev-kit.js audit examples/small-service examples/ecommerce",
+    "check:examples": "node bin/dreampia-dev-kit.js validate examples/small-service && node bin/dreampia-dev-kit.js validate examples/ecommerce"
+  },
+  "files": [
+    ".agents/",
+    ".claude-plugin/",
+    "bin/",
+    "docs/",
+    "examples/",
+    "plugins/",
+    "scripts/",
+    "shortcuts/",
+    "skills/",
+    "templates/",
+    "AGENTS.md",
+    "ARCHITECTURE.md",
+    "CHANGELOG.md",
+    "CLAUDE.md",
+    "CODEX_BOOTSTRAP_PROMPT.md",
+    "CONTRIBUTING.md",
+    "DOC_SYSTEM.md",
+    "LICENSE",
+    "MVP_PLAN.md",
+    "PROJECT_SPEC.md",
+    "README.md",
+    "README.ko.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "SKILL_CATALOG.md",
+    "install.sh"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eonofpixel/dreampia-dev-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eonofpixel/dreampia-dev-kit/issues"
+  },
+  "homepage": "https://github.com/eonofpixel/dreampia-dev-kit#readme",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "ai-agents",
+    "documentation",
+    "prd",
+    "trd",
+    "api-spec",
+    "qa",
+    "validation"
+  ]
+}

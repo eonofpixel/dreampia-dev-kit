@@ -19,7 +19,7 @@ Do not start with a heavy CLI or complex package architecture. The first public 
 | Contribution | `CONTRIBUTING.md` | Yes |
 | Codex prompt | `CODEX_BOOTSTRAP_PROMPT.md` | Yes |
 | Plugin scaffold | `plugins/dreampia-dev-kit` for Codex and Claude Code | Yes |
-| CLI | TypeScript CLI | No, move to v0.2 |
+| CLI | Lightweight validation CLI | No for v0.1, added in v0.2 |
 
 ## Core Skills
 
@@ -51,11 +51,14 @@ Do not start with a heavy CLI or complex package architecture. The first public 
 
 ### Phase 3: Validation CLI
 
-- Add TypeScript monorepo.
-- Add `dreampia-dev-kit validate-skills`.
+- Add dependency-free Node CLI first.
+- Add `dreampia-dev-kit validate-skill-pack`.
+- Add `dreampia-dev-kit score`.
+- Add `dreampia-dev-kit audit`.
+- Add `dreampia-dev-kit validate`.
 - Validate that every skill has frontmatter `name` and `description`.
 - Validate required templates exist.
-- Add tests.
+- Add tests as the CLI grows.
 
 ### Phase 4: Doc Audit Engine
 

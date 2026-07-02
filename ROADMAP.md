@@ -12,25 +12,24 @@ Goal: Make the project immediately useful in Codex as a documentation workflow r
 - Codex and Claude Code local install docs
 - Shared local plugin package
 
-## v0.2.0 — Marketplace Polish + Validation
+## v0.2.0 — CLI + CI Quality Gate
 
-Goal: Polish distribution and add validation.
+Goal: Make Dreampia useful after AI-generated docs exist by giving teams one fast local/CI gate.
 
-- Agent shortcut polish for Claude Code and Codex
-- Public marketplace publishing guidance
-- CI-backed skill and shortcut validation
-- Markdown template validation
-- Example project: small service
+- `dreampia-dev-kit score <docs>` for structure scoring
+- `dreampia-dev-kit audit <docs>` for content-risk auditing
+- `dreampia-dev-kit validate <docs>` for the combined CI gate
+- `dreampia-dev-kit validate-skill-pack` for repository/package validation
+- Directory input support for generated doc folders
 
-## v0.3.0 — CLI Foundation
+## v0.3.0 — CLI Foundation Expansion
 
-Goal: Add a minimal TypeScript CLI.
+Goal: Expand the CLI beyond gates while keeping the Markdown-first workflow.
 
 - `dreampia-dev-kit init`
-- `dreampia-dev-kit validate-skills`
-- `dreampia-dev-kit validate-docs`
 - `dreampia-dev-kit scaffold-codex-plugin`
 - Unit tests
+- Optional TypeScript migration if the CLI surface grows
 
 ## v0.4.0 — Documentation Audit Engine
 

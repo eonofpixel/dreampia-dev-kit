@@ -25,35 +25,19 @@ jobs:
           node-version: "24"
 
       - name: Validate skill pack structure
-        run: node scripts/validate-skill-pack.js
+        run: node bin/dreampia-dev-kit.js validate-skill-pack
 
       - name: Check Node helper syntax
         run: |
+          node --check bin/dreampia-dev-kit.js
           node --check scripts/validate-skill-pack.js
           node --check scripts/score-generated-docs.js
           node --check scripts/audit-generated-doc-content.js
 
-      - name: Audit example content risks
+      - name: Validate example doc gates
         run: |
-          node scripts/audit-generated-doc-content.js \
-            examples/small-service/prd.md \
-            examples/small-service/trd.md \
-            examples/small-service/ia.md \
-            examples/small-service/user-flow.md \
-            examples/small-service/api-spec.md \
-            examples/small-service/erd.md \
-            examples/small-service/qa-checklist.md \
-            examples/small-service/doc-audit-report.md
-
-          node scripts/audit-generated-doc-content.js \
-            examples/ecommerce/prd.md \
-            examples/ecommerce/trd.md \
-            examples/ecommerce/ia.md \
-            examples/ecommerce/user-flow.md \
-            examples/ecommerce/api-spec.md \
-            examples/ecommerce/erd.md \
-            examples/ecommerce/qa-checklist.md \
-            examples/ecommerce/doc-audit-report.md
+          node bin/dreampia-dev-kit.js validate examples/small-service
+          node bin/dreampia-dev-kit.js validate examples/ecommerce
 
       - name: Check shell script syntax
         run: |

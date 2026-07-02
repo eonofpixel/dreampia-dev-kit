@@ -4,7 +4,7 @@
 
 `dreampia-dev-kit` is an open-source toolkit for development documentation in agentic coding workflows.
 
-It provides skills, templates, and future CLI tooling to help teams create and maintain development documents across the software lifecycle.
+It provides skills, templates, and lightweight CLI gates to help teams create, audit, and maintain development documents across the software lifecycle.
 
 ## 2. Problem
 
@@ -78,7 +78,7 @@ The project should not initially become:
 | REQ-006 | Provide README and Korean README. | Should |
 | REQ-007 | Provide security and contribution guidelines. | Should |
 | REQ-008 | Provide Codex and Claude Code install/plugin scaffold. | Could |
-| REQ-009 | Provide CLI validation. | Later |
+| REQ-009 | Provide CLI validation. | Must for v0.2 |
 
 ### Non-functional Requirements
 
@@ -120,4 +120,4 @@ Documentation-first workflow for AI coding agents.
 | Final project name: `dreampia-dev-kit` | Maintainer | Decided |
 | Should the first public README be English-only or bilingual? | Maintainer | Open |
 | Should v0.1 include Codex and Claude Code plugin manifests or only Markdown skills? | Maintainer | Decided: include local manifests |
-| Should v0.2 CLI be published to npm? | Maintainer | Open |
+| Should v0.2 CLI be published to npm? | Maintainer | Open; GitHub `npx` is supported first |

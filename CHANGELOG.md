@@ -2,6 +2,19 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.2.0 - 2026-07-03
+
+### Added
+
+- Added a dependency-free `dreampia-dev-kit` Node CLI for `score`, `audit`, `validate`, and `validate-skill-pack` commands.
+- Added directory input support so CI can run generated-document gates with `dreampia-dev-kit validate docs/`.
+- Added npm package metadata and a CLI bin entry for future `npx dreampia-dev-kit ...` usage.
+
+### Changed
+
+- Updated GitHub Actions to use the public CLI surface for skill-pack validation and curated example document gates.
+- Kept Codex and Claude Code plugin manifest versions aligned with `package.json` during validation.
+
 ## 0.1.9 - 2026-07-02
 
 ### Changed

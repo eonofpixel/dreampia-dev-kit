@@ -232,6 +232,48 @@ function validateJson(relativePath) {
   }
 }
 
+function readJson(relativePath) {
+  try {
+    return JSON.parse(readText(relativePath));
+  } catch {
+    return null;
+  }
+}
+
+function validateReleaseVersions() {
+  const packageData = readJson("package.json");
+  if (!packageData || !packageData.version) return;
+
+  const codexPlugin = readJson("plugins/dreampia-dev-kit/.codex-plugin/plugin.json");
+  const claudePlugin = readJson("plugins/dreampia-dev-kit/.claude-plugin/plugin.json");
+  const claudeMarketplace = readJson(".claude-plugin/marketplace.json");
+
+  const versionChecks = [
+    {
+      path: "plugins/dreampia-dev-kit/.codex-plugin/plugin.json",
+      actual: codexPlugin && codexPlugin.version,
+    },
+    {
+      path: "plugins/dreampia-dev-kit/.claude-plugin/plugin.json",
+      actual: claudePlugin && claudePlugin.version,
+    },
+    {
+      path: ".claude-plugin/marketplace.json",
+      actual:
+        claudeMarketplace &&
+        claudeMarketplace.plugins &&
+        claudeMarketplace.plugins[0] &&
+        claudeMarketplace.plugins[0].version,
+    },
+  ];
+
+  for (const check of versionChecks) {
+    if (check.actual !== packageData.version) {
+      failures.push(`${check.path} version ${check.actual || "(missing)"} does not match package.json ${packageData.version}`);
+    }
+  }
+}
+
 function validateCommandLikeMarkdown(relativePath, options = {}) {
   if (!requireFile(relativePath)) return;
 
@@ -281,6 +323,7 @@ for (const commandAlias of pluginCommandAliases) {
 }
 
 for (const manifest of [
+  "package.json",
   ".agents/plugins/marketplace.json",
   ".claude-plugin/marketplace.json",
   "plugins/dreampia-dev-kit/.codex-plugin/plugin.json",
@@ -288,8 +331,10 @@ for (const manifest of [
 ]) {
   validateJson(manifest);
 }
+validateReleaseVersions();
 
 for (const script of [
+  "bin/dreampia-dev-kit.js",
   "install.sh",
   "scripts/install-codex.sh",
   "scripts/install-claude-code.sh",

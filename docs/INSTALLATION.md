@@ -154,7 +154,28 @@ bash scripts/sync-plugin-skills.sh
 Then validate:
 
 ```bash
-node scripts/validate-skill-pack.js
+node bin/dreampia-dev-kit.js validate-skill-pack
 claude plugin validate plugins/dreampia-dev-kit
 claude plugin validate .
+```
+
+## Validate Generated Docs
+
+After Codex or Claude Code generates a document pack, run the CLI gate from the local checkout:
+
+```bash
+node bin/dreampia-dev-kit.js validate docs/
+```
+
+The same command can run directly from GitHub:
+
+```bash
+npx github:eonofpixel/dreampia-dev-kit validate docs/
+```
+
+Use individual commands when you want separate output:
+
+```bash
+node bin/dreampia-dev-kit.js score docs/
+node bin/dreampia-dev-kit.js audit docs/
 ```

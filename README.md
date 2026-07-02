@@ -9,10 +9,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.9"><img alt="Release v0.1.9" src="https://img.shields.io/badge/release-v0.1.9-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.0"><img alt="Release v0.2.0" src="https://img.shields.io/badge/release-v0.2.0-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
-  <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
+  <a href="bin/dreampia-dev-kit.js"><img alt="No dependency CLI" src="https://img.shields.io/badge/CLI-no%20deps-7c3aed"></a>
 </p>
 
 ## What This Is
@@ -64,7 +64,7 @@ curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/in
 Validate the local checkout:
 
 ```bash
-node scripts/validate-skill-pack.js
+node bin/dreampia-dev-kit.js validate-skill-pack
 ```
 
 Ask your agent to use a skill:
@@ -84,11 +84,16 @@ Ask your agent for a document pack:
 Then score and audit the generated docs:
 
 ```bash
-node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
-node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+node bin/dreampia-dev-kit.js validate docs/
 ```
 
 The curated [ecommerce example](examples/ecommerce) shows the target shape: linked PRD/TRD/IA/user-flow/API/ERD/QA/audit docs that score cleanly and pass the content-risk audit.
+
+Run the same gate directly from GitHub:
+
+```bash
+npx github:eonofpixel/dreampia-dev-kit validate docs/
+```
 
 ## Install in Your Agent
 
@@ -196,6 +201,7 @@ docs/INSTALLATION.md    Install guide for Codex and Claude Code
 docs/COMPETITIVE_LANDSCAPE.md
                         Open-source competitive positioning
 scripts/                Install, sync, and validate helpers
+bin/dreampia-dev-kit.js Dependency-free CLI gate
 install.sh              Terminal installer for Codex and Claude Code
 ```
 
@@ -203,12 +209,27 @@ Root `skills/` is the source of truth. After editing skills, run:
 
 ```bash
 bash scripts/sync-plugin-skills.sh
-node scripts/validate-skill-pack.js
+node bin/dreampia-dev-kit.js validate-skill-pack
 ```
 
 ## Validation
 
-The built-in validation script checks:
+The built-in CLI exposes the same checks for local use and CI:
+
+```bash
+node bin/dreampia-dev-kit.js validate-skill-pack
+node bin/dreampia-dev-kit.js score docs/
+node bin/dreampia-dev-kit.js audit docs/
+node bin/dreampia-dev-kit.js validate docs/
+```
+
+Or run it without a checkout:
+
+```bash
+npx github:eonofpixel/dreampia-dev-kit validate docs/
+```
+
+`validate-skill-pack` checks:
 
 - required core skills;
 - `SKILL.md` frontmatter and required sections;
@@ -218,16 +239,10 @@ The built-in validation script checks:
 - Codex and Claude Code plugin manifests;
 - packaged plugin skills matching root `skills/`.
 
-Run:
-
-```bash
-node scripts/validate-skill-pack.js
-```
-
 Score generated documents from real agent runs:
 
 ```bash
-node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+node bin/dreampia-dev-kit.js score docs/
 ```
 
 The scoring helper checks standard frontmatter, expected `##` sections, document owners, IDs, and document-specific signals such as `REQ-###`, `PAGE-###`, HTTP methods, primary keys, and `QA-###` checks.
@@ -235,7 +250,7 @@ The scoring helper checks standard frontmatter, expected `##` sections, document
 Audit generated documents for content risks:
 
 ```bash
-node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+node bin/dreampia-dev-kit.js audit docs/
 ```
 
 The content audit is stricter than the structure score. It fails on major findings by default and checks for token/API key/payment secret exposure, plaintext secret storage, raw payment card data, privacy retention gaps, policy conflicts, speculative implementation decisions, unresolved references, and repeated open questions. Use `--fail-on none` for review-only reports or `--json` for automation.
@@ -245,7 +260,7 @@ GitHub Actions also runs this validation, example content-risk audits, shell syn
 ## Design Principles
 
 - Documentation-first, not documentation-after.
-- Useful before any CLI exists.
+- Useful without requiring a CLI.
 - Agent-readable and human-readable.
 - Safe by default.
 - No hidden network calls.
@@ -256,9 +271,9 @@ GitHub Actions also runs this validation, example content-risk audits, shell syn
 
 ## Status
 
-Current release: [v0.1.9](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.9)
+Current release: [v0.2.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.0)
 
-The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
+The current release is a Markdown-first skill pack plus a dependency-free CLI gate for generated document quality.
 
 ## License
 

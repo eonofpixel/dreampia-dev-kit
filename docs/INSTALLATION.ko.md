@@ -150,7 +150,28 @@ bash scripts/sync-plugin-skills.sh
 검증:
 
 ```bash
-node scripts/validate-skill-pack.js
+node bin/dreampia-dev-kit.js validate-skill-pack
 claude plugin validate plugins/dreampia-dev-kit
 claude plugin validate .
+```
+
+## 생성 문서 검증
+
+Codex 또는 Claude Code가 문서팩을 생성한 뒤 로컬 checkout에서 CLI gate를 실행합니다.
+
+```bash
+node bin/dreampia-dev-kit.js validate docs/
+```
+
+checkout 없이 GitHub에서 바로 실행할 수도 있습니다.
+
+```bash
+npx github:eonofpixel/dreampia-dev-kit validate docs/
+```
+
+출력을 나눠 보고 싶으면 개별 명령을 사용합니다.
+
+```bash
+node bin/dreampia-dev-kit.js score docs/
+node bin/dreampia-dev-kit.js audit docs/
 ```
