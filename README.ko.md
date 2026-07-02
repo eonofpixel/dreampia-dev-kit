@@ -166,11 +166,11 @@ node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md d
 
 내용 감사는 기본적으로 major finding에서 실패합니다. 토큰 노출, 원문 토큰 저장, 정책 충돌, 근거 없는 구현 결정, 깨진 참조, 반복되는 open question을 확인합니다. 리포트만 보고 싶으면 `--fail-on none`, 자동화에 붙이려면 `--json`을 사용합니다.
 
-GitHub Actions도 `main`, pull request, manual dispatch에서 validation, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
+GitHub Actions도 `main`, pull request, manual dispatch에서 validation, 예제 content-risk audit, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
 
 ## 현재 상태
 
-현재 릴리즈: [v0.1.6](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.6)
+현재 릴리즈: [v0.1.7](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.7)
 
 v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 

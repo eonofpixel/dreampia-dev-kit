@@ -69,3 +69,10 @@ Keep `doc_id`, `feature_id`, `related_docs`, and requirement/check IDs consisten
 Every file in a pack must include `related_code: []` in frontmatter when no code paths are known. Do not omit `related_code`.
 
 Never use doc type aliases such as `information_architecture`, `user_flow`, `doc_audit`, or `doc-audit`. Never use `UF-` for user-flow document IDs; use `FLOW-`.
+
+Content-risk guardrails:
+
+- Use one canonical wording for security-sensitive policies such as expiration, resend/retry, revocation, authorization, and rate limits across every document.
+- Do not include raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets in client-visible responses, examples, QA expected results, logs, or stored columns.
+- Model one-time secrets as hashes/verifiers in TRD and ERD, and return IDs/status fields in API responses.
+- Put auth scopes, rate limits, availability targets, and external service guarantees under assumptions or open questions unless the source request explicitly defines them.

@@ -38,6 +38,9 @@ version: 0.1.0
 
 ## 8. Ambiguous Requirements
 
+- Check for conflicting security-sensitive policy wording such as expiration, retry/resend, revocation, authorization, and rate limits.
+- Check for raw secret exposure in API examples, QA expected results, logs, analytics, TRD data requirements, and ERD columns/indexes.
+
 ## 9. Code/Docs Drift Candidates
 
 ## 10. Recommended Next Actions

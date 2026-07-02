@@ -95,6 +95,7 @@ Small Shop needs a self-serve purchase path before investing in accounts, loyalt
 | Inventory reservation | Reserve each line item before final order confirmation. | Reservation timeout is a TRD open question. |
 | Payment state | Orders cannot be confirmed without an authorized payment. | Capture timing is unresolved. |
 | Pricing | Totals are calculated server-side. | Prevent client-side price tampering. |
+| Checkout throttling | Checkout session creation is limited to 30 requests per IP per hour. | Submit attempts are limited to 10 per session per hour. |
 
 ## 11. Edge Cases
 
@@ -128,7 +129,7 @@ Small Shop needs a self-serve purchase path before investing in accounts, loyalt
 
 - Product catalog and cart service.
 - Inventory service or stock table.
-- Payment provider integration.
+- Payment provider integration (external).
 - Transactional email provider.
 
 ## 15. Risks

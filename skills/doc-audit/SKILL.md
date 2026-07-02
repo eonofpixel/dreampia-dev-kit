@@ -31,6 +31,10 @@ Check for:
 8. ERD entities not referenced by APIs or TRDs.
 9. Documents with assumptions that should become requirements.
 10. Code/document drift candidates.
+11. Client-visible examples or QA checks that expose raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets.
+12. ERD/TRD schemas that store or index raw secret values instead of hashes or verifiers.
+13. Conflicting policy wording across documents, especially expiration, resend/retry, revocation, authorization, and rate-limit rules.
+14. Auth scopes, rate limits, availability targets, or external service guarantees presented as facts without source support.
 
 ## Output Format
 
@@ -80,6 +84,8 @@ version: 0.1.0
 - Separate confirmed inconsistencies from assumptions and recommended follow-ups.
 - Prioritize issues that block implementation, release, or human review.
 - Do not report code/document drift unless there is observable evidence or a clearly labeled candidate.
+- Treat raw secret exposure, plaintext secret storage, and conflicting security-sensitive policy wording as Major or Critical depending on release impact.
+- Recommend `node scripts/audit-generated-doc-content.js <docs...>` when the repository includes the Dreampia content-audit helper.
 
 ## Severity Rules
 

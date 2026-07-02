@@ -55,6 +55,7 @@ version: 0.1.0
 | Policy | Rule | Notes |
 |---|---|---|
 | TBD | TBD | TBD |
+| Sensitive values | Raw tokens, credentials, one-time links, and payment secrets must not be displayed, logged, or returned to clients. | Mark exceptions as open questions. |
 
 ## 11. Edge Cases
 
@@ -85,6 +86,7 @@ version: 0.1.0
 ## 16. Assumptions
 
 - TBD
+- Security-sensitive policies such as expiration, retry/resend, revocation, authorization, and rate limits remain TBD unless explicitly defined above.
 
 ## 17. Open Questions
 

@@ -45,6 +45,9 @@ Use these exact `##` section headings for a full API spec:
 - Identify auth and permission requirements.
 - Keep API contracts stable and testable.
 - Recommend ERD and QA updates.
+- Client-visible create/list/detail responses must return stable IDs and status fields, not raw one-time tokens, passwords, API keys, session IDs, invitation links, reset links, or payment secrets.
+- Include auth scopes and rate limits only when supplied by the source docs; otherwise put candidate values under `## 11. Assumptions` or `## 12. Open Questions`.
+- Keep examples redacted with placeholders such as `<redacted-token>` when a sensitive request field is unavoidable.
 
 ## Document Output Requirements
 
@@ -74,6 +77,7 @@ version: 0.1.0
 
 - Do not expose tokens, private headers, credentials, or live secret values in examples.
 - Do not invent auth, payment, rate-limit, or compliance behavior as confirmed facts.
+- Do not include raw token material in success responses or QA-oriented examples. A one-time secret may appear only as a redacted request input for the endpoint that consumes it.
 - Do not overwrite existing API specs without first showing a diff or creating a separate revised draft.
 
 ## Example Invocation

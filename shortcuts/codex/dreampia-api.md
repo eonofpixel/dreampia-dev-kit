@@ -46,3 +46,5 @@ version: 0.1.0
 ```
 
 Do not replace the standard frontmatter with ad hoc fields. Include explicit HTTP methods and paths, status codes, and related `REQ-###` references.
+
+Do not include raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets in success responses or examples. Return stable IDs and status fields instead. Use `<redacted-token>` only when a sensitive request input is unavoidable, and put unsourced auth scopes or rate limits under assumptions/open questions.

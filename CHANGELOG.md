@@ -2,6 +2,15 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.7 - 2026-07-02
+
+### Changed
+
+- Hardened PRD, TRD, API spec, ERD, QA checklist, doc-audit, shortcut, and document-pack rules against raw secret exposure, plaintext secret storage, speculative policies, and cross-document policy conflicts.
+- Updated templates to model safer defaults for sensitive values, one-time secrets, rate limits, and QA expected results.
+- Added example content-risk audits to GitHub Actions validation.
+- Cleaned example PRDs so curated examples pass the content-risk audit with zero findings.
+
 ## 0.1.6 - 2026-07-02
 
 ### Added

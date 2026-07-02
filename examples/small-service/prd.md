@@ -86,6 +86,7 @@ The MVP needs low-friction authentication before notes can be associated with a 
 |---|---|---|
 | Token lifetime | Login tokens expire after 15 minutes. | Assumption until product confirms. |
 | Token reuse | Tokens can be used once. | Required for session safety. |
+| Resend cooldown | Login link requests are rate-limited by email. | Repeated requests inside the cooldown window show a wait message. |
 | Email enumeration | The UI uses neutral success copy after send requests. | Avoid revealing account existence. |
 
 ## 11. Edge Cases

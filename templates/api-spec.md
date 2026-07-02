@@ -52,7 +52,8 @@ TBD
 
 ```json
 {
-  "id": "string"
+  "id": "string",
+  "status": "string"
 }
 ```
 
@@ -74,6 +75,8 @@ TBD
 
 ## 9. Rate Limits
 
+- TBD. Do not invent a fixed rate limit unless the source PRD/TRD defines one.
+
 ## 10. Examples
 
 ### Request
@@ -92,6 +95,7 @@ HTTP/1.1 201 Created
 ## 11. Assumptions
 
 - TBD
+- Sensitive response examples omit raw tokens, credentials, API keys, session IDs, invitation links, reset links, and payment secrets.
 
 ## 12. Open Questions
 

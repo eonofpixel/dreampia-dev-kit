@@ -21,3 +21,5 @@ Safety rules:
 - Do not mark unchecked behavior as passed.
 - Do not create vague checks that a human cannot verify.
 - Do not inspect secrets or private credentials.
+- Do not ask testers to see, copy, assert, screenshot, log, or store raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets.
+- If source documents disagree on security-sensitive behavior, mark the QA item `Blocked` and cite the conflicting docs instead of choosing a policy.

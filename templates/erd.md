@@ -44,6 +44,9 @@ version: 0.1.0
 
 ## 6. Constraints
 
+- Sensitive one-time values should be stored as hashes/verifiers, for example `token_hash`, not raw `token` values.
+- Index sensitive lookup material by hash/verifier rather than plaintext secret values.
+
 ## 7. Soft Delete Policy
 
 ## 8. Audit Fields
@@ -55,6 +58,7 @@ version: 0.1.0
 | Risk | Impact | Mitigation |
 |---|---|---|
 | TBD | TBD | TBD |
+| Plaintext secret storage | Credential or token leakage if data is exposed. | Use hashes/verifiers and never persist raw one-time secrets by default. |
 
 ## 11. Assumptions
 

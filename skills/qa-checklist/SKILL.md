@@ -43,6 +43,8 @@ Use these exact `##` section headings for a full QA checklist:
 - Use `Pass`, `Fail`, `Blocked`, and `Not Run` statuses.
 - Keep checks executable by a human tester.
 - Recommend test-case documents for complex flows.
+- Expected results must verify user-visible behavior without exposing raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets.
+- Flag mismatched policy wording across PRD, TRD, IA, API, ERD, and user-flow documents as `Blocked` or an open question rather than choosing a policy in QA.
 
 ## Document Output Requirements
 
@@ -72,6 +74,7 @@ version: 0.1.0
 
 - Do not request real passwords, production credentials, payment cards, or private user data for testing.
 - Do not mark unverified behavior as passed.
+- Do not ask testers to copy, assert, screenshot, log, or store raw secret values.
 - Do not overwrite existing QA documents without first showing a diff or creating a separate revised draft.
 
 ## Example Invocation

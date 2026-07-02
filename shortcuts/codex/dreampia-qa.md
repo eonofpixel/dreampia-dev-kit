@@ -46,3 +46,5 @@ version: 0.1.0
 ```
 
 Do not replace the standard frontmatter with ad hoc fields. Use `QA-###` IDs for checks, preserve related `REQ-###` references, and use `Pass`, `Fail`, `Blocked`, and `Not Run` statuses.
+
+Expected results must not require testers to see, copy, assert, screenshot, log, or store raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets. If source documents disagree on security-sensitive behavior, mark the QA item `Blocked` and cite the conflicting docs instead of choosing a policy.

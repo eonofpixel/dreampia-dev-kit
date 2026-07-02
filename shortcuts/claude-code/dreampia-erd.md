@@ -47,3 +47,5 @@ version: 0.1.0
 ```
 
 Do not replace the standard frontmatter with ad hoc fields. Include primary keys, foreign keys, relationships, constraints, and indexes explicitly.
+
+Do not model plaintext storage or raw indexes for passwords, API keys, session IDs, invitation tokens, reset tokens, payment secrets, or other one-time secrets. Use hash/verifier columns such as `token_hash` by default and mark any exception as a security risk and open question.

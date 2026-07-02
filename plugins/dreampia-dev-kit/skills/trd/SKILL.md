@@ -50,6 +50,8 @@ Use these exact `##` section headings for a full TRD:
 - Identify technical risks and trade-offs.
 - Include authentication, authorization, logging, and failure handling.
 - Recommend API spec, ERD, and runbook documents when relevant.
+- Mirror product policies from the PRD instead of restating them with different wording.
+- Mark auth scopes, rate limits, availability targets, and external service behavior as assumptions unless the source docs specify them.
 
 ## Document Output Requirements
 
@@ -78,6 +80,8 @@ version: 0.1.0
 ## Safety Rules
 
 - Do not inspect secrets, environment files, tokens, or cloud credentials by default.
+- Do not design storage, logs, API responses, or QA checks that expose raw tokens, passwords, API keys, session IDs, invitation links, reset links, or payment secrets.
+- Store one-time secrets as hashes or verifiers by default; if raw secret storage is proposed, mark it as a security risk and open question.
 - Do not require new dependencies, services, or network access unless the user explicitly approves.
 - Do not overwrite existing technical documents without first showing a diff or creating a separate revised draft.
 

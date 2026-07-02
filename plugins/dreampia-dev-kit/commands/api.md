@@ -20,4 +20,7 @@ Safety rules:
 
 - Do not invent production endpoints as confirmed facts.
 - Do not print secrets or credential values.
+- Do not include raw tokens, credentials, API keys, session IDs, invitation links, reset links, or payment secrets in success responses or examples.
+- Return stable IDs and status fields instead of one-time secrets; use `<redacted-token>` only when a sensitive request input is unavoidable.
+- Put unsourced auth scopes or rate limits under assumptions/open questions.
 - Do not overwrite existing documents without showing the intended change first.

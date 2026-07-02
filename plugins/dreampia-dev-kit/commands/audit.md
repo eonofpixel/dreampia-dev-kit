@@ -16,6 +16,8 @@ Read first and report first. Inspect the requested docs, then compare PRD, TRD, 
 
 Output a Markdown audit report using `templates/doc-audit-report.md` when a report file is requested. Otherwise, summarize findings by severity with file references and next actions.
 
+Include content-risk checks for raw secret exposure, plaintext secret storage/indexing, conflicting policy wording, speculative auth scopes/rate limits, unresolved external references, and repeated open questions.
+
 When creating an audit report file, include these exact `##` section headings:
 
 1. `## 1. Audit Scope`

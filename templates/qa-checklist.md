@@ -53,6 +53,8 @@ version: 0.1.0
 | Blocked | Check cannot run because a dependency is unavailable. |
 | Not Run | Check has not been executed. |
 
+Expected results must not require testers to see, copy, assert, screenshot, log, or store raw tokens, credentials, API keys, session IDs, invitation links, reset links, payment secrets, or private user data.
+
 ## 10. Related Requirements
 
 - REQ-001

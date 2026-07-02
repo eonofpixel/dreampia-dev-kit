@@ -13,6 +13,8 @@ $ARGUMENTS
 
 Read first and report first. Do not edit files unless the user explicitly asks for edits.
 
+Include content-risk checks for raw secret exposure, plaintext secret storage/indexing, conflicting policy wording, speculative auth scopes/rate limits, unresolved external references, and repeated open questions.
+
 When creating an audit report file, include these exact `##` section headings:
 
 1. `## 1. Audit Scope`

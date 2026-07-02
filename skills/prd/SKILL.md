@@ -50,6 +50,8 @@ Use these exact `##` section headings for a full PRD:
 - Include acceptance criteria for each must-have requirement.
 - Explicitly separate MVP scope from later scope.
 - Recommend related IA, TRD, API, ERD, and QA documents.
+- State product policies exactly once, then reuse the same wording in acceptance criteria and follow-up docs.
+- If a policy affects security-sensitive flows such as invitation links, password resets, payments, or authorization, define expiration, retry/resend, revocation, and permission rules explicitly or list them as open questions.
 
 ## Document Output Requirements
 
@@ -79,6 +81,7 @@ version: 0.1.0
 
 - Do not read secrets or private credentials while gathering context.
 - Do not invent legal, payment, security, or compliance requirements as facts.
+- Do not require raw tokens, credentials, or one-time secrets to be displayed, logged, or returned to clients.
 - Do not overwrite an existing PRD without first showing a diff or creating a separate revised draft.
 
 ## Example Invocation

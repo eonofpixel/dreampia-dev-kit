@@ -74,7 +74,31 @@ The GitHub Actions workflow in `.github/workflows/validate.yml` runs on:
 - pull requests;
 - manual `workflow_dispatch`.
 
-Before release, confirm the latest `main` workflow run passed.
+The workflow validates skill-pack structure, helper script syntax, curated example content-risk audits, shell syntax, installer smoke tests, and optional Claude plugin validation when the CLI is available.
+
+Before release, confirm the latest `main` workflow run passed. For a local content-risk check, run:
+
+```bash
+node scripts/audit-generated-doc-content.js \
+  examples/small-service/prd.md \
+  examples/small-service/trd.md \
+  examples/small-service/ia.md \
+  examples/small-service/user-flow.md \
+  examples/small-service/api-spec.md \
+  examples/small-service/erd.md \
+  examples/small-service/qa-checklist.md \
+  examples/small-service/doc-audit-report.md
+
+node scripts/audit-generated-doc-content.js \
+  examples/ecommerce/prd.md \
+  examples/ecommerce/trd.md \
+  examples/ecommerce/ia.md \
+  examples/ecommerce/user-flow.md \
+  examples/ecommerce/api-spec.md \
+  examples/ecommerce/erd.md \
+  examples/ecommerce/qa-checklist.md \
+  examples/ecommerce/doc-audit-report.md
+```
 
 ## Tag and Release
 

@@ -48,6 +48,11 @@ Client → API → Service → Database
 
 ## 10. Security Requirements
 
+| Area | Requirement | Source |
+|---|---|---|
+| Sensitive values | Store one-time secrets as hashes/verifiers and do not expose raw values in logs, responses, QA checks, or analytics. | PRD policy or assumption |
+| Auth and rate limits | Use source-defined scopes and limits only; otherwise record candidates under assumptions/open questions. | PRD/API |
+
 ## 11. Performance Requirements
 
 ## 12. Observability Requirements

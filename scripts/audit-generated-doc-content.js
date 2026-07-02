@@ -254,7 +254,10 @@ function auditPolicyConflicts(docs, findings) {
 }
 
 function auditSpeculativeDecisions(docs, findings) {
-  const prdMentionsRateLimit = hasPrdSignal(docs, /rate limit|per hour|429/i);
+  const prdMentionsRateLimit = hasPrdSignal(
+    docs,
+    /rate[- ]limit|throttl|cooldown|per hour|per minute|429/i,
+  );
   const prdMentionsAuthScopes = hasPrdSignal(docs, /scope|oauth|permission scope|bearer/i);
   const prdMentionsAvailability = hasPrdSignal(docs, /99%|98%|uptime|delivery reliability/i);
   const reportedAuthScopeDocs = new Set();
@@ -286,7 +289,7 @@ function auditSpeculativeDecisions(docs, findings) {
       if (
         !prdMentionsRateLimit &&
         !reportedRateLimitDocs.has(doc.file) &&
-        /\b(rate limit|429|per hour|per minute)\b/i.test(entry.line)
+        /\b(rate[- ]limit|throttl|cooldown|429|per hour|per minute)\b/i.test(entry.line)
       ) {
         reportedRateLimitDocs.add(doc.file);
         addFinding(findings, {

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.6"><img alt="Release v0.1.6" src="https://img.shields.io/badge/release-v0.1.6-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.7"><img alt="Release v0.1.7" src="https://img.shields.io/badge/release-v0.1.7-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -211,7 +211,7 @@ node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md d
 
 The content audit is stricter than the structure score. It fails on major findings by default and checks for token exposure, plaintext token storage, policy conflicts, speculative implementation decisions, unresolved references, and repeated open questions. Use `--fail-on none` for review-only reports or `--json` for automation.
 
-GitHub Actions also runs this validation, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
+GitHub Actions also runs this validation, example content-risk audits, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
 
 ## Design Principles
 
@@ -227,7 +227,7 @@ GitHub Actions also runs this validation, shell syntax checks, and installer smo
 
 ## Status
 
-Current release: [v0.1.6](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.6)
+Current release: [v0.1.7](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.7)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 

@@ -45,6 +45,8 @@ Use these exact `##` section headings for a full ERD:
 - Include audit fields where appropriate.
 - Mark uncertain data retention or compliance rules as assumptions.
 - Recommend API spec and data dictionary updates.
+- Store sensitive one-time values as hashes, digests, or verifiers by default; prefer column names such as `token_hash` over `token`.
+- Index sensitive lookup material by hash/verifier, not by raw secret values.
 
 ## Document Output Requirements
 
@@ -74,6 +76,7 @@ version: 0.1.0
 
 - Do not inspect production databases, credentials, dumps, or private data by default.
 - Do not invent retention, deletion, privacy, or compliance rules as confirmed facts.
+- Do not model plaintext storage for passwords, API keys, invitation tokens, reset tokens, payment secrets, or session identifiers unless the document clearly marks it as a security risk and unresolved decision.
 - Do not overwrite existing ERD documents without first showing a diff or creating a separate revised draft.
 
 ## Example Invocation
