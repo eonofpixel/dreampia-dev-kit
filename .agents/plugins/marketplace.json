@@ -1,0 +1,20 @@
+{
+  "name": "dreampia-dev-kit",
+  "interface": {
+    "displayName": "Dreampia Dev Kit"
+  },
+  "plugins": [
+    {
+      "name": "dreampia-dev-kit",
+      "source": {
+        "source": "local",
+        "path": "./plugins/dreampia-dev-kit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

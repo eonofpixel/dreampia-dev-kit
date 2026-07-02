@@ -1,0 +1,34 @@
+{
+  "name": "dreampia-dev-kit",
+  "version": "0.1.0",
+  "description": "Documentation-first workflow skills for AI coding agents.",
+  "author": {
+    "name": "Dreampia Dev Kit Maintainers"
+  },
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "prd",
+    "trd",
+    "api-spec",
+    "erd",
+    "qa",
+    "agent-skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dreampia Dev Kit",
+    "shortDescription": "Markdown-first documentation workflows.",
+    "longDescription": "Dreampia Dev Kit provides reusable PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit skills for documentation-first agentic development.",
+    "developerName": "Dreampia Dev Kit Maintainers",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Draft a PRD for this feature.",
+      "Create API and ERD docs from this PRD.",
+      "Audit my docs for drift."
+    ]
+  }
+}

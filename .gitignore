@@ -1,0 +1,16 @@
+.DS_Store
+.codegraph
+
+.env
+.env.*
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+node_modules/
+dist/
+coverage/
+.turbo/
+
+*.log

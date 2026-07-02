@@ -1,0 +1,18 @@
+{
+  "name": "dreampia-dev-kit",
+  "description": "Documentation-first workflow skills for AI coding agents.",
+  "owner": {
+    "name": "Dreampia Dev Kit Maintainers"
+  },
+  "plugins": [
+    {
+      "name": "dreampia-dev-kit",
+      "source": "./plugins/dreampia-dev-kit",
+      "description": "PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit skills.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Dreampia Dev Kit Maintainers"
+      }
+    }
+  ]
+}

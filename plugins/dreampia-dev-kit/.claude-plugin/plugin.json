@@ -1,0 +1,9 @@
+{
+  "name": "dreampia-dev-kit",
+  "description": "Documentation-first workflow skills for PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit work.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Dreampia Dev Kit Maintainers"
+  },
+  "license": "MIT"
+}
