@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.7"><img alt="Release v0.1.7" src="https://img.shields.io/badge/release-v0.1.7-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.8"><img alt="Release v0.1.8" src="https://img.shields.io/badge/release-v0.1.8-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -21,6 +21,8 @@
 
 It helps teams keep product, technical, UX, API, data, QA, and release documents aligned while working with Codex, Claude Code, or other AI coding agents.
 
+It is not trying to replace full spec-driven implementation platforms. Dreampia is the documentation quality layer: linked development docs first, then structure scoring and content-risk auditing before those docs drive code.
+
 | You need | Use this |
 |---|---|
 | A clear product scope | `skills/prd/SKILL.md` and `templates/prd.md` |
@@ -29,6 +31,14 @@ It helps teams keep product, technical, UX, API, data, QA, and release documents
 | Backend contracts and data model | `skills/api-spec/SKILL.md`, `skills/erd/SKILL.md` |
 | Testable release criteria | `skills/qa-checklist/SKILL.md` |
 | A consistency review | `skills/doc-audit/SKILL.md` |
+
+## How It Compares
+
+Projects such as [GitHub Spec Kit](https://github.com/github/spec-kit), [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://github.com/Fission-AI/OpenSpec), and [Agent OS](https://github.com/buildermethods/agent-os) focus on broader spec-driven development and implementation workflows.
+
+Dreampia focuses on reusable, agent-readable development documents and the quality checks around them: PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit, structure scoring, and content-risk auditing.
+
+Read the fuller comparison in [Competitive Landscape](docs/COMPETITIVE_LANDSCAPE.md).
 
 ## Install in 60 Seconds
 
@@ -166,6 +176,8 @@ plugins/dreampia-dev-kit/
   skills/               Packaged skill copy
 shortcuts/              Personal Codex prompt and Claude command shortcuts
 docs/INSTALLATION.md    Install guide for Codex and Claude Code
+docs/COMPETITIVE_LANDSCAPE.md
+                        Open-source competitive positioning
 scripts/                Install, sync, and validate helpers
 install.sh              Terminal installer for Codex and Claude Code
 ```
@@ -227,7 +239,7 @@ GitHub Actions also runs this validation, example content-risk audits, shell syn
 
 ## Status
 
-Current release: [v0.1.7](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.7)
+Current release: [v0.1.8](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.8)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 

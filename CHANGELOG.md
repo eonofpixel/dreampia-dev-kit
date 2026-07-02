@@ -2,6 +2,16 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.8 - 2026-07-02
+
+### Added
+
+- Added `docs/COMPETITIVE_LANDSCAPE.md` covering direct and indirect open-source competitors.
+
+### Changed
+
+- Added README positioning against broader spec-driven development frameworks.
+
 ## 0.1.7 - 2026-07-02
 
 ### Changed

@@ -4,6 +4,8 @@ Codex, Claude Code, AI 코딩 에이전트와 함께 쓰는 documentation-first 
 
 아이디어가 코드로 바로 흘러가기 전에 PRD, TRD, IA, API Spec, ERD, QA 문서를 먼저 정리하고 서로 연결되게 만드는 것이 목표입니다.
 
+Spec-driven implementation platform을 대체하려는 프로젝트는 아닙니다. Dreampia의 포지션은 문서 품질 레이어입니다. 먼저 연결된 개발 문서를 만들고, 그 문서가 코드로 넘어가기 전에 구조 점수와 content-risk audit으로 위험을 잡습니다.
+
 ## 한눈에 보기
 
 | 필요할 때 | 사용 문서 |
@@ -14,6 +16,14 @@ Codex, Claude Code, AI 코딩 에이전트와 함께 쓰는 documentation-first 
 | API와 데이터 모델 정리 | `skills/api-spec/SKILL.md`, `skills/erd/SKILL.md` |
 | QA와 릴리즈 검증 정리 | `skills/qa-checklist/SKILL.md` |
 | 문서 누락과 불일치 점검 | `skills/doc-audit/SKILL.md` |
+
+## 경쟁 프로젝트와의 차이
+
+[GitHub Spec Kit](https://github.com/github/spec-kit), [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [Agent OS](https://github.com/buildermethods/agent-os)는 더 넓은 spec-driven development와 구현 워크플로에 강합니다.
+
+Dreampia는 PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit 같은 agent-readable 개발 문서와 그 문서의 품질 검증에 집중합니다.
+
+자세한 비교는 [Competitive Landscape](docs/COMPETITIVE_LANDSCAPE.md)를 참고하세요.
 
 ## 60초 설치
 
@@ -131,6 +141,8 @@ plugins/dreampia-dev-kit/
   skills/               패키징용 skill 복사본
 shortcuts/              개인 설치용 Codex prompt, Claude command shortcut
 docs/INSTALLATION.ko.md 설치 가이드
+docs/COMPETITIVE_LANDSCAPE.md
+                        오픈소스 경쟁/포지셔닝 정리
 scripts/                설치, 동기화, 검증 스크립트
 install.sh              Codex와 Claude Code용 터미널 설치 스크립트
 ```
@@ -170,7 +182,7 @@ GitHub Actions도 `main`, pull request, manual dispatch에서 validation, 예제
 
 ## 현재 상태
 
-현재 릴리즈: [v0.1.7](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.7)
+현재 릴리즈: [v0.1.8](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.8)
 
 v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 
