@@ -31,13 +31,19 @@ Goal: Turn the accessibility philosophy into a visible first-run workflow.
 - Beginner guides in English and Korean
 - CLI module split for maintainable future guidance
 
-## v0.3.0 — CLI Foundation Expansion
+## v0.3.0 — Explainable CLI Foundation
 
-Goal: Expand the CLI beyond gates while keeping the Markdown-first workflow beginner-friendly.
+Goal: Turn validation output into actionable guidance while keeping the Markdown-first workflow beginner-friendly.
+
+- `dreampia-dev-kit explain <docs>` for plain-language required fixes, recommended improvements, and learning notes
+- automated CLI smoke tests for guide, validate, and explain output
+- richer failure explanations with specific doc paths and suggested fixes
+
+## v0.3.x — CLI Foundation Expansion
+
+Goal: Expand the CLI beyond guidance reports without making Markdown skills depend on a runtime.
 
 - `dreampia-dev-kit init`
-- automated tests for guide and validation next-action output
-- richer failure explanations with specific doc paths and suggested fixes
 - `dreampia-dev-kit scaffold-codex-plugin`
 - Unit tests
 - Optional TypeScript migration if the CLI surface grows

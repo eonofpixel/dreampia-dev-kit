@@ -2,6 +2,18 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.3.0 - 2026-07-03
+
+### Added
+
+- Added `dreampia-dev-kit explain` to turn structure scores and content-risk findings into a plain-language Markdown report.
+- Added automated CLI smoke tests for `guide`, `validate`, and `explain` behavior.
+
+### Changed
+
+- Updated GitHub Actions to run CLI smoke tests as part of repository validation.
+- Documented the beginner-friendly validate-then-explain loop in the README and guides.
+
 ## 0.2.1 - 2026-07-03
 
 ### Added

@@ -43,6 +43,14 @@ dreampia-dev-kit validate docs/
 
 실패해도 개인의 실패가 아닙니다. 아직 보이지 않는 개발 단계가 남아 있다는 뜻입니다.
 
+사람이 이해하기 쉬운 리포트를 확인합니다.
+
+```bash
+dreampia-dev-kit explain docs/
+```
+
+설명 리포트는 반드시 고칠 것, 권장 개선, learning note를 나누어 보여줍니다.
+
 ## 4. 순서대로 고치기
 
 먼저 반드시 고칠 것:

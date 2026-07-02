@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.1"><img alt="Release v0.2.1" src="https://img.shields.io/badge/release-v0.2.1-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0"><img alt="Release v0.3.0" src="https://img.shields.io/badge/release-v0.3.0-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="bin/dreampia-dev-kit.js"><img alt="No dependency CLI" src="https://img.shields.io/badge/CLI-no%20deps-7c3aed"></a>
@@ -105,6 +105,12 @@ Then score and audit the generated docs:
 
 ```bash
 node bin/dreampia-dev-kit.js validate docs/
+```
+
+If the gate fails, ask Dreampia to explain the findings in plain language:
+
+```bash
+node bin/dreampia-dev-kit.js explain docs/
 ```
 
 The curated [ecommerce example](examples/ecommerce) shows the target shape: linked PRD/TRD/IA/user-flow/API/ERD/QA/audit docs that score cleanly and pass the content-risk audit.
@@ -244,12 +250,14 @@ node bin/dreampia-dev-kit.js guide "workspace invitations"
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js validate docs/
+node bin/dreampia-dev-kit.js explain docs/
 ```
 
 Or run it without a checkout:
 
 ```bash
 npx github:eonofpixel/dreampia-dev-kit validate docs/
+npx github:eonofpixel/dreampia-dev-kit explain docs/
 ```
 
 `validate-skill-pack` checks:
@@ -278,7 +286,15 @@ node bin/dreampia-dev-kit.js audit docs/
 
 The content audit is stricter than the structure score. It fails on major findings by default and checks for token/API key/payment secret exposure, plaintext secret storage, raw payment card data, privacy retention gaps, policy conflicts, speculative implementation decisions, unresolved references, and repeated open questions. Use `--fail-on none` for review-only reports or `--json` for automation.
 
-GitHub Actions also runs this validation, example content-risk audits, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
+Explain findings in beginner-friendly language:
+
+```bash
+node bin/dreampia-dev-kit.js explain docs/
+```
+
+The explain report groups output into required fixes, recommended improvements, and learning notes so a non-expert builder can fix documents before implementation starts.
+
+GitHub Actions also runs this validation, example content-risk audits, CLI smoke tests, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
 
 ## Design Principles
 
@@ -294,9 +310,9 @@ GitHub Actions also runs this validation, example content-risk audits, shell syn
 
 ## Status
 
-Current release: [v0.2.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.1)
+Current release: [v0.3.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0)
 
-The current release is a Markdown-first skill pack plus a dependency-free CLI gate for generated document quality.
+The current release is a Markdown-first skill pack plus a dependency-free CLI gate and plain-language explanation reports for generated document quality.
 
 ## License
 

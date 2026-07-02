@@ -81,7 +81,7 @@ Use this file as a lightweight backlog for Codex.
 - [x] Add `score`, `audit`, `validate`, and `validate-skill-pack` commands.
 - [x] Add directory input support for generated doc folders.
 - [x] Document local and GitHub `npx` usage.
-- [ ] Add automated CLI tests.
+- [x] Add automated CLI tests.
 - [ ] Consider pnpm/TypeScript packages only when the CLI surface grows.
 
 ### Task 11: Add Beginner-Friendly Guided Workflow
@@ -89,11 +89,18 @@ Use this file as a lightweight backlog for Codex.
 - [x] Add `dreampia-dev-kit guide` or equivalent first-run workflow.
 - [x] Generate a minimal doc-pack checklist from a short idea.
 - [x] Explain validation failures as "required fix", "recommended improvement", or "learning note".
+- [x] Add `dreampia-dev-kit explain` for plain-language validation reports.
 - [x] Add examples showing how a beginner moves from vague idea to PRD/TRD/API/ERD/QA.
 - [x] Add Korean beginner workflow snippets if needed.
-- [ ] Add automated CLI tests for guide output.
+- [x] Add automated CLI tests for guide output.
 
-### Task 12: Add Documentation Audit Engine Later
+### Task 12: Expand CLI Setup Helpers
+
+- [ ] Add `dreampia-dev-kit init` for creating a starter docs folder.
+- [ ] Add `dreampia-dev-kit scaffold-codex-plugin` only if plugin packaging needs more automation.
+- [ ] Add focused unit tests if CLI logic grows beyond smoke-test coverage.
+
+### Task 13: Add Documentation Audit Engine Later
 
 - [ ] Parse Dreampia document frontmatter.
 - [ ] Detect broken `related_docs` references.

@@ -80,12 +80,19 @@ npx github:eonofpixel/dreampia-dev-kit guide "워크스페이스 초대"
 node bin/dreampia-dev-kit.js validate docs/
 ```
 
+실패했다면 사람이 이해하기 쉬운 설명 리포트를 확인합니다.
+
+```bash
+node bin/dreampia-dev-kit.js explain docs/
+```
+
 [Ecommerce 예제](examples/ecommerce)는 목표 형태를 보여줍니다. 연결된 PRD/TRD/IA/user-flow/API/ERD/QA/audit 문서가 구조 점수와 content-risk audit을 모두 통과합니다.
 
 checkout 없이 GitHub에서 바로 실행할 수도 있습니다.
 
 ```bash
 npx github:eonofpixel/dreampia-dev-kit validate docs/
+npx github:eonofpixel/dreampia-dev-kit explain docs/
 ```
 
 전체 흐름은 [초보자 가이드](docs/BEGINNER_GUIDE.ko.md)를 참고하세요.
@@ -207,6 +214,7 @@ node bin/dreampia-dev-kit.js guide "워크스페이스 초대"
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js validate docs/
+node bin/dreampia-dev-kit.js explain docs/
 ```
 
 `validate-skill-pack`은 core skill, template frontmatter, 예제 문서, shortcut, plugin manifest, plugin skill 복사본 동기화를 확인합니다.
@@ -227,13 +235,21 @@ node bin/dreampia-dev-kit.js audit docs/
 
 내용 감사는 기본적으로 major finding에서 실패합니다. 토큰/API key/payment secret 노출, 원문 secret 저장, raw payment card data, 개인정보 보존 정책 누락, 정책 충돌, 근거 없는 구현 결정, 깨진 참조, 반복되는 open question을 확인합니다. 리포트만 보고 싶으면 `--fail-on none`, 자동화에 붙이려면 `--json`을 사용합니다.
 
-GitHub Actions도 `main`, pull request, manual dispatch에서 validation, 예제 content-risk audit, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
+검증 결과를 초보자도 고칠 수 있는 형태로 풀어보려면 아래 명령을 사용합니다.
+
+```bash
+node bin/dreampia-dev-kit.js explain docs/
+```
+
+설명 리포트는 반드시 고칠 것, 권장 개선, learning note로 결과를 나누어 구현 전에 무엇을 정리해야 하는지 보여줍니다.
+
+GitHub Actions도 `main`, pull request, manual dispatch에서 validation, 예제 content-risk audit, CLI smoke test, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
 
 ## 현재 상태
 
-현재 릴리즈: [v0.2.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.1)
+현재 릴리즈: [v0.3.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0)
 
-현재 릴리즈는 Markdown-first skill pack에 generated docs 품질을 확인하는 dependency-free CLI gate를 더한 버전입니다.
+현재 릴리즈는 Markdown-first skill pack에 generated docs 품질을 확인하는 dependency-free CLI gate와 쉬운 설명 리포트를 더한 버전입니다.
 
 ## 라이선스
 

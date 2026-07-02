@@ -34,11 +34,15 @@ jobs:
           node --check scripts/validate-skill-pack.js
           node --check scripts/score-generated-docs.js
           node --check scripts/audit-generated-doc-content.js
+          node --check scripts/test-cli.js
 
       - name: Validate example doc gates
         run: |
           node bin/dreampia-dev-kit.js validate examples/small-service
           node bin/dreampia-dev-kit.js validate examples/ecommerce
+
+      - name: Run CLI smoke tests
+        run: node scripts/test-cli.js
 
       - name: Check shell script syntax
         run: |
