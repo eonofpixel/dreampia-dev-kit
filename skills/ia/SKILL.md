@@ -20,18 +20,19 @@ Use this skill to create an Information Architecture document for a web app, mob
 
 ## Output Format
 
-1. Overview
-2. Navigation tree
-3. Page list
-4. Screen IDs
-5. Route/path suggestions
-6. Access rules
-7. Entry points
-8. Exit points
-9. Related user flows
-10. Missing screens
-11. Assumptions
-12. Open questions
+Use these exact `##` section headings for a full IA document:
+
+1. `## 1. Overview`
+2. `## 2. Navigation Tree`
+3. `## 3. Page List`
+4. `## 4. Access Rules`
+5. `## 5. Entry Points`
+6. `## 6. Exit Points`
+7. `## 7. Related User Flows`
+8. `## 8. Missing Screens`
+9. `## 9. Assumptions`
+10. `## 10. Open Questions`
+11. `## 11. Related Documents`
 
 ## Quality Rules
 
@@ -43,9 +44,28 @@ Use this skill to create an Information Architecture document for a web app, mob
 
 ## Document Output Requirements
 
-- Start generated IA documents with standard frontmatter from `DOC_SYSTEM.md` when creating a file.
+- Start generated IA documents with this exact frontmatter shape when creating a file:
+
+```yaml
+---
+doc_id: IA-FEATURE-001
+doc_type: ia
+feature_id: FEATURE-001
+status: draft
+owner: design
+related_docs: []
+related_code: []
+last_reviewed: YYYY-MM-DD
+version: 0.1.0
+---
+```
+
+- Replace `FEATURE-001` with a concise feature ID when the feature is clear.
 - Use `doc_id` prefix `IA`, `doc_type: ia`, `owner: design`, and `version: 0.1.0`.
 - Link related PRD, user-flow, screen-spec, and QA documents by ID when known.
+- Do not substitute ad hoc fields such as `title`, `product`, `date`, `created`, or `updated` for the standard fields.
+- Use stable screen IDs such as `PAGE-AUTH-001` in the page list.
+- Include route paths, access roles, entry points, exit points, and related user flows explicitly.
 
 ## Safety Rules
 

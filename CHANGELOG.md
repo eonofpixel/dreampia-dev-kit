@@ -2,6 +2,17 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.5 - 2026-07-02
+
+### Added
+
+- Extended generated-document scoring to IA, user-flow, and doc-audit report outputs.
+
+### Changed
+
+- Hardened IA, user-flow, doc-audit, and doc-pack output rules after live Claude Code mock-data testing.
+- Added explicit document-pack mappings for filenames, `doc_type`, owners, document ID prefixes, required headings, screen IDs, and `related_code`.
+
 ## 0.1.4 - 2026-07-02
 
 ### Added

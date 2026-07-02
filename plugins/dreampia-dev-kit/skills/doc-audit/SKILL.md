@@ -34,22 +34,45 @@ Check for:
 
 ## Output Format
 
-1. Audit summary
-2. Critical issues
-3. Major issues
-4. Minor issues
-5. Missing documents
-6. Broken references
-7. Ambiguous requirements
-8. Code/document drift candidates
-9. Recommended fixes
-10. Suggested next prompts for Codex
+Use these exact `##` section headings for a full doc-audit report:
+
+1. `## 1. Audit Scope`
+2. `## 2. Summary`
+3. `## 3. Critical Issues`
+4. `## 4. Major Issues`
+5. `## 5. Minor Issues`
+6. `## 6. Missing Documents`
+7. `## 7. Broken References`
+8. `## 8. Ambiguous Requirements`
+9. `## 9. Code/Docs Drift Candidates`
+10. `## 10. Recommended Next Actions`
+11. `## 11. Suggested Next Prompts for Codex`
+12. `## 12. Assumptions`
+13. `## 13. Open Questions`
 
 ## Document Output Requirements
 
-- Start generated audit reports with standard frontmatter from `DOC_SYSTEM.md` when creating a file.
+- Start generated audit reports with this exact frontmatter shape when creating a file:
+
+```yaml
+---
+doc_id: QA-DOCS-001
+doc_type: doc-audit-report
+feature_id: DOCS-001
+status: draft
+owner: documentation
+related_docs: []
+related_code: []
+last_reviewed: YYYY-MM-DD
+version: 0.1.0
+---
+```
+
+- Replace `DOCS-001` with a concise feature or documentation-set ID when the audited scope is clear.
 - Use `doc_id` prefix `QA`, `doc_type: doc-audit-report`, `owner: documentation`, and `version: 0.1.0`.
 - Include enough file paths and document IDs for a human to reproduce each finding.
+- Do not substitute ad hoc fields such as `audit_date`, `title`, `date`, `created`, or `updated` for the standard fields.
+- Use severity labels `Critical`, `Major`, and `Minor`, and include affected document paths or IDs plus recommended fixes.
 
 ## Quality Rules
 

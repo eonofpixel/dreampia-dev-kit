@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.4"><img alt="Release v0.1.4" src="https://img.shields.io/badge/release-v0.1.4-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.5"><img alt="Release v0.1.5" src="https://img.shields.io/badge/release-v0.1.5-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -198,10 +198,10 @@ node scripts/validate-skill-pack.js
 Score generated documents from real agent runs:
 
 ```bash
-node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/api-spec.md docs/erd.md docs/qa-checklist.md
+node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
 ```
 
-The scoring helper checks standard frontmatter, expected `##` sections, document owners, IDs, and document-specific signals such as `REQ-###`, HTTP methods, primary keys, and `QA-###` checks.
+The scoring helper checks standard frontmatter, expected `##` sections, document owners, IDs, and document-specific signals such as `REQ-###`, `PAGE-###`, HTTP methods, primary keys, and `QA-###` checks.
 
 GitHub Actions also runs this validation, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
 
@@ -219,7 +219,7 @@ GitHub Actions also runs this validation, shell syntax checks, and installer smo
 
 ## Status
 
-Current release: [v0.1.4](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.4)
+Current release: [v0.1.5](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.5)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 
