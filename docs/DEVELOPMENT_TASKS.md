@@ -30,14 +30,21 @@ Use this file as a lightweight backlog for Codex.
 
 ### Task 4: Add Example Project
 
-- [ ] Create `examples/small-service/`.
-- [ ] Add PRD example.
-- [ ] Add IA example.
-- [ ] Add API spec example.
-- [ ] Add QA checklist example.
-- [ ] Add doc audit report example.
+- [x] Create `examples/small-service/`.
+- [x] Add PRD example.
+- [x] Add IA example.
+- [x] Add API spec example.
+- [x] Add QA checklist example.
+- [x] Add doc audit report example.
 
-### Task 5: Add Validation CLI
+### Task 5: Add Lightweight Validation Script
+
+- [x] Validate core skill frontmatter and required sections.
+- [x] Validate template frontmatter.
+- [x] Validate plugin manifests.
+- [x] Validate plugin skill copies match root `skills/`.
+
+### Task 6: Add Validation CLI Later
 
 - [ ] Create pnpm workspace.
 - [ ] Add TypeScript packages.

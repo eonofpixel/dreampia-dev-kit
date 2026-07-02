@@ -11,6 +11,8 @@ All notable changes to `dreampia-dev-kit` will be documented in this file.
 - Added reusable Markdown templates with standard frontmatter, assumptions, open questions, and related document sections.
 - Added local Codex and Claude Code plugin manifests and marketplace examples.
 - Documented Codex and Claude Code personal skill and plugin installation paths.
+- Added a small-service example document set.
+- Added `scripts/validate-skill-pack.js` for no-dependency local validation.
 
 ### Not Included
 

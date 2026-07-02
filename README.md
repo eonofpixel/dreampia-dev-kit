@@ -29,6 +29,7 @@ The first version focuses on:
 
 - reusable `SKILL.md` workflows;
 - development document templates;
+- a complete small-service example;
 - Codex-friendly `AGENTS.md` guidance;
 - local install paths for Codex and Claude Code;
 - a future path toward a TypeScript CLI.
@@ -75,6 +76,12 @@ Example:
 Use skills/prd/SKILL.md and templates/prd.md to draft a PRD for workspace invitations.
 ```
 
+## Try the Example
+
+See [examples/small-service](examples/small-service) for an end-to-end documentation set for a magic link login feature.
+
+It includes a project brief, PRD, TRD, IA, user flow, API spec, ERD, QA checklist, and doc audit report.
+
 ## Install in Codex or Claude Code
 
 See [docs/INSTALLATION.md](docs/INSTALLATION.md) for complete installation options.
@@ -102,6 +109,16 @@ After plugin installation, invoke namespaced skills such as:
 /dreampia-dev-kit:prd Draft a PRD for workspace invitations.
 /dreampia-dev-kit:doc-audit Audit docs/ for missing links and drift.
 ```
+
+## Validate the Pack
+
+Run the built-in validation script before publishing changes:
+
+```bash
+node scripts/validate-skill-pack.js
+```
+
+The script checks core skill frontmatter, required sections, template metadata, plugin manifests, script permissions, and whether packaged plugin skills match the root `skills/` source of truth.
 
 ## Suggested Repository Structure
 
@@ -133,6 +150,9 @@ plugins/
     .codex-plugin/plugin.json
     .claude-plugin/plugin.json
     skills/
+
+examples/
+  small-service/
 ```
 
 ## v0.1 Validation Checklist
@@ -158,6 +178,7 @@ Root `skills/` remains the source of truth. After editing skills, run:
 
 ```bash
 bash scripts/sync-plugin-skills.sh
+node scripts/validate-skill-pack.js
 ```
 
 ## Design Principles

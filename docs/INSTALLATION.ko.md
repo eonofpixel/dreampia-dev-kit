@@ -101,7 +101,7 @@ bash scripts/sync-plugin-skills.sh
 검증:
 
 ```bash
+node scripts/validate-skill-pack.js
 claude plugin validate plugins/dreampia-dev-kit
 claude plugin validate .
-python3 /path/to/plugin-creator/scripts/validate_plugin.py plugins/dreampia-dev-kit
 ```
