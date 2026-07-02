@@ -2,6 +2,17 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.6 - 2026-07-02
+
+### Added
+
+- Added `scripts/audit-generated-doc-content.js` for content-risk auditing of real agent-generated documents.
+
+### Changed
+
+- Documented the difference between structure scoring and stricter content-risk auditing.
+- Added content-audit helper syntax checks to GitHub Actions validation.
+
 ## 0.1.5 - 2026-07-02
 
 ### Added

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.5"><img alt="Release v0.1.5" src="https://img.shields.io/badge/release-v0.1.5-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.6"><img alt="Release v0.1.6" src="https://img.shields.io/badge/release-v0.1.6-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -203,6 +203,14 @@ node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/use
 
 The scoring helper checks standard frontmatter, expected `##` sections, document owners, IDs, and document-specific signals such as `REQ-###`, `PAGE-###`, HTTP methods, primary keys, and `QA-###` checks.
 
+Audit generated documents for content risks:
+
+```bash
+node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+```
+
+The content audit is stricter than the structure score. It fails on major findings by default and checks for token exposure, plaintext token storage, policy conflicts, speculative implementation decisions, unresolved references, and repeated open questions. Use `--fail-on none` for review-only reports or `--json` for automation.
+
 GitHub Actions also runs this validation, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
 
 ## Design Principles
@@ -219,7 +227,7 @@ GitHub Actions also runs this validation, shell syntax checks, and installer smo
 
 ## Status
 
-Current release: [v0.1.5](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.5)
+Current release: [v0.1.6](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.6)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 
