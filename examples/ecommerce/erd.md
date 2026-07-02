@@ -16,7 +16,11 @@ version: 0.1.0
 
 # ERD: Guest Checkout
 
-## 1. Entities
+## 1. Overview
+
+The checkout data model stores server-authoritative checkout state, inventory reservations, payment authorization references, and confirmed orders for PRD-CHECKOUT-001 and API-CHECKOUT-001.
+
+## 2. Entities
 
 | Entity | Purpose |
 |---|---|
@@ -28,14 +32,14 @@ version: 0.1.0
 | `order` | Confirmed purchase record. |
 | `order_item` | Item snapshot for fulfillment. |
 
-## 2. Tables
+## 3. Tables
 
 ### `checkout_session`
 
 | Column | Type | Notes |
 |---|---|---|
 | `id` | UUID | Primary key. |
-| `cart_id` | UUID | Source cart. |
+| `cart_id` | UUID | Foreign key references existing cart table. |
 | `email` | text | Required before submit. |
 | `shipping_address_json` | json | MVP address representation. |
 | `status` | text | `started`, `shipping_validated`, `payment_failed`, `confirmed`, `blocked`. |
@@ -52,8 +56,8 @@ version: 0.1.0
 | Column | Type | Notes |
 |---|---|---|
 | `id` | UUID | Primary key. |
-| `checkout_session_id` | UUID | Linked checkout. |
-| `order_id` | UUID nullable | Set after order confirmation. |
+| `checkout_session_id` | UUID | Foreign key references `checkout_session.id`. |
+| `order_id` | UUID nullable | Foreign key references `order.id` after confirmation. |
 | `sku` | text | Product variant identifier. |
 | `quantity` | integer | Reserved quantity. |
 | `status` | text | `reserved`, `released`, `converted`. |
@@ -64,7 +68,7 @@ version: 0.1.0
 | Column | Type | Notes |
 |---|---|---|
 | `id` | UUID | Primary key. |
-| `checkout_session_id` | UUID | Linked checkout. |
+| `checkout_session_id` | UUID | Foreign key references `checkout_session.id`. |
 | `provider` | text | Payment provider name. |
 | `provider_reference` | text | Provider authorization ID. |
 | `amount` | integer | Authorized amount. |
@@ -78,7 +82,7 @@ version: 0.1.0
 |---|---|---|
 | `id` | UUID | Primary key. |
 | `order_number` | text | Human-facing identifier. |
-| `checkout_session_id` | UUID | Source checkout. |
+| `checkout_session_id` | UUID | Foreign key references `checkout_session.id`. |
 | `email` | text | Receipt and support contact. |
 | `status` | text | `confirmed`, `cancelled`, `fulfilled`. |
 | `payment_status` | text | Mirrors payment lifecycle. |
@@ -86,7 +90,7 @@ version: 0.1.0
 | `currency` | text | Currency. |
 | `created_at` | timestamp | Audit field. |
 
-## 3. Relationships
+## 4. Relationships
 
 | Relationship | Cardinality |
 |---|---|
@@ -97,13 +101,6 @@ version: 0.1.0
 | `checkout_session` to `order` | One successful session creates one order. |
 | `order` to `order_item` | One order has many item snapshots. |
 
-## 4. Constraints
-
-- `order.order_number` must be unique.
-- `payment_authorization.idempotency_key` must be unique per checkout session.
-- `inventory_reservation.quantity` must be greater than zero.
-- `order.checkout_session_id` must be unique.
-
 ## 5. Indexes
 
 | Index | Purpose |
@@ -113,25 +110,47 @@ version: 0.1.0
 | `idx_payment_authorization_provider_reference` | Reconcile provider events. |
 | `idx_order_order_number` | Load confirmation and support view. |
 
-## 6. Soft Delete Policy
+## 6. Constraints
+
+- `order.order_number` must be unique.
+- `payment_authorization.idempotency_key` must be unique per checkout session.
+- `inventory_reservation.quantity` must be greater than zero.
+- `order.checkout_session_id` must be unique.
+
+## 7. Soft Delete Policy
 
 Checkout and order records are not soft-deleted in MVP. Expired reservations are marked `released`.
 
-## 7. Audit Fields
+## 8. Audit Fields
 
 Use `created_at` and `updated_at` on mutable checkout records. Store payment provider references but never raw card data.
 
-## 8. Migration Notes
+## 9. Migration Notes
 
 - Add reservation cleanup job before launch.
 - Backfill is not required because checkout is a new feature.
 
-## 9. Assumptions
+## 10. Data Risks
+
+| Risk | Impact | Mitigation |
+|---|---|---|
+| Reservation leak | Stock remains unavailable after abandoned checkout. | Expire reservations and run cleanup job. |
+| Provider reference mismatch | Payment reconciliation may be delayed. | Index provider references and store status transitions. |
+| Address overexposure | Sensitive customer data appears in logs or support views. | Limit address logging and expose only required fields. |
+
+## 11. Assumptions
 
 - Existing cart and product tables already exist.
 - Address is stored as JSON in MVP to avoid premature address normalization.
 
-## 10. Open Questions
+## 12. Open Questions
 
 - Should `order` be renamed to `orders` in implementations where `order` is reserved?
 - Should payment provider webhook events get a separate table in MVP?
+
+## 13. Related Documents
+
+- PRD-CHECKOUT-001
+- TRD-CHECKOUT-001
+- API-CHECKOUT-001
+- QA-CHECKOUT-001

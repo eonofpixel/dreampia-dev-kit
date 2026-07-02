@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.8"><img alt="Release v0.1.8" src="https://img.shields.io/badge/release-v0.1.8-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.9"><img alt="Release v0.1.9" src="https://img.shields.io/badge/release-v0.1.9-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -72,6 +72,23 @@ Ask your agent to use a skill:
 ```text
 Use skills/prd/SKILL.md and templates/prd.md to draft a PRD for workspace invitations.
 ```
+
+## 30-Second Demo
+
+Ask your agent for a document pack:
+
+```text
+/dreampia-dev-kit:doc-pack Draft PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit docs for guest checkout.
+```
+
+Then score and audit the generated docs:
+
+```bash
+node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+```
+
+The curated [ecommerce example](examples/ecommerce) shows the target shape: linked PRD/TRD/IA/user-flow/API/ERD/QA/audit docs that score cleanly and pass the content-risk audit.
 
 ## Install in Your Agent
 
@@ -221,7 +238,7 @@ Audit generated documents for content risks:
 node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
 ```
 
-The content audit is stricter than the structure score. It fails on major findings by default and checks for token exposure, plaintext token storage, policy conflicts, speculative implementation decisions, unresolved references, and repeated open questions. Use `--fail-on none` for review-only reports or `--json` for automation.
+The content audit is stricter than the structure score. It fails on major findings by default and checks for token/API key/payment secret exposure, plaintext secret storage, raw payment card data, privacy retention gaps, policy conflicts, speculative implementation decisions, unresolved references, and repeated open questions. Use `--fail-on none` for review-only reports or `--json` for automation.
 
 GitHub Actions also runs this validation, example content-risk audits, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
 
@@ -239,7 +256,7 @@ GitHub Actions also runs this validation, example content-risk audits, shell syn
 
 ## Status
 
-Current release: [v0.1.8](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.8)
+Current release: [v0.1.9](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.9)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 

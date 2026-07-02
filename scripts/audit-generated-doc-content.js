@@ -118,6 +118,29 @@ function hasPrdSignal(docs, pattern) {
   return docs.some((doc) => doc.docType === "prd" && pattern.test(doc.text));
 }
 
+function isRedactedOrPlaceholder(line) {
+  return /(<[^>]+>|\b(redacted|placeholder|example|test_|sandbox|dummy|mock|fake|xxx|tbd)\b)/i.test(
+    line,
+  );
+}
+
+function isNegatedSafetyLine(line) {
+  return /\b(do not|don't|never|avoid|without|must not|should not|not store|not expose|omit|redact)\b/i.test(
+    line,
+  );
+}
+
+const liveSecretPatterns = [
+  /\bsk_live_[A-Za-z0-9]{12,}\b/,
+  /\brk_live_[A-Za-z0-9]{12,}\b/,
+  /\bAKIA[0-9A-Z]{16}\b/,
+  /\bghp_[A-Za-z0-9]{20,}\b/,
+  /\bgithub_pat_[A-Za-z0-9_]{20,}\b/,
+  /\bxox[baprs]-[A-Za-z0-9-]{12,}\b/,
+  /\bAIza[0-9A-Za-z_-]{20,}\b/,
+  /-----BEGIN (?:RSA |EC |OPENSSH |)PRIVATE KEY-----/,
+];
+
 function auditTokenExposure(docs, findings) {
   for (const doc of docs) {
     if (!["api-spec", "trd", "qa-checklist"].includes(doc.docType)) continue;
@@ -160,6 +183,56 @@ function auditTokenExposure(docs, findings) {
   }
 }
 
+function auditSecretExposure(docs, findings) {
+  for (const doc of docs) {
+    if (!["api-spec", "trd", "qa-checklist", "doc-audit-report"].includes(doc.docType)) continue;
+
+    for (const entry of doc.lines) {
+      const text = `${entry.heading} ${entry.line}`;
+      const exampleContext = /(response|example|returns?|expected|checklist|body|payload|curl|env)/i.test(
+        text,
+      );
+      const sensitiveJsonKey =
+        /"(?:apiKey|api_key|secret|clientSecret|client_secret|password|accessToken|access_token|refreshToken|refresh_token|sessionToken|session_token|paymentSecret|payment_secret)"\s*:\s*"[^"]+"/.test(
+          entry.line,
+        );
+
+      for (const pattern of liveSecretPatterns) {
+        if (pattern.test(entry.line) && !isRedactedOrPlaceholder(entry.line)) {
+          addFinding(findings, {
+            severity: "critical",
+            category: "secret-exposure",
+            file: doc.file,
+            line: entry.lineNumber,
+            message: "Document appears to contain a live secret or private key material.",
+            evidence: entry.line.trim(),
+            recommendation:
+              "Remove the value, rotate it if it may be real, and use a redacted placeholder such as <redacted-secret>.",
+          });
+        }
+      }
+
+      if (
+        sensitiveJsonKey &&
+        exampleContext &&
+        !isRedactedOrPlaceholder(entry.line) &&
+        !isNegatedSafetyLine(entry.line)
+      ) {
+        addFinding(findings, {
+          severity: "major",
+          category: "secret-exposure",
+          file: doc.file,
+          line: entry.lineNumber,
+          message: "Example or expected result includes credential-like material.",
+          evidence: entry.line.trim(),
+          recommendation:
+            "Use stable IDs/status fields in responses and redacted placeholders for unavoidable sensitive request fields.",
+        });
+      }
+    }
+  }
+}
+
 function auditPlainTokenStorage(docs, findings) {
   for (const doc of docs) {
     if (!["erd", "trd"].includes(doc.docType)) continue;
@@ -188,6 +261,60 @@ function auditPlainTokenStorage(docs, findings) {
           evidence: entry.line.trim(),
           recommendation:
             "Prefer lookup by token hash/verifier and avoid indexing raw token values in application-readable tables.",
+        });
+      }
+    }
+  }
+}
+
+function auditSensitiveStorage(docs, findings) {
+  for (const doc of docs) {
+    if (!["erd", "trd"].includes(doc.docType)) continue;
+
+    for (const entry of doc.lines) {
+      const storesSensitiveColumn =
+        /\b(password|api_?key|secret|client_?secret|access_?token|refresh_?token|session_?token|payment_?secret)\b\s*(VARCHAR|TEXT|CHAR|STRING|text)\b/i.test(
+          entry.line,
+        ) ||
+        /\|\s*`?(password|api_?key|secret|client_?secret|access_?token|refresh_?token|session_?token|payment_?secret)`?\s*\|\s*(varchar|text|string|char)\b/i.test(
+          entry.line,
+        );
+
+      if (storesSensitiveColumn && !/hash|digest|encrypted|cipher|verifier|reference|redacted/i.test(entry.line)) {
+        addFinding(findings, {
+          severity: "major",
+          category: "secret-storage",
+          file: doc.file,
+          line: entry.lineNumber,
+          message: "Schema appears to store credential-like material as plaintext.",
+          evidence: entry.line.trim(),
+          recommendation:
+            "Store hashes, encrypted values, or provider references instead of plaintext passwords, API keys, tokens, or payment secrets.",
+        });
+      }
+    }
+  }
+}
+
+function auditPaymentDataExposure(docs, findings) {
+  for (const doc of docs) {
+    if (!["api-spec", "trd", "qa-checklist", "erd"].includes(doc.docType)) continue;
+
+    for (const entry of doc.lines) {
+      const rawCardData =
+        /\b(card_number|cardNumber|pan|cvv|cvc|card security code)\b/i.test(entry.line) ||
+        /\b(?:\d[ -]*?){13,19}\b/.test(entry.line);
+
+      if (rawCardData && !isNegatedSafetyLine(entry.line) && !isRedactedOrPlaceholder(entry.line)) {
+        addFinding(findings, {
+          severity: "major",
+          category: "payment-data-exposure",
+          file: doc.file,
+          line: entry.lineNumber,
+          message: "Document appears to include raw payment card data or asks systems/testers to handle it.",
+          evidence: entry.line.trim(),
+          recommendation:
+            "Use payment-provider references or sandbox tokens, and keep raw card numbers or CVC values out of generated docs.",
         });
       }
     }
@@ -249,6 +376,34 @@ function auditPolicyConflicts(docs, findings) {
         recommendation:
           "Clarify whether admins may assign the admin role. Then align PRD, IA access rules, API authorization, and QA permission checks.",
       });
+    }
+  }
+
+  const prdAllowsGuest =
+    hasPrdSignal(docs, /guest checkout|account creation is not required|without (?:an )?account/i) ||
+    hasPrdSignal(docs, /does not require account|account authentication is not required/i);
+  if (prdAllowsGuest) {
+    for (const doc of docs) {
+      if (doc.docType === "prd" || doc.docType === "doc-audit-report") continue;
+      for (const entry of doc.lines) {
+        if (
+          /\b(requires? (?:a )?(?:user )?account|must be logged in|authenticated user required)\b/i.test(
+            entry.line,
+          ) &&
+          !/not required|does not require|without (?:an )?account/i.test(entry.line)
+        ) {
+          addFinding(findings, {
+            severity: "major",
+            category: "policy-conflict",
+            file: doc.file,
+            line: entry.lineNumber,
+            message: "Authentication requirement conflicts with the PRD guest/no-account model.",
+            evidence: entry.line.trim(),
+            recommendation:
+              "Clarify whether the flow is guest-accessible or account-only, then align PRD, IA, API, and QA.",
+          });
+        }
+      }
     }
   }
 }
@@ -323,6 +478,47 @@ function auditSpeculativeDecisions(docs, findings) {
       }
     }
   }
+}
+
+function auditPiiRetentionCoverage(docs, findings) {
+  const hasPiiCollection = docs.some((doc) =>
+    /\b(email|phone|address|full name|shipping address|billing address|PII|personal data)\b/i.test(
+      doc.text,
+    ),
+  );
+  const hasLifecycleCoverage = docs.some((doc) =>
+    /\b(retention|delete|deletion|purge|soft delete|expire|expires|cleanup|data lifecycle|privacy)\b/i.test(
+      doc.text,
+    ),
+  );
+
+  if (!hasPiiCollection || hasLifecycleCoverage) return;
+
+  const firstPiiLine = docs
+    .flatMap((doc) =>
+      doc.lines.map((entry) => ({
+        doc,
+        entry,
+      })),
+    )
+    .find(({ entry }) =>
+      /\b(email|phone|address|full name|shipping address|billing address|PII|personal data)\b/i.test(
+        entry.line,
+      ),
+    );
+
+  if (!firstPiiLine) return;
+
+  addFinding(findings, {
+    severity: "minor",
+    category: "privacy-retention",
+    file: firstPiiLine.doc.file,
+    line: firstPiiLine.entry.lineNumber,
+    message: "Documents collect personal data but do not define retention or deletion behavior.",
+    evidence: firstPiiLine.entry.line.trim(),
+    recommendation:
+      "Add a retention, deletion, or data lifecycle policy, or mark it as an open question before implementation.",
+  });
 }
 
 function auditExternalReferences(docs, findings) {
@@ -488,9 +684,13 @@ try {
 
 const findings = [];
 auditTokenExposure(docs, findings);
+auditSecretExposure(docs, findings);
 auditPlainTokenStorage(docs, findings);
+auditSensitiveStorage(docs, findings);
+auditPaymentDataExposure(docs, findings);
 auditPolicyConflicts(docs, findings);
 auditSpeculativeDecisions(docs, findings);
+auditPiiRetentionCoverage(docs, findings);
 auditExternalReferences(docs, findings);
 auditRepeatedOpenQuestions(docs, findings);
 

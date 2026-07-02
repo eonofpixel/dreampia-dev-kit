@@ -65,8 +65,8 @@ Support users, one-time login tokens, and sessions for a small notes service.
 
 | From | Relationship | To | Notes |
 |---|---|---|---|
-| users | 1:N | login_tokens | User can request multiple tokens over time. |
-| users | 1:N | sessions | User can have multiple active sessions. |
+| users | 1:N | login_tokens | `login_tokens.user_id` is a foreign key referencing `users.id`. |
+| users | 1:N | sessions | `sessions.user_id` is a foreign key referencing `users.id`. |
 
 ## 5. Indexes
 

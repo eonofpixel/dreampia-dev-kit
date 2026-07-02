@@ -16,27 +16,40 @@ version: 0.1.0
 
 # API Spec: Guest Checkout
 
-## 1. API Overview
+## 1. Overview
 
 The checkout API creates checkout sessions, validates server-side totals, submits payment authorization, and returns order confirmation data.
 
-## 2. Auth Requirements
+## 2. Authentication
 
 Guest checkout uses a server-issued checkout session ID. Account authentication is not required.
 
-## 3. Endpoints
+## 3. Common Headers
 
-| Method | Path | Purpose |
+| Header | Required | Description |
 |---|---|---|
-| POST | `/checkout/session` | Create a checkout session from a cart. |
-| GET | `/checkout/session/{sessionId}` | Read checkout session state. |
-| PATCH | `/checkout/session/{sessionId}/shipping` | Save contact and shipping details. |
-| POST | `/checkout/session/{sessionId}/submit` | Authorize payment, reserve inventory, and create order. |
-| GET | `/orders/{orderNumber}` | Read confirmation-safe order summary. |
+| `Content-Type: application/json` | Yes | Required for mutation requests. |
+| `Idempotency-Key` | Yes for submit | Prevents duplicate checkout or order creation. |
 
-## 4. Request Schema
+## 4. Endpoint List
 
-### POST `/checkout/session`
+| Method | Path | Purpose | Related Requirement |
+|---|---|---|---|
+| POST | `/checkout/session` | Create a checkout session from a cart. | REQ-001 |
+| GET | `/checkout/session/{sessionId}` | Read checkout session state. | REQ-001 |
+| PATCH | `/checkout/session/{sessionId}/shipping` | Save contact and shipping details. | REQ-002 |
+| POST | `/checkout/session/{sessionId}/submit` | Authorize payment, reserve inventory, and create order. | REQ-003, REQ-004, REQ-005 |
+| GET | `/orders/{orderNumber}` | Read confirmation-safe order summary. | REQ-005 |
+
+## 5. Endpoint Details
+
+### 5.1 Create Checkout Session
+
+```http
+POST /checkout/session
+```
+
+#### Request Body
 
 ```json
 {
@@ -45,7 +58,22 @@ Guest checkout uses a server-issued checkout session ID. Account authentication 
 }
 ```
 
-### PATCH `/checkout/session/{sessionId}/shipping`
+#### Response Body
+
+```json
+{
+  "sessionId": "chk_123",
+  "status": "shipping_required"
+}
+```
+
+### 5.2 Save Shipping Details
+
+```http
+PATCH /checkout/session/{sessionId}/shipping
+```
+
+#### Request Body
 
 ```json
 {
@@ -63,42 +91,47 @@ Guest checkout uses a server-issued checkout session ID. Account authentication 
 }
 ```
 
-### POST `/checkout/session/{sessionId}/submit`
-
-```json
-{
-  "paymentToken": "provider_token_123",
-  "idempotencyKey": "checkout-submit-123"
-}
-```
-
-## 5. Response Schema
-
-### Checkout Session
+#### Response Body
 
 ```json
 {
   "sessionId": "chk_123",
-  "status": "shipping_required",
-  "items": [
-    {
-      "sku": "SKU-001",
-      "name": "Linen Throw",
-      "quantity": 1,
-      "unitPrice": 6400
-    }
-  ],
-  "totals": {
-    "subtotal": 6400,
-    "shipping": 700,
-    "tax": 568,
-    "total": 7668,
-    "currency": "USD"
-  }
+  "status": "payment_required"
 }
 ```
 
-### Order Confirmation
+### 5.3 Submit Checkout
+
+```http
+POST /checkout/session/{sessionId}/submit
+```
+
+#### Request Body
+
+```json
+{
+  "paymentMethodReference": "provider_reference_123",
+  "idempotencyKey": "checkout-submit-123"
+}
+```
+
+#### Response Body
+
+```json
+{
+  "orderNumber": "ORD-10001",
+  "status": "confirmed",
+  "paymentStatus": "authorized"
+}
+```
+
+### 5.4 Read Order Confirmation
+
+```http
+GET /orders/{orderNumber}
+```
+
+#### Response Body
 
 ```json
 {
@@ -111,7 +144,7 @@ Guest checkout uses a server-issued checkout session ID. Account authentication 
 }
 ```
 
-## 6. Error Codes
+#### Error Codes
 
 | Code | HTTP Status | Meaning | Recovery |
 |---|---:|---|---|
@@ -121,7 +154,11 @@ Guest checkout uses a server-issued checkout session ID. Account authentication 
 | `CHECKOUT_PAYMENT_FAILED` | 402 | Payment authorization failed. | Retry payment. |
 | `CHECKOUT_DUPLICATE_SUBMIT` | 409 | Idempotency conflict or duplicate request. | Fetch current session state. |
 
-## 7. Pagination and Filtering
+## 6. Pagination
+
+Not required for checkout session endpoints.
+
+## 7. Filtering and Sorting
 
 Not required for checkout session endpoints.
 
@@ -149,9 +186,16 @@ curl -X POST /checkout/session \
 ## 11. Assumptions
 
 - Prices are represented in minor currency units.
-- Payment provider token is short-lived and safe to pass to backend once.
+- Payment provider returns a short-lived reference that is safe to pass to backend once.
 
 ## 12. Open Questions
 
 - Should order confirmation require a signed token in addition to order number?
 - Should API expose tax breakdown by jurisdiction in MVP?
+
+## 13. Related Documents
+
+- PRD-CHECKOUT-001
+- TRD-CHECKOUT-001
+- ERD-CHECKOUT-001
+- QA-CHECKOUT-001

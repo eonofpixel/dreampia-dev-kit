@@ -46,6 +46,23 @@ curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/in
 skills/prd/SKILL.md와 templates/prd.md를 사용해서 워크스페이스 초대 기능 PRD를 작성해줘.
 ```
 
+## 30초 데모
+
+에이전트에게 문서팩을 요청합니다.
+
+```text
+/dreampia-dev-kit:doc-pack guest checkout 기능의 PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit 문서를 작성해줘.
+```
+
+생성된 문서를 점수화하고 내용 위험을 감사합니다.
+
+```bash
+node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
+```
+
+[Ecommerce 예제](examples/ecommerce)는 목표 형태를 보여줍니다. 연결된 PRD/TRD/IA/user-flow/API/ERD/QA/audit 문서가 구조 점수와 content-risk audit을 모두 통과합니다.
+
 ## Codex / Claude Code 설치
 
 | 에이전트 | 터미널 설치 | 에이전트 안에서 plugin 설치 |
@@ -176,13 +193,13 @@ node scripts/score-generated-docs.js docs/prd.md docs/trd.md docs/ia.md docs/use
 node scripts/audit-generated-doc-content.js docs/prd.md docs/trd.md docs/ia.md docs/user-flow.md docs/api-spec.md docs/erd.md docs/qa-checklist.md docs/doc-audit-report.md
 ```
 
-내용 감사는 기본적으로 major finding에서 실패합니다. 토큰 노출, 원문 토큰 저장, 정책 충돌, 근거 없는 구현 결정, 깨진 참조, 반복되는 open question을 확인합니다. 리포트만 보고 싶으면 `--fail-on none`, 자동화에 붙이려면 `--json`을 사용합니다.
+내용 감사는 기본적으로 major finding에서 실패합니다. 토큰/API key/payment secret 노출, 원문 secret 저장, raw payment card data, 개인정보 보존 정책 누락, 정책 충돌, 근거 없는 구현 결정, 깨진 참조, 반복되는 open question을 확인합니다. 리포트만 보고 싶으면 `--fail-on none`, 자동화에 붙이려면 `--json`을 사용합니다.
 
 GitHub Actions도 `main`, pull request, manual dispatch에서 validation, 예제 content-risk audit, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
 
 ## 현재 상태
 
-현재 릴리즈: [v0.1.8](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.8)
+현재 릴리즈: [v0.1.9](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.9)
 
 v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 

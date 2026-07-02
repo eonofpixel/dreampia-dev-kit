@@ -16,7 +16,7 @@ version: 0.1.0
 
 # QA Checklist: Guest Checkout
 
-## 1. Test Scope
+## 1. Scope
 
 Validate guest checkout from cart review through order confirmation, including stock and payment failure recovery.
 
@@ -26,51 +26,60 @@ Validate guest checkout from cart review through order confirmation, including s
 - Payment sandbox supports success, failure, and timeout test tokens.
 - Email sending can be observed through sandbox logs or test inbox.
 
-## 3. Functional Checks
+## 3. Test Environment
 
-| ID | Check | Related Requirement | Status |
-|---|---|---|---|
-| QA-001 | Checkout starts from a cart with in-stock items. | REQ-001 | Not run |
-| QA-002 | Server-calculated totals display on review page. | REQ-001 | Not run |
-| QA-003 | Required shipping fields show inline validation. | REQ-002 | Not run |
-| QA-004 | Successful payment creates one confirmed order. | REQ-004, REQ-005 | Not run |
-| QA-005 | Confirmation page shows order number, total, and email. | REQ-005 | Not run |
-| QA-006 | Confirmation email is attempted after order creation. | REQ-006 | Not run |
+| Item | Value |
+|---|---|
+| App version | Guest checkout MVP build |
+| Payment provider | Sandbox mode |
+| Email provider | Test inbox or sandbox logs |
+| Devices | Mobile and desktop browser |
 
-## 4. Edge Cases
+## 4. Functional Checklist
+
+| ID | Check | Expected Result | Related Requirement | Status |
+|---|---|---|---|---|
+| QA-001 | Checkout starts from a cart with in-stock items. | Checkout session is created and review page opens. | REQ-001 | Not Run |
+| QA-002 | Server-calculated totals display on review page. | Totals match backend response, not client-only values. | REQ-001 | Not Run |
+| QA-003 | Required shipping fields show inline validation. | Invalid fields block payment and show clear messages. | REQ-002 | Not Run |
+| QA-004 | Successful payment creates one confirmed order. | Exactly one order is confirmed for the idempotency key. | REQ-004, REQ-005 | Not Run |
+| QA-005 | Confirmation page shows order number, total, and email. | Confirmation does not expose raw payment details. | REQ-005 | Not Run |
+| QA-006 | Confirmation email is attempted after order creation. | Email attempt is visible in sandbox logs. | REQ-006 | Not Run |
+
+## 5. Permission Checklist
+
+| Role | Check | Expected Result |
+|---|---|---|
+| Guest | Complete checkout without account login. | Guest can complete the happy path. |
+| Guest | Open confirmation page. | Confirmation is available only through supported signed or equivalent access. |
+| Support | Inspect failed payment state. | Support view does not expose raw provider secrets. |
+
+## 6. Edge Cases
 
 | ID | Case | Expected Result | Status |
 |---|---|---|---|
-| QA-EDGE-001 | Item sells out after checkout starts. | Payment is blocked and cart can be refreshed. | Not run |
-| QA-EDGE-002 | Shopper double-clicks submit. | Only one order is created. | Not run |
-| QA-EDGE-003 | Shopper refreshes confirmation. | Existing order summary is shown. | Not run |
-| QA-EDGE-004 | Email send fails. | Order remains confirmed and retry is visible to support. | Not run |
+| QA-007 | Item sells out after checkout starts. | Payment is blocked and cart can be refreshed. | Not Run |
+| QA-008 | Shopper double-clicks submit. | Only one order is created. | Not Run |
+| QA-009 | Shopper refreshes confirmation. | Existing order summary is shown. | Not Run |
+| QA-010 | Email send fails. | Order remains confirmed and retry is visible to support. | Not Run |
 
-## 5. Error Cases
+## 7. Error Cases
 
 | ID | Error | Expected Result | Status |
 |---|---|---|---|
-| QA-ERR-001 | Payment authorization fails. | Cart and shipping details remain available. | Not run |
-| QA-ERR-002 | Payment provider times out. | User sees temporary failure and can retry. | Not run |
-| QA-ERR-003 | Invalid checkout session ID. | User sees recoverable not-found state. | Not run |
+| QA-011 | Payment authorization fails. | Cart and shipping details remain available. | Not Run |
+| QA-012 | Payment provider times out. | User sees temporary failure and can retry. | Not Run |
+| QA-013 | Invalid checkout session ID. | User sees recoverable not-found state. | Not Run |
 
-## 6. Permission Checks
+## 8. Regression Checklist
 
-Guest checkout does not require account permissions. Confirmation access still must not expose raw payment details or private provider metadata.
-
-## 7. Compatibility Checks
-
-| Surface | Check | Status |
+| ID | Check | Status |
 |---|---|---|
-| Mobile | Forms are usable at narrow width. | Not run |
-| Desktop | Step navigation remains clear. | Not run |
-| Keyboard | Form and payment step are keyboard navigable. | Not run |
-
-## 8. Regression Checks
-
-- Existing cart add/remove behavior still works.
-- Existing product detail pages still show stock status.
-- Existing email templates are not broken by checkout confirmation.
+| QA-014 | Existing cart add/remove behavior still works. | Not Run |
+| QA-015 | Existing product detail pages still show stock status. | Not Run |
+| QA-016 | Existing email templates are not broken by checkout confirmation. | Not Run |
+| QA-017 | Mobile and desktop forms remain usable. | Not Run |
+| QA-018 | Keyboard navigation works through shipping and payment steps. | Not Run |
 
 ## 9. Pass/Fail Criteria
 
@@ -81,12 +90,28 @@ Pass only when:
 - duplicate submit does not create duplicate orders;
 - confirmation email behavior is observable.
 
-## 10. Assumptions
+## 10. Related Requirements
+
+- REQ-001
+- REQ-002
+- REQ-003
+- REQ-004
+- REQ-005
+- REQ-006
+
+## 11. Assumptions
 
 - QA can use payment sandbox tokens.
 - Email sandbox can show whether confirmation was attempted.
 
-## 11. Open Questions
+## 12. Open Questions
 
 - Should QA verify payment capture, or only authorization, in MVP?
 - Should address validation use provider rules or only field-level validation?
+
+## 13. Related Documents
+
+- PRD-CHECKOUT-001
+- FLOW-CHECKOUT-001
+- API-CHECKOUT-001
+- ERD-CHECKOUT-001

@@ -9,7 +9,7 @@
       "name": "dreampia-dev-kit",
       "source": "./plugins/dreampia-dev-kit",
       "description": "PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit skills.",
-      "version": "0.1.8",
+      "version": "0.1.9",
       "author": {
         "name": "Dreampia Dev Kit Maintainers"
       }

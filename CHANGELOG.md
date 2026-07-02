@@ -2,6 +2,14 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.9 - 2026-07-02
+
+### Changed
+
+- Added a 30-second README demo showing document-pack generation, structure scoring, and content-risk auditing.
+- Raised both curated example sets to 100 structure scores across all generated document types.
+- Expanded content-risk auditing beyond invitation tokens to cover live secret patterns, credential-like response examples, plaintext secret storage, raw payment card data, PII retention gaps, and guest/account policy conflicts.
+
 ## 0.1.8 - 2026-07-02
 
 ### Added
