@@ -30,6 +30,7 @@ jobs:
       - name: Check Node helper syntax
         run: |
           node --check bin/dreampia-dev-kit.js
+          node --check lib/*.js
           node --check scripts/validate-skill-pack.js
           node --check scripts/score-generated-docs.js
           node --check scripts/audit-generated-doc-content.js

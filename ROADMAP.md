@@ -22,11 +22,22 @@ Goal: Make Dreampia useful after AI-generated docs exist by giving teams one fas
 - `dreampia-dev-kit validate-skill-pack` for repository/package validation
 - Directory input support for generated doc folders
 
+## v0.2.1 — Accessible Guided Workflow
+
+Goal: Turn the accessibility philosophy into a visible first-run workflow.
+
+- `dreampia-dev-kit guide <idea>` for first-time users who need a step-by-step doc-pack workflow
+- Plain-language validation next steps after pass or fail
+- Beginner guides in English and Korean
+- CLI module split for maintainable future guidance
+
 ## v0.3.0 — CLI Foundation Expansion
 
-Goal: Expand the CLI beyond gates while keeping the Markdown-first workflow.
+Goal: Expand the CLI beyond gates while keeping the Markdown-first workflow beginner-friendly.
 
 - `dreampia-dev-kit init`
+- automated tests for guide and validation next-action output
+- richer failure explanations with specific doc paths and suggested fixes
 - `dreampia-dev-kit scaffold-codex-plugin`
 - Unit tests
 - Optional TypeScript migration if the CLI surface grows
@@ -40,6 +51,7 @@ Goal: Detect documentation gaps and inconsistencies.
 - Detect missing QA coverage
 - Detect orphan documents
 - Produce audit report
+- Explain audit findings in plain language with next actions for non-expert builders
 
 ## v0.5.0 — Code-to-Docs Drafting
 
@@ -50,6 +62,7 @@ Goal: Generate document suggestions from codebase structure.
 - Database schema discovery
 - Generated doc suggestions
 - Safe write mode with confirmation
+- beginner-safe review prompts before generated suggestions drive code
 
 ## v1.0.0 — Stable Open-source Release
 
@@ -63,3 +76,4 @@ Goal: Provide a stable, documented, reusable system.
 - Contribution guide
 - Security policy
 - Release process
+- beginner-friendly learning path from idea to validated docs to implementation

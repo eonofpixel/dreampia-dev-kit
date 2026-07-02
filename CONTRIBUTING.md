@@ -4,6 +4,8 @@ Thanks for considering contributing to `dreampia-dev-kit`.
 
 This project focuses on development documentation workflows for AI coding agents.
 
+The project also has an accessibility goal: make development work easier to understand for people who are new to vibe coding, still learning software development, or building without a full product and engineering team.
+
 ## Contribution Types
 
 Good first contributions:
@@ -34,6 +36,16 @@ Each skill must:
 - include quality rules;
 - avoid project-specific assumptions;
 - be safe by default.
+
+## Accessibility and Learning Rules
+
+Contributions should:
+
+- explain what the user should do next when a document or validation result is incomplete;
+- prefer plain, concrete language over insider terminology;
+- separate required fixes from optional polish;
+- avoid shaming language such as "obvious", "trivial", or "just";
+- make hidden development knowledge explicit through examples, checks, and decision prompts.
 
 ## Template Contribution Rules
 

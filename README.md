@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.0"><img alt="Release v0.2.0" src="https://img.shields.io/badge/release-v0.2.0-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.1"><img alt="Release v0.2.1" src="https://img.shields.io/badge/release-v0.2.1-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="bin/dreampia-dev-kit.js"><img alt="No dependency CLI" src="https://img.shields.io/badge/CLI-no%20deps-7c3aed"></a>
@@ -22,6 +22,14 @@
 It helps teams keep product, technical, UX, API, data, QA, and release documents aligned while working with Codex, Claude Code, or other AI coding agents.
 
 It is not trying to replace full spec-driven implementation platforms. Dreampia is the documentation quality layer: linked development docs first, then structure scoring and content-risk auditing before those docs drive code.
+
+## Why It Matters
+
+AI coding should make development more accessible, not more mysterious.
+
+Dreampia is designed for people who are new to vibe coding, still learning software development, or trying to build responsibly without a full product and engineering team. The goal is to make the development process visible: what to decide, what to document, what to test, what is risky, and what to do next.
+
+Good output should help beginners and experienced developers work from the same shared map. It should not assume hidden senior-engineer knowledge, shame incomplete ideas, or turn AI-generated confidence into unreviewed implementation.
 
 | You need | Use this |
 |---|---|
@@ -67,6 +75,12 @@ Validate the local checkout:
 node bin/dreampia-dev-kit.js validate-skill-pack
 ```
 
+For a guided first run:
+
+```bash
+node bin/dreampia-dev-kit.js guide "guest checkout for a small ecommerce shop"
+```
+
 Ask your agent to use a skill:
 
 ```text
@@ -74,6 +88,12 @@ Use skills/prd/SKILL.md and templates/prd.md to draft a PRD for workspace invita
 ```
 
 ## 30-Second Demo
+
+If you are new to vibe coding, start with the guide:
+
+```bash
+npx github:eonofpixel/dreampia-dev-kit guide "workspace invitations"
+```
 
 Ask your agent for a document pack:
 
@@ -94,6 +114,8 @@ Run the same gate directly from GitHub:
 ```bash
 npx github:eonofpixel/dreampia-dev-kit validate docs/
 ```
+
+Read [Beginner Guide: From Idea to Reviewed Docs](docs/BEGINNER_GUIDE.md) for the full loop.
 
 ## Install in Your Agent
 
@@ -218,6 +240,7 @@ The built-in CLI exposes the same checks for local use and CI:
 
 ```bash
 node bin/dreampia-dev-kit.js validate-skill-pack
+node bin/dreampia-dev-kit.js guide "workspace invitations"
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js validate docs/
@@ -271,7 +294,7 @@ GitHub Actions also runs this validation, example content-risk audits, shell syn
 
 ## Status
 
-Current release: [v0.2.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.0)
+Current release: [v0.2.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.2.1)
 
 The current release is a Markdown-first skill pack plus a dependency-free CLI gate for generated document quality.
 

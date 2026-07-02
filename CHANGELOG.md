@@ -2,6 +2,18 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.2.1 - 2026-07-03
+
+### Added
+
+- Added `dreampia-dev-kit guide` for first-time users moving from a rough idea to a reviewed doc pack.
+- Added beginner guides in English and Korean.
+
+### Changed
+
+- Added plain-language next-action guidance after `dreampia-dev-kit validate` passes or fails.
+- Split the CLI into small CommonJS modules under `lib/` to keep future workflow guidance maintainable.
+
 ## 0.2.0 - 2026-07-03
 
 ### Added

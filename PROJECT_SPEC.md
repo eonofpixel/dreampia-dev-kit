@@ -6,6 +6,22 @@
 
 It provides skills, templates, and lightweight CLI gates to help teams create, audit, and maintain development documents across the software lifecycle.
 
+## 1.1 Social Mission
+
+Development should become more legible and more accessible as AI coding tools improve.
+
+`dreampia-dev-kit` should help people who are new to vibe coding, early in their development journey, or working without a full engineering team participate in the development process with more confidence and less hidden gatekeeping.
+
+The project should make the process visible:
+
+- what decisions are needed;
+- what assumptions are being made;
+- what risks must be checked before coding;
+- what documents and tests are missing;
+- what next action is reasonable.
+
+This does not mean lowering the quality bar. It means making the quality bar understandable, repeatable, and reachable.
+
 ## 2. Problem
 
 AI coding tools can speed up implementation, but many projects still fail or slow down because:
@@ -24,6 +40,7 @@ Create a reusable, open-source documentation workflow layer that:
 - turns vague product ideas into structured development documents;
 - lets Codex and other agents reuse consistent document workflows;
 - helps detect documentation drift between docs and code;
+- makes development decisions, risks, and next actions understandable to beginners;
 - supports small MVPs and large-scale services;
 - remains useful as plain Markdown.
 
@@ -43,6 +60,8 @@ The project should not initially become:
 | User | Needs |
 |---|---|
 | Solo developer | Turn ideas into specs and tasks quickly. |
+| Beginner vibe coder | Understand what to ask an agent, what the output means, and what to verify next. |
+| Non-expert builder | Follow a visible development process without needing hidden team knowledge. |
 | Startup founder | Clarify product scope before building. |
 | PM/PO | Produce PRDs, policies, and acceptance criteria. |
 | Frontend developer | Understand IA, screen behavior, and API contracts. |
@@ -63,6 +82,7 @@ The project should not initially become:
 | US-006 | As a team, we want a consistent doc ID system so that documents can reference one another. | Should |
 | US-007 | As a contributor, I want templates so that I can create documents without learning the whole system. | Should |
 | US-008 | As a plugin user, I want installable Codex and Claude Code support so that skills can be reused across projects. | Could |
+| US-009 | As a beginner, I want generated docs and audit results to explain what to fix next so that I can improve safely without guessing. | Must for v0.3 |
 
 ## 7. MVP Requirements
 
@@ -90,6 +110,8 @@ The project should not initially become:
 | NFR-004 | The project must not access secrets. |
 | NFR-005 | Generated documents should be testable by humans. |
 | NFR-006 | Templates should work for small and large services. |
+| NFR-007 | Outputs should avoid gatekeeping language and explain next actions in plain, actionable terms. |
+| NFR-008 | Validation failures should help users learn what is missing, not only report that something failed. |
 
 ## 8. Success Criteria
 

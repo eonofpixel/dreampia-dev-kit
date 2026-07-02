@@ -75,18 +75,29 @@ Use this file as a lightweight backlog for Codex.
 - [ ] Add screenshots or terminal transcripts for install verification.
 - [x] Write a maintainer release process for tags and GitHub releases.
 
-### Task 10: Add Validation CLI Later
+### Task 10: Add Validation CLI
 
-- [ ] Create pnpm workspace.
-- [ ] Add TypeScript packages.
-- [ ] Implement `validate-skills`.
-- [ ] Add tests.
-- [ ] Document usage.
+- [x] Add dependency-free `dreampia-dev-kit` CLI entrypoint.
+- [x] Add `score`, `audit`, `validate`, and `validate-skill-pack` commands.
+- [x] Add directory input support for generated doc folders.
+- [x] Document local and GitHub `npx` usage.
+- [ ] Add automated CLI tests.
+- [ ] Consider pnpm/TypeScript packages only when the CLI surface grows.
 
-### Task 11: Add Documentation Audit Engine Later
+### Task 11: Add Beginner-Friendly Guided Workflow
+
+- [x] Add `dreampia-dev-kit guide` or equivalent first-run workflow.
+- [x] Generate a minimal doc-pack checklist from a short idea.
+- [x] Explain validation failures as "required fix", "recommended improvement", or "learning note".
+- [x] Add examples showing how a beginner moves from vague idea to PRD/TRD/API/ERD/QA.
+- [x] Add Korean beginner workflow snippets if needed.
+- [ ] Add automated CLI tests for guide output.
+
+### Task 12: Add Documentation Audit Engine Later
 
 - [ ] Parse Dreampia document frontmatter.
 - [ ] Detect broken `related_docs` references.
 - [ ] Detect missing QA coverage for PRD acceptance criteria.
 - [ ] Detect API, ERD, and TRD mismatch candidates.
 - [ ] Generate a safe report without rewriting user docs by default.
+- [ ] Include plain-language next actions for each finding.
