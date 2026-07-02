@@ -81,6 +81,18 @@ For a guided first run:
 node bin/dreampia-dev-kit.js guide "guest checkout for a small ecommerce shop"
 ```
 
+Create a starter docs folder:
+
+```bash
+node bin/dreampia-dev-kit.js init docs/ --feature CHECKOUT-001 --name "guest checkout"
+```
+
+Check your install and docs readiness:
+
+```bash
+node bin/dreampia-dev-kit.js doctor --docs docs/
+```
+
 Ask your agent to use a skill:
 
 ```text
@@ -93,6 +105,12 @@ If you are new to vibe coding, start with the guide:
 
 ```bash
 npx github:eonofpixel/dreampia-dev-kit guide "workspace invitations"
+```
+
+Create starter docs when you want files on disk before talking to an agent:
+
+```bash
+npx github:eonofpixel/dreampia-dev-kit init docs/ --feature INVITE-001 --name "workspace invitations"
 ```
 
 Ask your agent for a document pack:
@@ -247,6 +265,8 @@ The built-in CLI exposes the same checks for local use and CI:
 ```bash
 node bin/dreampia-dev-kit.js validate-skill-pack
 node bin/dreampia-dev-kit.js guide "workspace invitations"
+node bin/dreampia-dev-kit.js init docs/ --feature INVITE-001 --name "workspace invitations"
+node bin/dreampia-dev-kit.js doctor --docs docs/
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js validate docs/
@@ -256,9 +276,15 @@ node bin/dreampia-dev-kit.js explain docs/
 Or run it without a checkout:
 
 ```bash
+npx github:eonofpixel/dreampia-dev-kit init docs/ --feature INVITE-001 --name "workspace invitations"
+npx github:eonofpixel/dreampia-dev-kit doctor --docs docs/
 npx github:eonofpixel/dreampia-dev-kit validate docs/
 npx github:eonofpixel/dreampia-dev-kit explain docs/
 ```
+
+`init` creates starter PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit files with standard frontmatter and traceability signals.
+
+`doctor` checks local Codex and Claude Code install surfaces, plugin version alignment, generated-doc count, and whether `validate` passes for the selected docs folder.
 
 `validate-skill-pack` checks:
 

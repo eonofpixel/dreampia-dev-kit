@@ -96,7 +96,9 @@ Use this file as a lightweight backlog for Codex.
 
 ### Task 12: Expand CLI Setup Helpers
 
-- [ ] Add `dreampia-dev-kit init` for creating a starter docs folder.
+- [x] Add `dreampia-dev-kit init` for creating a starter docs folder.
+- [x] Add `dreampia-dev-kit doctor` for install and generated-doc readiness checks.
+- [x] Add a LazyCodex-style direction proposal for onboarding and CLI priorities.
 - [ ] Add `dreampia-dev-kit scaffold-codex-plugin` only if plugin packaging needs more automation.
 - [ ] Add focused unit tests if CLI logic grows beyond smoke-test coverage.
 

@@ -30,6 +30,12 @@ bash install.sh --agent codex
 bash install.sh --agent claude-code
 ```
 
+설치 후 실제 사용 가능한 surface를 확인합니다.
+
+```bash
+dreampia-dev-kit doctor --docs docs/
+```
+
 ## 호출 방식 빠른 참고
 
 | 실행 환경 | 기본 호출 | 선택형 단축키 |
@@ -157,6 +163,12 @@ claude plugin validate .
 
 ## 생성 문서 검증
 
+에이전트에게 세부 초안을 맡기기 전에 로컬 문서팩을 만들고 싶다면 starter docs를 생성합니다.
+
+```bash
+dreampia-dev-kit init docs/ --feature INVITE-001 --name "워크스페이스 초대"
+```
+
 Codex 또는 Claude Code가 문서팩을 생성한 뒤 로컬 checkout에서 CLI gate를 실행합니다.
 
 ```bash
@@ -174,4 +186,6 @@ npx github:eonofpixel/dreampia-dev-kit validate docs/
 ```bash
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
+node bin/dreampia-dev-kit.js explain docs/
+node bin/dreampia-dev-kit.js doctor --docs docs/
 ```

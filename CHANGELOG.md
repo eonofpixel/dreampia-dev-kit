@@ -2,6 +2,14 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## Unreleased
+
+### Added
+
+- Added `dreampia-dev-kit init` for creating a starter document pack from the built-in templates.
+- Added `dreampia-dev-kit doctor` for checking Codex/Claude Code install surfaces, plugin version alignment, and generated-doc validation readiness.
+- Added a Korean LazyCodex-style direction proposal for the next onboarding and CLI surface.
+
 ## 0.3.0 - 2026-07-03
 
 ### Added

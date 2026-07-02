@@ -9,10 +9,14 @@ const { spawnSync } = require("node:child_process");
 const root = path.resolve(__dirname, "..");
 const bin = path.join(root, "bin/dreampia-dev-kit.js");
 
-function runCli(args) {
+function runCli(args, options = {}) {
   return spawnSync(process.execPath, [bin, ...args], {
-    cwd: root,
+    cwd: options.cwd || root,
     encoding: "utf8",
+    env: {
+      ...process.env,
+      ...(options.env || {}),
+    },
   });
 }
 
@@ -95,9 +99,67 @@ function testExplainShowsRequiredFixesForRiskyDocs() {
   }
 }
 
+function testInitCreatesValidatedStarterDocs() {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "dreampia-init-test-"));
+  const docsDirectory = path.join(directory, "docs");
+  try {
+    const result = runCli([
+      "init",
+      docsDirectory,
+      "--feature",
+      "INVITE-001",
+      "--name",
+      "Workspace invitations",
+    ]);
+
+    assertSuccess(result, "init starter docs");
+    assert.match(result.stdout, /Created Dreampia starter docs/);
+    assert.match(fs.readFileSync(path.join(docsDirectory, "prd.md"), "utf8"), /PRD-INVITE-001/);
+    assert.match(fs.readFileSync(path.join(docsDirectory, "prd.md"), "utf8"), /Workspace invitations/);
+
+    const validateResult = runCli(["validate", docsDirectory]);
+    assertSuccess(validateResult, "validate initialized docs");
+    assert.match(validateResult.stdout, /Content risk audit: critical=0 major=0 minor=0/);
+
+    const overwriteResult = runCli(["init", docsDirectory]);
+    assert.equal(overwriteResult.status, 2);
+    assert.match(overwriteResult.stderr, /Refusing to overwrite/);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+function testDoctorShowsInstallAndDocsStatus() {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "dreampia-doctor-test-"));
+  const docsDirectory = path.join(directory, "docs");
+  try {
+    assertSuccess(runCli(["init", docsDirectory]), "init docs for doctor");
+
+    const result = runCli(["doctor", "--docs", docsDirectory], {
+      env: {
+        CODEX_HOME: path.join(directory, "codex-home"),
+        CLAUDE_SKILLS_DIR: path.join(directory, "claude-skills"),
+        CLAUDE_COMMANDS_DIR: path.join(directory, "claude-commands"),
+      },
+    });
+
+    assertSuccess(result, "doctor");
+    assert.match(result.stdout, /Dreampia doctor/);
+    assert.match(result.stdout, /Codex skills: missing/);
+    assert.match(result.stdout, /Claude Code skills: missing/);
+    assert.match(result.stdout, /Generated docs: found 8/);
+    assert.match(result.stdout, /Validation: passed/);
+    assert.match(result.stdout, /dreampia-dev-kit validate/);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+}
+
 testGuideShowsBeginnerWorkflow();
 testValidateShowsNextActionWhenClean();
 testExplainShowsCleanSummary();
 testExplainShowsRequiredFixesForRiskyDocs();
+testInitCreatesValidatedStarterDocs();
+testDoctorShowsInstallAndDocsStatus();
 
 console.log("CLI tests passed.");

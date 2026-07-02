@@ -44,6 +44,8 @@ Goal: Turn validation output into actionable guidance while keeping the Markdown
 Goal: Expand the CLI beyond guidance reports without making Markdown skills depend on a runtime.
 
 - `dreampia-dev-kit init`
+- `dreampia-dev-kit doctor`
+- LazyCodex-style onboarding direction proposal
 - `dreampia-dev-kit scaffold-codex-plugin`
 - Unit tests
 - Optional TypeScript migration if the CLI surface grows

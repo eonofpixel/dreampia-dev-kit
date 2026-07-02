@@ -18,6 +18,12 @@ dreampia-dev-kit guide "guest checkout for a small ecommerce shop"
 
 The guide shows the prompt to give Codex or Claude Code, the documents to expect, and the validation command to run next.
 
+If you want the files on disk before asking the agent to write details, initialize a starter docs folder:
+
+```bash
+dreampia-dev-kit init docs/ --feature CHECKOUT-001 --name "guest checkout"
+```
+
 ## 2. Ask for a Doc Pack
 
 Copy the guide prompt into your agent. The expected document pack is:
@@ -37,6 +43,12 @@ Run:
 
 ```bash
 dreampia-dev-kit validate docs/
+```
+
+If you are not sure Dreampia is installed correctly, run:
+
+```bash
+dreampia-dev-kit doctor --docs docs/
 ```
 
 If the gate passes, the docs are structurally complete and have no major content-risk findings.

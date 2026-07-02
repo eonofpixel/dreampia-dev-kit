@@ -30,6 +30,12 @@ bash install.sh --agent codex
 bash install.sh --agent claude-code
 ```
 
+After installation, check the available surfaces:
+
+```bash
+dreampia-dev-kit doctor --docs docs/
+```
+
 ## Invocation Quick Reference
 
 | Agent surface | Canonical invocation | Optional shortcut |
@@ -161,6 +167,12 @@ claude plugin validate .
 
 ## Validate Generated Docs
 
+Create starter docs when you want a local document pack before agent drafting:
+
+```bash
+dreampia-dev-kit init docs/ --feature INVITE-001 --name "workspace invitations"
+```
+
 After Codex or Claude Code generates a document pack, run the CLI gate from the local checkout:
 
 ```bash
@@ -178,4 +190,6 @@ Use individual commands when you want separate output:
 ```bash
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
+node bin/dreampia-dev-kit.js explain docs/
+node bin/dreampia-dev-kit.js doctor --docs docs/
 ```

@@ -18,6 +18,12 @@ dreampia-dev-kit guide "작은 쇼핑몰 guest checkout"
 
 `guide`는 Codex나 Claude Code에 넣을 프롬프트, 기대해야 할 문서 목록, 다음 검증 명령을 보여줍니다.
 
+에이전트에게 세부 작성을 맡기기 전에 파일부터 만들고 싶다면 starter docs 폴더를 생성합니다.
+
+```bash
+dreampia-dev-kit init docs/ --feature CHECKOUT-001 --name "guest checkout"
+```
+
 ## 2. 문서팩 요청하기
 
 가이드가 보여준 프롬프트를 에이전트에 복사합니다. 기대하는 문서팩은 다음입니다.
@@ -37,6 +43,12 @@ dreampia-dev-kit guide "작은 쇼핑몰 guest checkout"
 
 ```bash
 dreampia-dev-kit validate docs/
+```
+
+Dreampia가 제대로 설치됐는지 헷갈리면 먼저 확인합니다.
+
+```bash
+dreampia-dev-kit doctor --docs docs/
 ```
 
 통과하면 문서 구조가 갖춰졌고 major content-risk finding이 없다는 뜻입니다.
