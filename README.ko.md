@@ -133,6 +133,8 @@ node scripts/validate-skill-pack.js
 
 이 명령은 core skill, template frontmatter, 예제 문서, shortcut, plugin manifest, plugin skill 복사본 동기화를 확인합니다.
 
+GitHub Actions도 `main`, pull request, manual dispatch에서 validation, shell syntax check, installer smoke test를 실행합니다. 릴리즈 전에는 [release process](docs/RELEASE_PROCESS.md)와 [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md)를 사용합니다.
+
 ## 현재 상태
 
 현재 릴리즈: [v0.1.2](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2)

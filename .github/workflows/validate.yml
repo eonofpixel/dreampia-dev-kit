@@ -1,0 +1,60 @@
+name: Validate Skill Pack
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Markdown skill pack
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate skill pack structure
+        run: node scripts/validate-skill-pack.js
+
+      - name: Check shell script syntax
+        run: |
+          bash -n install.sh
+          bash -n scripts/install-codex.sh
+          bash -n scripts/install-claude-code.sh
+          bash -n scripts/sync-plugin-skills.sh
+
+      - name: Smoke test personal installers
+        run: |
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "$tmpdir"' EXIT
+
+          DREAMPIA_DEV_KIT_SOURCE_DIR="$PWD" \
+            CODEX_HOME="$tmpdir/codex" \
+            CLAUDE_SKILLS_DIR="$tmpdir/claude-skills" \
+            CLAUDE_COMMANDS_DIR="$tmpdir/claude-commands" \
+            bash install.sh --agent both
+
+          test -f "$tmpdir/codex/skills/prd/SKILL.md"
+          test -f "$tmpdir/codex/prompts/dreampia-prd.md"
+          test -f "$tmpdir/claude-skills/prd/SKILL.md"
+          test -f "$tmpdir/claude-commands/dreampia-prd.md"
+
+      - name: Report optional Claude CLI validation
+        run: |
+          if command -v claude >/dev/null 2>&1; then
+            claude plugin validate plugins/dreampia-dev-kit
+            claude plugin validate .
+          else
+            echo "::notice title=Claude CLI unavailable::Run 'claude plugin validate plugins/dreampia-dev-kit' locally before release."
+          fi

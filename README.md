@@ -176,6 +176,8 @@ Run:
 node scripts/validate-skill-pack.js
 ```
 
+GitHub Actions also runs this validation, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
+
 ## Design Principles
 
 - Documentation-first, not documentation-after.

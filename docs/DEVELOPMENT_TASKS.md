@@ -55,10 +55,11 @@ Use this file as a lightweight backlog for Codex.
 
 ### Task 7: Add CI Validation
 
-- [ ] Add a GitHub Actions workflow for `node scripts/validate-skill-pack.js`.
-- [ ] Add Claude plugin validation to CI when the CLI is available.
-- [ ] Add shell syntax checks for install scripts.
-- [ ] Add a release checklist job or manual workflow.
+- [x] Add a GitHub Actions workflow for `node scripts/validate-skill-pack.js`.
+- [x] Add Claude plugin validation to CI when the CLI is available.
+- [x] Add shell syntax checks for install scripts.
+- [x] Add installer smoke tests to CI.
+- [x] Add a manual `workflow_dispatch` validation path.
 
 ### Task 8: Expand Examples
 
@@ -72,7 +73,7 @@ Use this file as a lightweight backlog for Codex.
 - [ ] Confirm Codex plugin install behavior across app, CLI, and IDE extension.
 - [ ] Confirm Claude Code plugin command names after marketplace install.
 - [ ] Add screenshots or terminal transcripts for install verification.
-- [ ] Write a maintainer release process for tags and GitHub releases.
+- [x] Write a maintainer release process for tags and GitHub releases.
 
 ### Task 10: Add Validation CLI Later
 

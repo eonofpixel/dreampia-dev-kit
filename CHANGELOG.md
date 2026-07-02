@@ -2,6 +2,13 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## Unreleased
+
+### Added
+
+- Added GitHub Actions validation for skill-pack structure, shell syntax, and installer smoke tests.
+- Added release process and marketplace verification runbooks.
+
 ## 0.1.2 - 2026-07-02
 
 ### Added
