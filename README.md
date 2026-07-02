@@ -103,11 +103,16 @@ Examples:
 
 Read the full guide in [Install dreampia-dev-kit for Codex and Claude Code](docs/INSTALLATION.md).
 
-## Try the Example
+## Try the Examples
 
-See [the small service example](examples/small-service) for a complete feature documentation set.
+See these example document sets to understand how Dreampia docs link product, technical, UX, API, data, QA, and audit work.
 
-Scenario: a tiny team notes service adds passwordless magic link login.
+| Example | Scenario | Best for |
+|---|---|---|
+| [Small service](examples/small-service) | A tiny team notes service adds passwordless magic link login. | Simple end-to-end feature docs |
+| [Ecommerce](examples/ecommerce) | A small shop adds guest checkout with inventory reservation and payment authorization. | Cross-document dependencies and audit findings |
+
+Small service documents:
 
 | Document | Purpose |
 |---|---|
@@ -120,6 +125,20 @@ Scenario: a tiny team notes service adds passwordless magic link login.
 | [ERD](examples/small-service/erd.md) | Tables, relationships, indexes |
 | [QA checklist](examples/small-service/qa-checklist.md) | Human-testable checks |
 | [Doc audit report](examples/small-service/doc-audit-report.md) | Gaps, risks, next actions |
+
+Ecommerce documents:
+
+| Document | Purpose |
+|---|---|
+| [Project brief](examples/ecommerce/project-brief.md) | Product context and MVP scope |
+| [PRD](examples/ecommerce/prd.md) | Requirements, policies, acceptance criteria |
+| [TRD](examples/ecommerce/trd.md) | Checkout architecture and failure handling |
+| [IA](examples/ecommerce/ia.md) | Checkout routes, screens, and access rules |
+| [User flow](examples/ecommerce/user-flow.md) | Happy path, alternatives, errors, states |
+| [API spec](examples/ecommerce/api-spec.md) | Checkout endpoints and idempotency rules |
+| [ERD](examples/ecommerce/erd.md) | Checkout, reservation, payment, and order data |
+| [QA checklist](examples/ecommerce/qa-checklist.md) | Checkout verification and regression checks |
+| [Doc audit report](examples/ecommerce/doc-audit-report.md) | Deliberate unresolved decisions and next actions |
 
 ## Core Skills
 
@@ -139,7 +158,7 @@ Scenario: a tiny team notes service adds passwordless magic link login.
 ```text
 skills/                 Core agent skills
 templates/              Reusable Markdown document templates
-examples/small-service/ Complete example documentation set
+examples/               Complete example documentation sets
 plugins/dreampia-dev-kit/
   .codex-plugin/        Codex plugin manifest
   .claude-plugin/       Claude Code plugin manifest
@@ -165,7 +184,7 @@ The built-in validation script checks:
 - required core skills;
 - `SKILL.md` frontmatter and required sections;
 - template frontmatter and document metadata;
-- small-service example documents;
+- example documents;
 - Codex prompt shortcuts and Claude Code command shortcuts;
 - Codex and Claude Code plugin manifests;
 - packaged plugin skills matching root `skills/`.

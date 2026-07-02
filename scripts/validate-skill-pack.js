@@ -42,6 +42,8 @@ const exampleDocs = [
   "doc-audit-report.md",
 ];
 
+const exampleSets = ["small-service", "ecommerce"];
+
 const shortcutNames = [
   "dreampia-prd.md",
   "dreampia-trd.md",
@@ -176,8 +178,8 @@ function validateTemplate(templateName) {
   validateDocument(relativePath);
 }
 
-function validateExampleDoc(exampleDoc) {
-  const relativePath = `examples/small-service/${exampleDoc}`;
+function validateExampleDoc(exampleSet, exampleDoc) {
+  const relativePath = `examples/${exampleSet}/${exampleDoc}`;
   if (!requireFile(relativePath)) return;
 
   validateDocument(relativePath);
@@ -265,7 +267,9 @@ function validateExecutable(relativePath) {
 
 for (const skill of coreSkills) validateSkill(skill);
 for (const template of templates) validateTemplate(template);
-for (const exampleDoc of exampleDocs) validateExampleDoc(exampleDoc);
+for (const exampleSet of exampleSets) {
+  for (const exampleDoc of exampleDocs) validateExampleDoc(exampleSet, exampleDoc);
+}
 for (const shortcut of shortcutNames) {
   validateCommandLikeMarkdown(`shortcuts/claude-code/${shortcut}`);
   validateCommandLikeMarkdown(`shortcuts/codex/${shortcut}`, {
@@ -303,7 +307,8 @@ if (failures.length > 0) {
 console.log("Skill pack validation passed.");
 console.log(`- ${coreSkills.length} core skills`);
 console.log(`- ${templates.length} templates`);
-console.log(`- ${exampleDocs.length} small-service example documents`);
+console.log(`- ${exampleSets.length} example sets`);
+console.log(`- ${exampleSets.length * exampleDocs.length} example documents`);
 console.log(`- ${shortcutNames.length} Codex prompt shortcuts`);
 console.log(`- ${shortcutNames.length} Claude Code command shortcuts`);
 console.log(`- ${pluginCommandAliases.length} Claude Code plugin command aliases`);

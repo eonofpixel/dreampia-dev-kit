@@ -74,9 +74,14 @@ Codex의 `/prompts:*` 단축키는 편의용으로 설치됩니다. Codex의 기
 
 ## 예제 보기
 
-[small-service 예제](examples/small-service)는 작은 팀 노트 서비스의 매직 링크 로그인 기능을 문서화한 샘플입니다.
+Dreampia 문서가 product, technical, UX, API, data, QA, audit 작업을 어떻게 연결하는지 보려면 아래 예제를 참고합니다.
 
-포함 문서:
+| 예제 | 시나리오 | 보기 좋은 지점 |
+|---|---|---|
+| [Small service](examples/small-service) | 작은 팀 노트 서비스에 매직 링크 로그인을 추가합니다. | 단순한 end-to-end feature docs |
+| [Ecommerce](examples/ecommerce) | 작은 쇼핑몰에 guest checkout, inventory reservation, payment authorization을 추가합니다. | 문서 간 dependency와 audit finding |
+
+Small service 포함 문서:
 
 - [Project brief](examples/small-service/project-brief.md)
 - [PRD](examples/small-service/prd.md)
@@ -87,6 +92,18 @@ Codex의 `/prompts:*` 단축키는 편의용으로 설치됩니다. Codex의 기
 - [ERD](examples/small-service/erd.md)
 - [QA checklist](examples/small-service/qa-checklist.md)
 - [Doc audit report](examples/small-service/doc-audit-report.md)
+
+Ecommerce 포함 문서:
+
+- [Project brief](examples/ecommerce/project-brief.md)
+- [PRD](examples/ecommerce/prd.md)
+- [TRD](examples/ecommerce/trd.md)
+- [IA](examples/ecommerce/ia.md)
+- [User flow](examples/ecommerce/user-flow.md)
+- [API spec](examples/ecommerce/api-spec.md)
+- [ERD](examples/ecommerce/erd.md)
+- [QA checklist](examples/ecommerce/qa-checklist.md)
+- [Doc audit report](examples/ecommerce/doc-audit-report.md)
 
 ## 핵심 스킬
 
@@ -106,7 +123,7 @@ Codex의 `/prompts:*` 단축키는 편의용으로 설치됩니다. Codex의 기
 ```text
 skills/                 핵심 agent skill
 templates/              재사용 가능한 Markdown 템플릿
-examples/small-service/ 전체 문서 예제
+examples/               전체 문서 예제
 plugins/dreampia-dev-kit/
   .codex-plugin/        Codex plugin manifest
   .claude-plugin/       Claude Code plugin manifest

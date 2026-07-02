@@ -63,9 +63,9 @@ Use this file as a lightweight backlog for Codex.
 
 ### Task 8: Expand Examples
 
-- [ ] Add `examples/ecommerce/` with checkout or order-management docs.
+- [x] Add `examples/ecommerce/` with checkout or order-management docs.
 - [ ] Add `examples/b2b-saas/` with workspace, role, and billing docs.
-- [ ] Add example doc-audit reports that show common drift findings.
+- [x] Add example doc-audit reports that show common drift findings.
 - [ ] Add Korean example snippets in `.ko.md` files if needed.
 
 ### Task 9: Improve Marketplace Packaging
