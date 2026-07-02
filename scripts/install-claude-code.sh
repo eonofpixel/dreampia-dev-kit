@@ -2,7 +2,8 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEST_DIR="${CLAUDE_SKILLS_DIR:-"$HOME/.claude/skills"}"
+SKILL_DEST_DIR="${CLAUDE_SKILLS_DIR:-"$HOME/.claude/skills"}"
+COMMAND_DEST_DIR="${CLAUDE_COMMANDS_DIR:-"$HOME/.claude/commands"}"
 FORCE=0
 
 if [[ "${1:-}" == "--force" ]]; then
@@ -20,11 +21,11 @@ skills=(
   doc-audit
 )
 
-mkdir -p "$DEST_DIR"
+mkdir -p "$SKILL_DEST_DIR" "$COMMAND_DEST_DIR"
 
 for skill in "${skills[@]}"; do
   source_dir="$ROOT_DIR/skills/$skill"
-  target_dir="$DEST_DIR/$skill"
+  target_dir="$SKILL_DEST_DIR/$skill"
 
   if [[ -e "$target_dir/SKILL.md" && "$FORCE" != "1" ]]; then
     echo "Refusing to overwrite $target_dir. Re-run with --force to replace it."
@@ -35,5 +36,17 @@ for skill in "${skills[@]}"; do
   cp -R "$source_dir/." "$target_dir/"
 done
 
-echo "Installed Dreampia Dev Kit skills to $DEST_DIR"
-echo "Start a new Claude Code session and invoke a skill such as /prd or /doc-audit."
+for command_file in "$ROOT_DIR"/shortcuts/claude-code/*.md; do
+  target_file="$COMMAND_DEST_DIR/$(basename "$command_file")"
+
+  if [[ -e "$target_file" && "$FORCE" != "1" ]]; then
+    echo "Refusing to overwrite $target_file. Re-run with --force to replace it."
+    exit 1
+  fi
+
+  cp "$command_file" "$target_file"
+done
+
+echo "Installed Dreampia Dev Kit skills to $SKILL_DEST_DIR"
+echo "Installed Claude Code slash command shortcuts to $COMMAND_DEST_DIR"
+echo "Start a new Claude Code session and invoke /prd, /doc-audit, or /dreampia-prd."

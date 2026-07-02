@@ -53,11 +53,21 @@ claude plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
 claude plugin install dreampia-dev-kit@dreampia-dev-kit
 ```
 
-plugin 설치 후 새 세션에서 namespaced skill을 호출합니다.
+설치 후 새 세션에서 에이전트에 맞는 호출 방식을 사용합니다.
+
+| 실행 환경 | 기본 호출 | 선택형 단축키 |
+|---|---|---|
+| Codex app | `/`를 입력해 Dreampia skill 선택, 또는 `$prd` | `/prompts:dreampia-prd FEATURE="워크스페이스 초대"` |
+| Codex CLI/IDE | `$prd`, `$api-spec`, `$doc-audit` | `/prompts:dreampia-audit DOCS="docs/"` |
+| Claude Code 개인 skills | `/prd`, `/api-spec`, `/doc-audit` | `/dreampia-prd`, `/dreampia-api`, `/dreampia-doc-pack` |
+| Claude Code plugin | `/dreampia-dev-kit:prd`, `/dreampia-dev-kit:doc-audit` | `/dreampia-dev-kit:api`, `/dreampia-dev-kit:qa`, `/dreampia-dev-kit:doc-pack` |
+
+Codex의 `/prompts:*` 단축키는 편의용으로 설치됩니다. Codex의 기본 재사용 워크플로는 skill입니다.
 
 ```text
 /dreampia-dev-kit:prd 워크스페이스 초대 기능 PRD를 작성해줘.
 /dreampia-dev-kit:doc-audit docs/의 문서 누락과 drift를 점검해줘.
+/prompts:dreampia-api FEATURE="워크스페이스 초대"
 ```
 
 자세한 설치법은 [Codex와 Claude Code 설치 가이드](docs/INSTALLATION.ko.md)를 참고하세요.
@@ -100,7 +110,9 @@ examples/small-service/ 전체 문서 예제
 plugins/dreampia-dev-kit/
   .codex-plugin/        Codex plugin manifest
   .claude-plugin/       Claude Code plugin manifest
+  commands/             Claude Code plugin command alias
   skills/               패키징용 skill 복사본
+shortcuts/              개인 설치용 Codex prompt, Claude command shortcut
 docs/INSTALLATION.ko.md 설치 가이드
 scripts/                설치, 동기화, 검증 스크립트
 install.sh              Codex와 Claude Code용 터미널 설치 스크립트
@@ -119,11 +131,11 @@ node scripts/validate-skill-pack.js
 node scripts/validate-skill-pack.js
 ```
 
-이 명령은 core skill, template frontmatter, 예제 문서, plugin manifest, plugin skill 복사본 동기화를 확인합니다.
+이 명령은 core skill, template frontmatter, 예제 문서, shortcut, plugin manifest, plugin skill 복사본 동기화를 확인합니다.
 
 ## 현재 상태
 
-현재 릴리즈: [v0.1.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.1)
+현재 릴리즈: [v0.1.2](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2)
 
 v0.1은 CLI 없이 쓸 수 있는 Markdown-first skill pack입니다. TypeScript CLI는 skill과 template 시스템이 안정화된 뒤 추가할 예정입니다.
 

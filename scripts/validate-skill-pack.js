@@ -42,6 +42,26 @@ const exampleDocs = [
   "doc-audit-report.md",
 ];
 
+const shortcutNames = [
+  "dreampia-prd.md",
+  "dreampia-trd.md",
+  "dreampia-ia.md",
+  "dreampia-flow.md",
+  "dreampia-api.md",
+  "dreampia-erd.md",
+  "dreampia-qa.md",
+  "dreampia-audit.md",
+  "dreampia-doc-pack.md",
+];
+
+const pluginCommandAliases = [
+  "api.md",
+  "audit.md",
+  "doc-pack.md",
+  "flow.md",
+  "qa.md",
+];
+
 const requiredTemplateFrontmatter = [
   "doc_id",
   "doc_type",
@@ -210,6 +230,30 @@ function validateJson(relativePath) {
   }
 }
 
+function validateCommandLikeMarkdown(relativePath, options = {}) {
+  if (!requireFile(relativePath)) return;
+
+  const text = readText(relativePath);
+  const fm = frontmatter(text);
+
+  if (!fm) {
+    failures.push(`${relativePath} is missing YAML frontmatter`);
+    return;
+  }
+
+  if (!field(fm, "description")) {
+    failures.push(`${relativePath} is missing description`);
+  }
+
+  if (options.requireArgumentHint && !field(fm, "argument-hint")) {
+    failures.push(`${relativePath} is missing argument-hint`);
+  }
+
+  if (!text.includes("$ARGUMENTS")) {
+    failures.push(`${relativePath} is missing $ARGUMENTS`);
+  }
+}
+
 function validateExecutable(relativePath) {
   if (!requireFile(relativePath)) return;
 
@@ -222,6 +266,15 @@ function validateExecutable(relativePath) {
 for (const skill of coreSkills) validateSkill(skill);
 for (const template of templates) validateTemplate(template);
 for (const exampleDoc of exampleDocs) validateExampleDoc(exampleDoc);
+for (const shortcut of shortcutNames) {
+  validateCommandLikeMarkdown(`shortcuts/claude-code/${shortcut}`);
+  validateCommandLikeMarkdown(`shortcuts/codex/${shortcut}`, {
+    requireArgumentHint: true,
+  });
+}
+for (const commandAlias of pluginCommandAliases) {
+  validateCommandLikeMarkdown(`plugins/dreampia-dev-kit/commands/${commandAlias}`);
+}
 
 for (const manifest of [
   ".agents/plugins/marketplace.json",
@@ -251,4 +304,7 @@ console.log("Skill pack validation passed.");
 console.log(`- ${coreSkills.length} core skills`);
 console.log(`- ${templates.length} templates`);
 console.log(`- ${exampleDocs.length} small-service example documents`);
+console.log(`- ${shortcutNames.length} Codex prompt shortcuts`);
+console.log(`- ${shortcutNames.length} Claude Code command shortcuts`);
+console.log(`- ${pluginCommandAliases.length} Claude Code plugin command aliases`);
 console.log("- Codex and Claude Code plugin manifests");

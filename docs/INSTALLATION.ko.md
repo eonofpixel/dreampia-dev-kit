@@ -30,9 +30,22 @@ bash install.sh --agent codex
 bash install.sh --agent claude-code
 ```
 
+## 호출 방식 빠른 참고
+
+| 실행 환경 | 기본 호출 | 선택형 단축키 |
+|---|---|---|
+| Codex app | `/`를 입력해 Dreampia skill 선택, 또는 `$prd` | `/prompts:dreampia-prd FEATURE="워크스페이스 초대"` |
+| Codex CLI/IDE | `$prd`, `$api-spec`, `$doc-audit` | `/prompts:dreampia-audit DOCS="docs/"` |
+| Claude Code 개인 skills | `/prd`, `/api-spec`, `/doc-audit` | `/dreampia-prd`, `/dreampia-api`, `/dreampia-doc-pack` |
+| Claude Code plugin | `/dreampia-dev-kit:prd`, `/dreampia-dev-kit:doc-audit` | `/dreampia-dev-kit:api`, `/dreampia-dev-kit:qa`, `/dreampia-dev-kit:doc-pack` |
+
+Codex의 prompt shortcut은 slash command로 여전히 동작해서 편의용으로 설치합니다. 다만 Codex 공식 문서에서는 custom prompt를 deprecated로 표시하므로, 재사용 워크플로의 기본은 Dreampia skill로 봅니다.
+
 ## Codex 설치
 
 ### 방법 A: 개인 skills로 설치
+
+Codex skills 디렉터리에 skill을 설치하고, Codex prompts 디렉터리에 선택형 shortcut을 설치합니다.
 
 ```bash
 bash scripts/install-codex.sh
@@ -49,6 +62,8 @@ bash scripts/install-codex.sh --force
 ```text
 /prd 워크스페이스 초대 기능 PRD를 작성해줘.
 /doc-audit docs/의 문서 누락과 drift를 점검해줘.
+$prd 워크스페이스 초대 기능 PRD를 작성해줘.
+/prompts:dreampia-prd FEATURE="워크스페이스 초대"
 ```
 
 ### 방법 B: 로컬 Codex plugin marketplace로 설치
@@ -67,11 +82,14 @@ codex plugin add dreampia-dev-kit@dreampia-dev-kit
 ```text
 /dreampia-dev-kit:prd 워크스페이스 초대 기능 PRD를 작성해줘.
 /dreampia-dev-kit:doc-audit docs/의 문서 누락과 drift를 점검해줘.
+$dreampia-dev-kit:prd 워크스페이스 초대 기능 PRD를 작성해줘.
 ```
 
 ## Claude Code 설치
 
 ### 방법 A: 개인 skills로 설치
+
+Claude Code skills 디렉터리에 skill을 설치하고, commands 디렉터리에 `/dreampia-*` shortcut을 설치합니다.
 
 ```bash
 bash scripts/install-claude-code.sh
@@ -88,6 +106,8 @@ bash scripts/install-claude-code.sh --force
 ```text
 /prd 워크스페이스 초대 기능 PRD를 작성해줘.
 /doc-audit docs/의 문서 누락과 drift를 점검해줘.
+/dreampia-prd 워크스페이스 초대 기능 PRD를 작성해줘.
+/dreampia-doc-pack 워크스페이스 초대 기능 문서팩을 초안 작성해줘.
 ```
 
 ### 방법 B: 로컬 Claude Code plugin으로 테스트
@@ -100,6 +120,7 @@ Claude Code 안에서 다음처럼 호출합니다.
 
 ```text
 /dreampia-dev-kit:prd 워크스페이스 초대 기능 PRD를 작성해줘.
+/dreampia-dev-kit:api 워크스페이스 초대 기능 API spec을 작성해줘.
 ```
 
 ### 방법 C: 로컬 Claude Code marketplace로 설치
@@ -115,6 +136,7 @@ Claude Code를 재시작한 뒤 namespaced skill을 호출합니다.
 
 ```text
 /dreampia-dev-kit:doc-audit docs/의 문서 누락과 drift를 점검해줘.
+/dreampia-dev-kit:qa 워크스페이스 초대 기능 QA checklist를 작성해줘.
 ```
 
 ## Plugin 복사본 갱신

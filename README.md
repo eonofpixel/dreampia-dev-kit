@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.1"><img alt="Release v0.1.1" src="https://img.shields.io/badge/release-v0.1.1-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2"><img alt="Release v0.1.2" src="https://img.shields.io/badge/release-v0.1.2-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="scripts/validate-skill-pack.js"><img alt="No runtime dependencies" src="https://img.shields.io/badge/runtime-none-7c3aed"></a>
@@ -82,11 +82,23 @@ claude plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
 claude plugin install dreampia-dev-kit@dreampia-dev-kit
 ```
 
-After plugin installation, start a new session and invoke:
+After installation, start a new session and use the shortcut style that matches your agent:
+
+| Agent surface | Canonical invocation | Optional shortcut |
+|---|---|---|
+| Codex app | Type `/` and choose an enabled Dreampia skill, or type `$prd` | `/prompts:dreampia-prd FEATURE="workspace invitations"` |
+| Codex CLI/IDE | `$prd`, `$api-spec`, `$doc-audit` | `/prompts:dreampia-audit DOCS="docs/"` |
+| Claude Code personal skills | `/prd`, `/api-spec`, `/doc-audit` | `/dreampia-prd`, `/dreampia-api`, `/dreampia-doc-pack` |
+| Claude Code plugin | `/dreampia-dev-kit:prd`, `/dreampia-dev-kit:doc-audit` | `/dreampia-dev-kit:api`, `/dreampia-dev-kit:qa`, `/dreampia-dev-kit:doc-pack` |
+
+Codex prompt shortcuts are installed for convenience, but Codex skills remain the primary reusable workflow format.
+
+Examples:
 
 ```text
 /dreampia-dev-kit:prd Draft a PRD for workspace invitations.
 /dreampia-dev-kit:doc-audit Audit docs/ for missing links and drift.
+/prompts:dreampia-api FEATURE="workspace invitations"
 ```
 
 Read the full guide in [Install dreampia-dev-kit for Codex and Claude Code](docs/INSTALLATION.md).
@@ -131,7 +143,9 @@ examples/small-service/ Complete example documentation set
 plugins/dreampia-dev-kit/
   .codex-plugin/        Codex plugin manifest
   .claude-plugin/       Claude Code plugin manifest
+  commands/             Claude Code plugin command aliases
   skills/               Packaged skill copy
+shortcuts/              Personal Codex prompt and Claude command shortcuts
 docs/INSTALLATION.md    Install guide for Codex and Claude Code
 scripts/                Install, sync, and validate helpers
 install.sh              Terminal installer for Codex and Claude Code
@@ -152,6 +166,7 @@ The built-in validation script checks:
 - `SKILL.md` frontmatter and required sections;
 - template frontmatter and document metadata;
 - small-service example documents;
+- Codex prompt shortcuts and Claude Code command shortcuts;
 - Codex and Claude Code plugin manifests;
 - packaged plugin skills matching root `skills/`.
 
@@ -175,7 +190,7 @@ node scripts/validate-skill-pack.js
 
 ## Status
 
-Current release: [v0.1.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.1)
+Current release: [v0.1.2](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.1.2)
 
 The first release is a Markdown-first skill pack. A TypeScript CLI may be added later, after the skill and template system is stable.
 

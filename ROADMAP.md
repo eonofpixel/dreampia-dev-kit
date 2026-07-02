@@ -16,8 +16,9 @@ Goal: Make the project immediately useful in Codex as a documentation workflow r
 
 Goal: Polish distribution and add validation.
 
+- Agent shortcut polish for Claude Code and Codex
 - Public marketplace publishing guidance
-- Skill validation script or CLI
+- CI-backed skill and shortcut validation
 - Markdown template validation
 - Example project: small service
 

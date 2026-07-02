@@ -30,11 +30,22 @@ bash install.sh --agent codex
 bash install.sh --agent claude-code
 ```
 
+## Invocation Quick Reference
+
+| Agent surface | Canonical invocation | Optional shortcut |
+|---|---|---|
+| Codex app | Type `/` and choose an enabled Dreampia skill, or type `$prd` | `/prompts:dreampia-prd FEATURE="workspace invitations"` |
+| Codex CLI/IDE | `$prd`, `$api-spec`, `$doc-audit` | `/prompts:dreampia-audit DOCS="docs/"` |
+| Claude Code personal skills | `/prd`, `/api-spec`, `/doc-audit` | `/dreampia-prd`, `/dreampia-api`, `/dreampia-doc-pack` |
+| Claude Code plugin | `/dreampia-dev-kit:prd`, `/dreampia-dev-kit:doc-audit` | `/dreampia-dev-kit:api`, `/dreampia-dev-kit:qa`, `/dreampia-dev-kit:doc-pack` |
+
+Codex prompt shortcuts are installed for convenience because they still work as slash commands, but Codex marks custom prompts as deprecated. Prefer Dreampia skills for reusable workflows.
+
 ## Install for Codex
 
 ### Option A: Personal skills
 
-Install the skills into your Codex skills directory:
+Install the skills into your Codex skills directory and optional prompt shortcuts into your Codex prompts directory:
 
 ```bash
 bash scripts/install-codex.sh
@@ -51,6 +62,8 @@ Start a new Codex session, then invoke a skill such as:
 ```text
 /prd Draft a PRD for workspace invitations.
 /doc-audit Audit docs/ for missing links and drift.
+$prd Draft a PRD for workspace invitations.
+/prompts:dreampia-prd FEATURE="workspace invitations"
 ```
 
 ### Option B: Local Codex plugin marketplace
@@ -69,13 +82,14 @@ Then start a new Codex session and invoke namespaced skills:
 ```text
 /dreampia-dev-kit:prd Draft a PRD for workspace invitations.
 /dreampia-dev-kit:doc-audit Audit docs/ for missing links and drift.
+$dreampia-dev-kit:prd Draft a PRD for workspace invitations.
 ```
 
 ## Install for Claude Code
 
 ### Option A: Personal skills
 
-Install the skills into your Claude Code skills directory:
+Install the skills into your Claude Code skills directory and personal command shortcuts into your Claude commands directory:
 
 ```bash
 bash scripts/install-claude-code.sh
@@ -92,6 +106,8 @@ Start a new Claude Code session, then invoke a skill such as:
 ```text
 /prd Draft a PRD for workspace invitations.
 /doc-audit Audit docs/ for missing links and drift.
+/dreampia-prd Draft a PRD for workspace invitations.
+/dreampia-doc-pack Draft the initial docs for workspace invitations.
 ```
 
 ### Option B: Local Claude Code plugin
@@ -106,6 +122,7 @@ Inside Claude Code, invoke:
 
 ```text
 /dreampia-dev-kit:prd Draft a PRD for workspace invitations.
+/dreampia-dev-kit:api Draft the API spec for workspace invitations.
 ```
 
 ### Option C: Local Claude Code marketplace
@@ -123,6 +140,7 @@ Then restart Claude Code and invoke namespaced skills:
 
 ```text
 /dreampia-dev-kit:doc-audit Audit docs/ for missing links and drift.
+/dreampia-dev-kit:qa Create QA checks for workspace invitations.
 ```
 
 ## Maintain the Packaged Plugin Copy

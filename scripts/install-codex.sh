@@ -2,7 +2,9 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEST_DIR="${CODEX_HOME:-"$HOME/.codex"}/skills"
+CODEX_ROOT="${CODEX_HOME:-"$HOME/.codex"}"
+SKILL_DEST_DIR="$CODEX_ROOT/skills"
+PROMPT_DEST_DIR="$CODEX_ROOT/prompts"
 FORCE=0
 
 if [[ "${1:-}" == "--force" ]]; then
@@ -20,11 +22,11 @@ skills=(
   doc-audit
 )
 
-mkdir -p "$DEST_DIR"
+mkdir -p "$SKILL_DEST_DIR" "$PROMPT_DEST_DIR"
 
 for skill in "${skills[@]}"; do
   source_dir="$ROOT_DIR/skills/$skill"
-  target_dir="$DEST_DIR/$skill"
+  target_dir="$SKILL_DEST_DIR/$skill"
 
   if [[ -e "$target_dir/SKILL.md" && "$FORCE" != "1" ]]; then
     echo "Refusing to overwrite $target_dir. Re-run with --force to replace it."
@@ -35,5 +37,17 @@ for skill in "${skills[@]}"; do
   cp -R "$source_dir/." "$target_dir/"
 done
 
-echo "Installed Dreampia Dev Kit skills to $DEST_DIR"
-echo "Start a new Codex session and invoke a skill such as /prd or /doc-audit."
+for prompt_file in "$ROOT_DIR"/shortcuts/codex/*.md; do
+  target_file="$PROMPT_DEST_DIR/$(basename "$prompt_file")"
+
+  if [[ -e "$target_file" && "$FORCE" != "1" ]]; then
+    echo "Refusing to overwrite $target_file. Re-run with --force to replace it."
+    exit 1
+  fi
+
+  cp "$prompt_file" "$target_file"
+done
+
+echo "Installed Dreampia Dev Kit skills to $SKILL_DEST_DIR"
+echo "Installed optional Codex prompt shortcuts to $PROMPT_DEST_DIR"
+echo "Start a new Codex session and invoke a skill such as /prd, \$prd, or /prompts:dreampia-prd."

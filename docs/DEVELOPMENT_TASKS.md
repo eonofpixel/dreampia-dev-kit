@@ -44,10 +44,48 @@ Use this file as a lightweight backlog for Codex.
 - [x] Validate plugin manifests.
 - [x] Validate plugin skill copies match root `skills/`.
 
-### Task 6: Add Validation CLI Later
+### Task 6: Add Agent Shortcuts
+
+- [x] Add Claude Code personal command shortcuts.
+- [x] Add Claude Code plugin command aliases for short names.
+- [x] Add optional Codex prompt shortcuts for slash-command convenience.
+- [x] Update installers to copy skills and shortcuts.
+- [x] Validate shortcut frontmatter and `$ARGUMENTS` placeholders.
+- [x] Document canonical and optional invocation styles.
+
+### Task 7: Add CI Validation
+
+- [ ] Add a GitHub Actions workflow for `node scripts/validate-skill-pack.js`.
+- [ ] Add Claude plugin validation to CI when the CLI is available.
+- [ ] Add shell syntax checks for install scripts.
+- [ ] Add a release checklist job or manual workflow.
+
+### Task 8: Expand Examples
+
+- [ ] Add `examples/ecommerce/` with checkout or order-management docs.
+- [ ] Add `examples/b2b-saas/` with workspace, role, and billing docs.
+- [ ] Add example doc-audit reports that show common drift findings.
+- [ ] Add Korean example snippets in `.ko.md` files if needed.
+
+### Task 9: Improve Marketplace Packaging
+
+- [ ] Confirm Codex plugin install behavior across app, CLI, and IDE extension.
+- [ ] Confirm Claude Code plugin command names after marketplace install.
+- [ ] Add screenshots or terminal transcripts for install verification.
+- [ ] Write a maintainer release process for tags and GitHub releases.
+
+### Task 10: Add Validation CLI Later
 
 - [ ] Create pnpm workspace.
 - [ ] Add TypeScript packages.
 - [ ] Implement `validate-skills`.
 - [ ] Add tests.
 - [ ] Document usage.
+
+### Task 11: Add Documentation Audit Engine Later
+
+- [ ] Parse Dreampia document frontmatter.
+- [ ] Detect broken `related_docs` references.
+- [ ] Detect missing QA coverage for PRD acceptance criteria.
+- [ ] Detect API, ERD, and TRD mismatch candidates.
+- [ ] Generate a safe report without rewriting user docs by default.

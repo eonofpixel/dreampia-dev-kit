@@ -9,7 +9,7 @@ TEMP_DIR=""
 
 usage() {
   cat <<'USAGE'
-Install dreampia-dev-kit skills for Codex and/or Claude Code.
+Install dreampia-dev-kit skills and shortcuts for Codex and/or Claude Code.
 
 Usage:
   bash install.sh [--agent codex|claude|claude-code|both] [--force]
@@ -121,4 +121,4 @@ case "$AGENT" in
 esac
 
 echo "dreampia-dev-kit install complete."
-echo "Start a new agent session before invoking /prd or /doc-audit."
+echo "Start a new agent session before invoking Dreampia skills or shortcuts."

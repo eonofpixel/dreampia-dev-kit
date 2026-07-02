@@ -2,6 +2,17 @@
 
 All notable changes to `dreampia-dev-kit` will be documented in this file.
 
+## 0.1.2 - 2026-07-02
+
+### Added
+
+- Added Claude Code personal command shortcuts under `shortcuts/claude-code/`.
+- Added Claude Code plugin command aliases for short names such as `api`, `qa`, `audit`, and `doc-pack`.
+- Added optional Codex prompt shortcuts under `shortcuts/codex/`.
+- Extended installers to copy skills and shortcuts together.
+- Added shortcut validation to `scripts/validate-skill-pack.js`.
+- Expanded installation docs with canonical and optional invocation styles.
+
 ## 0.1.1 - 2026-07-02
 
 ### Added
