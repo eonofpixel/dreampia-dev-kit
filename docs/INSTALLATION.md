@@ -7,6 +7,29 @@
 
 The root `skills/` directory is the source of truth. The packaged plugin copy lives in `plugins/dreampia-dev-kit/skills/`.
 
+## Recommended Terminal Install
+
+Install for both Codex and Claude Code:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash
+```
+
+Install for one agent:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash -s -- --agent codex
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash -s -- --agent claude-code
+```
+
+From a local checkout:
+
+```bash
+bash install.sh
+bash install.sh --agent codex
+bash install.sh --agent claude-code
+```
+
 ## Install for Codex
 
 ### Option A: Personal skills
@@ -32,12 +55,14 @@ Start a new Codex session, then invoke a skill such as:
 
 ### Option B: Local Codex plugin marketplace
 
-Use this when testing the plugin package before publishing:
+Use this when installing from a GitHub repository:
 
 ```bash
-codex plugin marketplace add .
+codex plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
 codex plugin add dreampia-dev-kit@dreampia-dev-kit
 ```
+
+For a local checkout, replace the GitHub URL with `.`.
 
 Then start a new Codex session and invoke namespaced skills:
 
@@ -88,9 +113,11 @@ Inside Claude Code, invoke:
 For marketplace-style testing:
 
 ```bash
-claude plugin marketplace add .
+claude plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
 claude plugin install dreampia-dev-kit@dreampia-dev-kit
 ```
+
+For a local checkout, replace the GitHub URL with `.`.
 
 Then restart Claude Code and invoke namespaced skills:
 

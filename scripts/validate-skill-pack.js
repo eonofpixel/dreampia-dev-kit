@@ -233,6 +233,7 @@ for (const manifest of [
 }
 
 for (const script of [
+  "install.sh",
   "scripts/install-codex.sh",
   "scripts/install-claude-code.sh",
   "scripts/sync-plugin-skills.sh",

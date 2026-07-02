@@ -7,6 +7,29 @@
 
 원본은 루트 `skills/`입니다. 배포용 plugin 복사본은 `plugins/dreampia-dev-kit/skills/`에 둡니다.
 
+## 추천 터미널 설치
+
+Codex와 Claude Code 둘 다 설치:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash
+```
+
+하나만 설치:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash -s -- --agent codex
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash -s -- --agent claude-code
+```
+
+로컬 checkout에서 설치:
+
+```bash
+bash install.sh
+bash install.sh --agent codex
+bash install.sh --agent claude-code
+```
+
 ## Codex 설치
 
 ### 방법 A: 개인 skills로 설치
@@ -30,12 +53,14 @@ bash scripts/install-codex.sh --force
 
 ### 방법 B: 로컬 Codex plugin marketplace로 설치
 
-plugin 패키징을 로컬에서 검증할 때 사용합니다.
+GitHub 저장소에서 plugin으로 설치할 때 사용합니다.
 
 ```bash
-codex plugin marketplace add .
+codex plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
 codex plugin add dreampia-dev-kit@dreampia-dev-kit
 ```
+
+로컬 checkout을 검증할 때는 GitHub URL 대신 `.`을 사용합니다.
 
 새 Codex 세션을 시작한 뒤 namespaced skill을 호출합니다.
 
@@ -80,9 +105,11 @@ Claude Code 안에서 다음처럼 호출합니다.
 ### 방법 C: 로컬 Claude Code marketplace로 설치
 
 ```bash
-claude plugin marketplace add .
+claude plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
 claude plugin install dreampia-dev-kit@dreampia-dev-kit
 ```
+
+로컬 checkout을 검증할 때는 GitHub URL 대신 `.`을 사용합니다.
 
 Claude Code를 재시작한 뒤 namespaced skill을 호출합니다.
 

@@ -30,7 +30,7 @@ It helps teams keep product, technical, UX, API, data, QA, and release documents
 | Testable release criteria | `skills/qa-checklist/SKILL.md` |
 | A consistency review | `skills/doc-audit/SKILL.md` |
 
-## Start in 60 Seconds
+## Install in 60 Seconds
 
 Clone the repository:
 
@@ -39,7 +39,19 @@ git clone https://github.com/eonofpixel/dreampia-dev-kit.git
 cd dreampia-dev-kit
 ```
 
-Validate the pack:
+Install for both Codex and Claude Code:
+
+```bash
+bash install.sh
+```
+
+Or install from GitHub in one terminal command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eonofpixel/dreampia-dev-kit/main/install.sh | bash
+```
+
+Validate the local checkout:
 
 ```bash
 node scripts/validate-skill-pack.js
@@ -53,12 +65,22 @@ Use skills/prd/SKILL.md and templates/prd.md to draft a PRD for workspace invita
 
 ## Install in Your Agent
 
-Use the plain Markdown files directly, or install them into Codex or Claude Code.
+Use the terminal installer for personal skills, or install the plugin marketplace from inside your agent.
 
-| Agent | Quick install | Namespaced plugin install |
+| Agent | Terminal install | In-agent plugin install |
 |---|---|---|
-| Codex | `bash scripts/install-codex.sh` | `codex plugin marketplace add .` then `codex plugin add dreampia-dev-kit@dreampia-dev-kit` |
-| Claude Code | `bash scripts/install-claude-code.sh` | `claude plugin marketplace add .` then `claude plugin install dreampia-dev-kit@dreampia-dev-kit` |
+| Codex | `bash install.sh --agent codex` | `/plugins` then add `https://github.com/eonofpixel/dreampia-dev-kit` |
+| Claude Code | `bash install.sh --agent claude-code` | `/plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit` then `/plugin install dreampia-dev-kit` |
+
+CLI marketplace install is also supported:
+
+```bash
+codex plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
+codex plugin add dreampia-dev-kit@dreampia-dev-kit
+
+claude plugin marketplace add https://github.com/eonofpixel/dreampia-dev-kit
+claude plugin install dreampia-dev-kit@dreampia-dev-kit
+```
 
 After plugin installation, start a new session and invoke:
 
@@ -112,6 +134,7 @@ plugins/dreampia-dev-kit/
   skills/               Packaged skill copy
 docs/INSTALLATION.md    Install guide for Codex and Claude Code
 scripts/                Install, sync, and validate helpers
+install.sh              Terminal installer for Codex and Claude Code
 ```
 
 Root `skills/` is the source of truth. After editing skills, run:

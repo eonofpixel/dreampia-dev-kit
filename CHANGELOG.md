@@ -13,6 +13,7 @@ All notable changes to `dreampia-dev-kit` will be documented in this file.
 - Documented Codex and Claude Code personal skill and plugin installation paths.
 - Added a small-service example document set.
 - Added `scripts/validate-skill-pack.js` for no-dependency local validation.
+- Added `install.sh` for terminal-first Codex and Claude Code installation.
 
 ### Not Included
 
