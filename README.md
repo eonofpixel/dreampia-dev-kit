@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0"><img alt="Release v0.3.0" src="https://img.shields.io/badge/release-v0.3.0-2563eb"></a>
+  <a href="https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.1"><img alt="Release v0.3.1" src="https://img.shields.io/badge/release-v0.3.1-2563eb"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111827"></a>
   <a href="docs/INSTALLATION.md"><img alt="Codex and Claude Code supported" src="https://img.shields.io/badge/agents-Codex%20%2B%20Claude%20Code-0f766e"></a>
   <a href="bin/dreampia-dev-kit.js"><img alt="No dependency CLI" src="https://img.shields.io/badge/CLI-no%20deps-7c3aed"></a>
@@ -360,9 +360,9 @@ GitHub Actions also runs this validation, example content-risk audits, CLI smoke
 
 ## Status
 
-Current release: [v0.3.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0)
+Current release: [v0.3.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.1)
 
-The current main branch is a Markdown-first skill pack plus a dependency-free CLI gate, documentation operation reports, and plain-language explanation reports for generated document quality.
+The current release is a Markdown-first skill pack plus a dependency-free CLI gate, documentation operation reports, and plain-language explanation reports for generated document quality.
 
 ## License
 

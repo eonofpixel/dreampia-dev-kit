@@ -4,6 +4,8 @@ All notable changes to `dreampia-dev-kit` will be documented in this file.
 
 ## Unreleased
 
+## 0.3.1 - 2026-07-04
+
 ### Added
 
 - Added `dreampia-dev-kit init` for creating a starter document pack from the built-in templates.

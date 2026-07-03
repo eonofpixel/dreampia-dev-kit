@@ -1,7 +1,7 @@
 {
   "name": "dreampia-dev-kit",
-  "version": "0.3.0",
-  "description": "Documentation-first workflow skills for AI coding agents.",
+  "version": "0.3.1",
+  "description": "Documentation operations and verification skills for AI coding agents.",
   "author": {
     "name": "Dreampia Dev Kit Maintainers"
   },
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Dreampia Dev Kit",
-    "shortDescription": "Markdown-first documentation workflows.",
-    "longDescription": "Dreampia Dev Kit provides reusable PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit skills for documentation-first agentic development.",
+    "shortDescription": "Documentation operations for AI coding agents.",
+    "longDescription": "Dreampia Dev Kit provides reusable PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit skills plus validation and operation guidance for agentic development.",
     "developerName": "Dreampia Dev Kit Maintainers",
     "category": "Productivity",
     "capabilities": [

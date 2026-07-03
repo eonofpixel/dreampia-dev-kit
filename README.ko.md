@@ -297,9 +297,9 @@ GitHub Actions도 `main`, pull request, manual dispatch에서 validation, 예제
 
 ## 현재 상태
 
-현재 릴리즈: [v0.3.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0)
+현재 릴리즈: [v0.3.1](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.1)
 
-현재 main branch는 Markdown-first skill pack에 generated docs 품질을 확인하는 dependency-free CLI gate, 문서 운영 리포트, 쉬운 설명 리포트를 더한 상태입니다.
+현재 릴리즈는 Markdown-first skill pack에 generated docs 품질을 확인하는 dependency-free CLI gate, 문서 운영 리포트, 쉬운 설명 리포트를 더한 상태입니다.
 
 ## 라이선스
 
