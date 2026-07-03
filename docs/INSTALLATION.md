@@ -179,10 +179,17 @@ After Codex or Claude Code generates a document pack, run the CLI gate from the 
 node bin/dreampia-dev-kit.js validate docs/
 ```
 
+Then ask Dreampia for the next read-only documentation operation:
+
+```bash
+node bin/dreampia-dev-kit.js orchestrate docs/
+```
+
 The same command can run directly from GitHub:
 
 ```bash
 npx github:eonofpixel/dreampia-dev-kit validate docs/
+npx github:eonofpixel/dreampia-dev-kit orchestrate docs/
 ```
 
 Use individual commands when you want separate output:
@@ -191,5 +198,6 @@ Use individual commands when you want separate output:
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js explain docs/
+node bin/dreampia-dev-kit.js doc-ops --mode expert docs/
 node bin/dreampia-dev-kit.js doctor --docs docs/
 ```

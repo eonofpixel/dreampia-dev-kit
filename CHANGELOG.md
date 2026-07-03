@@ -8,6 +8,7 @@ All notable changes to `dreampia-dev-kit` will be documented in this file.
 
 - Added `dreampia-dev-kit init` for creating a starter document pack from the built-in templates.
 - Added `dreampia-dev-kit doctor` for checking Codex/Claude Code install surfaces, plugin version alignment, and generated-doc validation readiness.
+- Added `dreampia-dev-kit orchestrate` and `dreampia-dev-kit doc-ops` for read-only documentation operation queues, implementation readiness, and next agent prompts.
 - Added a Korean LazyCodex-style direction proposal for the next onboarding and CLI surface.
 - Added a Korean strategy proposal for positioning Dreampia as a documentation operations and verification orchestrator.
 

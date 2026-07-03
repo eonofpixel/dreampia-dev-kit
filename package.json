@@ -1,7 +1,7 @@
 {
   "name": "dreampia-dev-kit",
   "version": "0.3.0",
-  "description": "Documentation-first workflow skills and validation gates for AI coding agents.",
+  "description": "Documentation operations and verification for AI coding agents.",
   "license": "MIT",
   "type": "commonjs",
   "bin": {

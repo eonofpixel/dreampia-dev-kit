@@ -98,6 +98,7 @@ Use this file as a lightweight backlog for Codex.
 
 - [x] Add `dreampia-dev-kit init` for creating a starter docs folder.
 - [x] Add `dreampia-dev-kit doctor` for install and generated-doc readiness checks.
+- [x] Add `dreampia-dev-kit orchestrate` and `dreampia-dev-kit doc-ops` for read-only document operation queues.
 - [x] Add a LazyCodex-style direction proposal for onboarding and CLI priorities.
 - [x] Reposition Dreampia as a documentation operations and verification orchestrator.
 - [ ] Add `dreampia-dev-kit scaffold-codex-plugin` only if plugin packaging needs more automation.
@@ -105,10 +106,12 @@ Use this file as a lightweight backlog for Codex.
 
 ### Task 13: Add Documentation Operations Orchestrator
 
-- [ ] Add `dreampia-dev-kit orchestrate docs/` or `dreampia-dev-kit doc-ops docs/`.
-- [ ] Produce a read-only documentation operation queue.
-- [ ] Generate next prompts for Codex and Claude Code.
-- [ ] Add beginner and expert explanation modes.
+- [x] Add `dreampia-dev-kit orchestrate docs/` and `dreampia-dev-kit doc-ops docs/`.
+- [x] Produce a read-only documentation operation queue.
+- [x] Generate next prompts for Codex and Claude Code.
+- [x] Add beginner and expert explanation modes.
+- [ ] Add JSON output if automation or editor integration needs it.
+- [ ] Add deeper cross-document drift evidence from `related_docs`.
 
 ### Task 14: Add Documentation Audit Engine Later
 

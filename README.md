@@ -93,6 +93,12 @@ Check your install and docs readiness:
 node bin/dreampia-dev-kit.js doctor --docs docs/
 ```
 
+Decide the next documentation operation:
+
+```bash
+node bin/dreampia-dev-kit.js orchestrate docs/
+```
+
 Ask your agent to use a skill:
 
 ```text
@@ -123,6 +129,12 @@ Then score and audit the generated docs:
 
 ```bash
 node bin/dreampia-dev-kit.js validate docs/
+```
+
+Ask Dreampia what should happen next:
+
+```bash
+node bin/dreampia-dev-kit.js orchestrate docs/
 ```
 
 If the gate fails, ask Dreampia to explain the findings in plain language:
@@ -267,6 +279,7 @@ node bin/dreampia-dev-kit.js validate-skill-pack
 node bin/dreampia-dev-kit.js guide "workspace invitations"
 node bin/dreampia-dev-kit.js init docs/ --feature INVITE-001 --name "workspace invitations"
 node bin/dreampia-dev-kit.js doctor --docs docs/
+node bin/dreampia-dev-kit.js orchestrate docs/
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js validate docs/
@@ -278,6 +291,7 @@ Or run it without a checkout:
 ```bash
 npx github:eonofpixel/dreampia-dev-kit init docs/ --feature INVITE-001 --name "workspace invitations"
 npx github:eonofpixel/dreampia-dev-kit doctor --docs docs/
+npx github:eonofpixel/dreampia-dev-kit orchestrate docs/
 npx github:eonofpixel/dreampia-dev-kit validate docs/
 npx github:eonofpixel/dreampia-dev-kit explain docs/
 ```
@@ -285,6 +299,8 @@ npx github:eonofpixel/dreampia-dev-kit explain docs/
 `init` creates starter PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit files with standard frontmatter and traceability signals.
 
 `doctor` checks local Codex and Claude Code install surfaces, plugin version alignment, generated-doc count, and whether `validate` passes for the selected docs folder.
+
+`orchestrate` and its alias `doc-ops` create a read-only documentation operation queue. They summarize missing docs, structure score, content risks, implementation readiness, next CLI commands, and prompts for Codex or Claude Code.
 
 `validate-skill-pack` checks:
 
@@ -320,6 +336,14 @@ node bin/dreampia-dev-kit.js explain docs/
 
 The explain report groups output into required fixes, recommended improvements, and learning notes so a non-expert builder can fix documents before implementation starts.
 
+Choose the next operation from the whole docs folder:
+
+```bash
+node bin/dreampia-dev-kit.js doc-ops --mode expert docs/
+```
+
+The documentation operations report is read-only. It decides whether to fix docs, re-run validation, clean minor risks, or proceed to the smallest implementation slice.
+
 GitHub Actions also runs this validation, example content-risk audits, CLI smoke tests, shell syntax checks, and installer smoke tests on `main`, pull requests, and manual dispatch. Release maintainers can use [the release process](docs/RELEASE_PROCESS.md) and [marketplace verification checklist](docs/MARKETPLACE_VERIFICATION.md) before tagging.
 
 ## Design Principles
@@ -338,7 +362,7 @@ GitHub Actions also runs this validation, example content-risk audits, CLI smoke
 
 Current release: [v0.3.0](https://github.com/eonofpixel/dreampia-dev-kit/releases/tag/v0.3.0)
 
-The current release is a Markdown-first skill pack plus a dependency-free CLI gate and plain-language explanation reports for generated document quality.
+The current main branch is a Markdown-first skill pack plus a dependency-free CLI gate, documentation operation reports, and plain-language explanation reports for generated document quality.
 
 ## License
 

@@ -55,6 +55,14 @@ If the gate passes, the docs are structurally complete and have no major content
 
 If the gate fails, do not treat that as personal failure. It means part of the development process is still hidden.
 
+When you are unsure what to do next, ask Dreampia to choose the next documentation operation:
+
+```bash
+dreampia-dev-kit orchestrate docs/
+```
+
+This read-only report shows required operations, recommended improvements, the next validation command, and a prompt you can give to Codex or Claude Code.
+
 Ask for a plain-language report:
 
 ```bash

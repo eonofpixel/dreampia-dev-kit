@@ -52,6 +52,17 @@ function testExplainShowsCleanSummary() {
   assert.match(result.stdout, /No required fixes found/);
 }
 
+function testOrchestrateShowsOperationQueueForCleanDocs() {
+  const result = runCli(["orchestrate", "examples/ecommerce"]);
+
+  assertSuccess(result, "orchestrate examples/ecommerce");
+  assert.match(result.stdout, /# Dreampia Documentation Operations/);
+  assert.match(result.stdout, /Operation Queue/);
+  assert.match(result.stdout, /Implementation readiness: ready/);
+  assert.match(result.stdout, /Proceed to the smallest safe implementation slice/);
+  assert.match(result.stdout, /Codex:/);
+}
+
 function writeBadApiDoc(directory) {
   fs.writeFileSync(
     path.join(directory, "api-spec.md"),
@@ -94,6 +105,23 @@ function testExplainShowsRequiredFixesForRiskyDocs() {
     assert.match(result.stdout, /missing section/);
     assert.match(result.stdout, /Invitation token appears/);
     assert.match(result.stdout, /Learning Notes/);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+function testDocOpsShowsRiskyDocsAsRequiredOperations() {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "dreampia-cli-test-"));
+  try {
+    writeBadApiDoc(directory);
+
+    const result = runCli(["doc-ops", "--mode", "expert", directory]);
+
+    assertSuccess(result, "doc-ops risky docs");
+    assert.match(result.stdout, /Implementation readiness: not ready/);
+    assert.match(result.stdout, /Fix critical and major content-risk findings/);
+    assert.match(result.stdout, /Evidence Snapshot/);
+    assert.match(result.stdout, /Invitation token appears/);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }
@@ -158,7 +186,9 @@ function testDoctorShowsInstallAndDocsStatus() {
 testGuideShowsBeginnerWorkflow();
 testValidateShowsNextActionWhenClean();
 testExplainShowsCleanSummary();
+testOrchestrateShowsOperationQueueForCleanDocs();
 testExplainShowsRequiredFixesForRiskyDocs();
+testDocOpsShowsRiskyDocsAsRequiredOperations();
 testInitCreatesValidatedStarterDocs();
 testDoctorShowsInstallAndDocsStatus();
 

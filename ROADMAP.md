@@ -45,6 +45,7 @@ Goal: Expand the CLI beyond guidance reports without making Markdown skills depe
 
 - `dreampia-dev-kit init`
 - `dreampia-dev-kit doctor`
+- `dreampia-dev-kit orchestrate docs/` and `dreampia-dev-kit doc-ops docs/`
 - LazyCodex-style onboarding direction proposal
 - Documentation operations and verification orchestrator positioning
 - `dreampia-dev-kit scaffold-codex-plugin`
@@ -73,14 +74,14 @@ Goal: Generate document suggestions from codebase structure.
 - Safe write mode with confirmation
 - beginner-safe review prompts before generated suggestions drive code
 
-## v0.6.0 — Documentation Operations Orchestrator
+## v0.6.0 — Documentation Operations Orchestrator Deepening
 
-Goal: Read a docs folder, decide the next documentation operation, and produce the next CLI command or agent prompt.
+Goal: Move from the first read-only operation queue to deeper cross-document orchestration.
 
-- `dreampia-dev-kit orchestrate docs/` or `dreampia-dev-kit doc-ops docs/`
-- document operation queue
-- beginner and expert explanation modes
-- next prompt generation for Codex and Claude Code
+- richer document operation queue with dependency ordering
+- cross-document drift evidence from `related_docs`
+- next prompt generation with scoped skill routing for Codex and Claude Code
+- optional JSON output for automation
 - no implementation writes by default
 
 ## v1.0.0 — Stable Open-source Release

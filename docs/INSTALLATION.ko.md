@@ -175,10 +175,17 @@ Codex 또는 Claude Code가 문서팩을 생성한 뒤 로컬 checkout에서 CLI
 node bin/dreampia-dev-kit.js validate docs/
 ```
 
+그다음 읽기 전용 문서 운영 큐로 다음 작업을 확인합니다.
+
+```bash
+node bin/dreampia-dev-kit.js orchestrate docs/
+```
+
 checkout 없이 GitHub에서 바로 실행할 수도 있습니다.
 
 ```bash
 npx github:eonofpixel/dreampia-dev-kit validate docs/
+npx github:eonofpixel/dreampia-dev-kit orchestrate docs/
 ```
 
 출력을 나눠 보고 싶으면 개별 명령을 사용합니다.
@@ -187,5 +194,6 @@ npx github:eonofpixel/dreampia-dev-kit validate docs/
 node bin/dreampia-dev-kit.js score docs/
 node bin/dreampia-dev-kit.js audit docs/
 node bin/dreampia-dev-kit.js explain docs/
+node bin/dreampia-dev-kit.js doc-ops --mode expert docs/
 node bin/dreampia-dev-kit.js doctor --docs docs/
 ```
