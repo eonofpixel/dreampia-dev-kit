@@ -2,9 +2,9 @@
 
 ## 1. Overview
 
-`dreampia-dev-kit` is an open-source toolkit for development documentation in agentic coding workflows.
+`dreampia-dev-kit` is an open-source documentation operations and verification orchestrator for agentic coding workflows.
 
-It provides skills, templates, and lightweight CLI gates to help teams create, audit, and maintain development documents across the software lifecycle.
+It provides skills, templates, and lightweight CLI gates to help teams create, align, audit, explain, and maintain development documents across the software lifecycle.
 
 ## 1.1 Social Mission
 
@@ -35,10 +35,11 @@ AI coding tools can speed up implementation, but many projects still fail or slo
 
 ## 3. Product Goal
 
-Create a reusable, open-source documentation workflow layer that:
+Create a reusable, open-source documentation operations and verification layer that:
 
 - turns vague product ideas into structured development documents;
 - lets Codex and other agents reuse consistent document workflows;
+- orchestrates the loop from guide to starter docs, validation, explanation, audit, and next action;
 - helps detect documentation drift between docs and code;
 - makes development decisions, risks, and next actions understandable to beginners;
 - supports small MVPs and large-scale services;
@@ -127,12 +128,12 @@ v0.1 is successful when:
 
 Existing AI coding helpers focus on writing code, planning tasks, or orchestrating agents.
 
-`dreampia-dev-kit` focuses on documentation quality and consistency across the development lifecycle.
+`dreampia-dev-kit` focuses on documentation operations, verification, and consistency across the development lifecycle.
 
 Positioning line:
 
 ```text
-Documentation-first workflow for AI coding agents.
+Documentation operations and verification for AI coding agents.
 ```
 
 ## 10. Open Questions

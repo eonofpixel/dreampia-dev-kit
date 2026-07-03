@@ -21,14 +21,14 @@ Reviewed on: 2026-07-02
 
 ## Positioning Summary
 
-`dreampia-dev-kit` is a Markdown-first documentation quality layer for AI coding agents.
+`dreampia-dev-kit` is a Markdown-first documentation operations and verification orchestrator for AI coding agents.
 
-It focuses on linked PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit documents, plus content-risk auditing for generated docs.
+It focuses on linked PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit documents, plus the operational loop around them: starter docs, validation, explanation, readiness diagnosis, and content-risk auditing.
 
-The project should not compete head-on as a full implementation orchestrator. The sharper position is:
+The project should not compete head-on as a full code implementation orchestrator. The sharper position is:
 
 ```text
-Documentation quality and consistency for AI coding agents, before and during implementation.
+Documentation operations and verification for AI coding agents, before and during implementation.
 ```
 
 ## Direct Competitors
@@ -57,7 +57,7 @@ Documentation quality and consistency for AI coding agents, before and during im
 | Dimension | Dreampia Advantage | Risk |
 |---|---|---|
 | Documentation breadth | PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, and doc-audit are treated as linked documents. | Larger frameworks may add similar templates quickly. |
-| Markdown-first adoption | Useful without a runtime CLI or hosted service. | Less impressive than CLI-first tools during demos. |
+| Markdown-first adoption | Useful without a hosted service while still offering CLI orchestration for docs. | Less impressive than code-first orchestrators during demos. |
 | Multi-agent compatibility | Codex and Claude Code installation paths are both supported. | Spec Kit and other tools support many more integrations. |
 | Content-risk audit | Detects risky generated docs such as raw token exposure, plaintext token storage, policy conflicts, speculative decisions, unresolved references, and repeated questions. | Needs more rules and lower false-positive rates to stay credible. |
 | Safe-by-default posture | No mandatory network calls, no telemetry, no secret access in core workflows. | Security posture needs continuous proof through examples and validation. |
@@ -67,18 +67,18 @@ Documentation quality and consistency for AI coding agents, before and during im
 Use this primary line:
 
 ```text
-Markdown-first documentation quality layer for AI coding agents.
+Markdown-first documentation operations and verification orchestrator for AI coding agents.
 ```
 
 Use this longer description:
 
 ```text
-Dreampia helps Codex, Claude Code, and other coding agents create linked PRD, TRD, IA, user-flow, API, ERD, QA, and audit documents before implementation, then checks generated docs for consistency and content-risk issues.
+Dreampia helps Codex, Claude Code, and other coding agents create linked PRD, TRD, IA, user-flow, API, ERD, QA, and audit documents before implementation, then orchestrates validation, explanation, audit, and next documentation actions.
 ```
 
 Avoid positioning as:
 
-- a full implementation orchestrator;
+- a full code implementation orchestrator;
 - a replacement for Spec Kit or BMAD;
 - a Claude-only command framework;
 - a SaaS project management tool;
@@ -88,20 +88,20 @@ Avoid positioning as:
 
 Near-term:
 
-- Keep improving `doc-audit` and `audit-generated-doc-content.js`.
+- Keep improving `doc-audit`, `audit-generated-doc-content.js`, and explainable document-operation guidance.
 - Add more examples that demonstrate audit findings and fixes.
 - Add comparison notes in README without attacking other projects.
 - Submit to Claude Code and Codex ecosystem lists after the README is clear.
 
 Mid-term:
 
-- Add a small CLI around validation and content-risk audit.
+- Add a small CLI around document initialization, validation, explanation, content-risk audit, and readiness diagnosis.
 - Add machine-readable schemas for document frontmatter and cross-document links.
 - Add code-to-docs suggestions without destructive rewrites.
 
 Long-term:
 
-- Become the lightweight documentation-quality companion that teams can use next to Spec Kit, BMAD, Agent OS, or custom agent workflows.
+- Become the lightweight documentation operations companion that teams can use next to Spec Kit, BMAD, Agent OS, OMC/LazyCodex, or custom agent workflows.
 
 ## Source Notes
 

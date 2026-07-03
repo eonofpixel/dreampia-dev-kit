@@ -46,13 +46,14 @@ Goal: Expand the CLI beyond guidance reports without making Markdown skills depe
 - `dreampia-dev-kit init`
 - `dreampia-dev-kit doctor`
 - LazyCodex-style onboarding direction proposal
+- Documentation operations and verification orchestrator positioning
 - `dreampia-dev-kit scaffold-codex-plugin`
 - Unit tests
 - Optional TypeScript migration if the CLI surface grows
 
 ## v0.4.0 — Documentation Audit Engine
 
-Goal: Detect documentation gaps and inconsistencies.
+Goal: Detect documentation gaps and inconsistencies so Dreampia can orchestrate document operations before implementation.
 
 - Parse document frontmatter
 - Detect broken `related_docs`
@@ -71,6 +72,16 @@ Goal: Generate document suggestions from codebase structure.
 - Generated doc suggestions
 - Safe write mode with confirmation
 - beginner-safe review prompts before generated suggestions drive code
+
+## v0.6.0 — Documentation Operations Orchestrator
+
+Goal: Read a docs folder, decide the next documentation operation, and produce the next CLI command or agent prompt.
+
+- `dreampia-dev-kit orchestrate docs/` or `dreampia-dev-kit doc-ops docs/`
+- document operation queue
+- beginner and expert explanation modes
+- next prompt generation for Codex and Claude Code
+- no implementation writes by default
 
 ## v1.0.0 — Stable Open-source Release
 

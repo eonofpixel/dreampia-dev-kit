@@ -1,10 +1,10 @@
 # dreampia-dev-kit
 
-Codex, Claude Code, AI 코딩 에이전트와 함께 쓰는 documentation-first 개발 문서 스킬팩입니다.
+Codex, Claude Code, AI 코딩 에이전트와 함께 쓰는 문서 운영 검증 오케스트레이션 도구입니다.
 
 아이디어가 코드로 바로 흘러가기 전에 PRD, TRD, IA, API Spec, ERD, QA 문서를 먼저 정리하고 서로 연결되게 만드는 것이 목표입니다.
 
-Spec-driven implementation platform을 대체하려는 프로젝트는 아닙니다. Dreampia의 포지션은 문서 품질 레이어입니다. 먼저 연결된 개발 문서를 만들고, 그 문서가 코드로 넘어가기 전에 구조 점수와 content-risk audit으로 위험을 잡습니다.
+Spec-driven implementation platform이나 구현 오케스트레이터를 대체하려는 프로젝트는 아닙니다. Dreampia의 포지션은 문서 운영 검증 오케스트레이션입니다. 먼저 연결된 개발 문서를 만들고, 그 문서가 코드로 넘어가기 전에 구조 점수, content-risk audit, 설명 리포트, 설치/준비 상태 진단으로 다음 행동을 정리합니다.
 
 ## 왜 중요한가
 
@@ -29,7 +29,7 @@ Dreampia는 바이브코딩을 처음 하는 사람, 개발을 잘 모르는 사
 
 [GitHub Spec Kit](https://github.com/github/spec-kit), [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [Agent OS](https://github.com/buildermethods/agent-os)는 더 넓은 spec-driven development와 구현 워크플로에 강합니다.
 
-Dreampia는 PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit 같은 agent-readable 개발 문서와 그 문서의 품질 검증에 집중합니다.
+Dreampia는 PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit 같은 agent-readable 개발 문서와 그 문서의 생성, 정렬, 검증, 설명, 준비 상태 진단에 집중합니다.
 
 자세한 비교는 [Competitive Landscape](docs/COMPETITIVE_LANDSCAPE.md)를 참고하세요.
 

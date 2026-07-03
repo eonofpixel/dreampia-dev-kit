@@ -1,7 +1,7 @@
 # dreampia-dev-kit
 
 <p align="center">
-  <strong>Documentation-first workflow skills for AI coding agents.</strong>
+  <strong>Documentation operations and verification for AI coding agents.</strong>
 </p>
 
 <p align="center">
@@ -17,11 +17,11 @@
 
 ## What This Is
 
-`dreampia-dev-kit` is an open-source Markdown skill pack for agentic coding workflows.
+`dreampia-dev-kit` is an open-source documentation operations and verification orchestrator for agentic coding workflows.
 
 It helps teams keep product, technical, UX, API, data, QA, and release documents aligned while working with Codex, Claude Code, or other AI coding agents.
 
-It is not trying to replace full spec-driven implementation platforms. Dreampia is the documentation quality layer: linked development docs first, then structure scoring and content-risk auditing before those docs drive code.
+It is not trying to replace full implementation orchestrators. Dreampia orchestrates the documentation loop before implementation: create linked development docs, validate structure and content risks, explain what to fix, and keep code work grounded in reviewed documents.
 
 ## Why It Matters
 
@@ -44,7 +44,7 @@ Good output should help beginners and experienced developers work from the same 
 
 Projects such as [GitHub Spec Kit](https://github.com/github/spec-kit), [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://github.com/Fission-AI/OpenSpec), and [Agent OS](https://github.com/buildermethods/agent-os) focus on broader spec-driven development and implementation workflows.
 
-Dreampia focuses on reusable, agent-readable development documents and the quality checks around them: PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit, structure scoring, and content-risk auditing.
+Dreampia focuses on reusable, agent-readable development documents and the operations around them: PRD, TRD, IA, user-flow, API spec, ERD, QA checklist, doc-audit, structure scoring, content-risk auditing, plain-language explanations, and install/readiness diagnosis.
 
 Read the fuller comparison in [Competitive Landscape](docs/COMPETITIVE_LANDSCAPE.md).
 
